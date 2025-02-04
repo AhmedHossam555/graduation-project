@@ -37,13 +37,21 @@ nav {
     line-height: 21px;
     text-align: center;
     border: none;
+    transition: all 0.5s ease;
   }
   .login {
     background-color: #6049e7;
     color: #fff;
+    &:hover {
+      transform: translateY(-1.5px);
+    }
   }
   .signup {
     color:  #A55EAA;
     background-color: #fff;
+    &:hover {
+      transform: translateY(-1.5px);
+    }
   }
+  
 }

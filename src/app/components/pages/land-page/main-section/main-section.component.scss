@@ -32,13 +32,14 @@ p {
   background: #7B68EE;
   box-shadow: 0px 10px 25px 0px #7B68EE80;
   color: #fff;
+  transition: 0.5s all ease;
 }
-.start + p {
+
+#free {
   color: #B9BEC7;
   letter-spacing: 2px;
   margin-top: 16px;
-  transition: 0.5s all ease;
 }
 .start:hover {
-  transform:  translateY(-2px);
+  transform:  translateY(-3px);
 }
