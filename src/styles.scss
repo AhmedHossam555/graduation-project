@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+body{
+  min-height: 100vh;
+  overflow: hidden;
+  font-family:Arial, Helvetica, sans-serif;
+}
+.text-main {
+  color: #292D34;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
