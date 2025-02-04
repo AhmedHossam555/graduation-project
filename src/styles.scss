@@ -2,7 +2,9 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
+$main-text: #292D34;
 a {
   text-decoration: none;
 }
@@ -10,10 +12,13 @@ body{
   min-height: 100vh;
   overflow: hidden;
   font-family:Arial, Helvetica, sans-serif;
+  background-color: #fefeff;
 }
-.text-main {
+.text-base {
   color: #292D34;
-  font-size: 14px;
   font-weight: 700;
   text-align: center;
+}
+.text-main {
+  color: $main-text;
 }
