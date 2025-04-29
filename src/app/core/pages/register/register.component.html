@@ -1,1 +1,108 @@
-<p>register works!</p>
+<div class="login flex min-h-screen">
+  <div class="login-sketch--welcome w-1/2 hidden xl:block linear-bg-blue rounded-tr-4xl rounded-br-4xl ">
+  <a routerLink="/login" class="flex items-center pl-5 pt-8 ">
+    <img src="../../../../assets/images/logo.svg" alt="logo-image" width="64" height="64">
+    <span class="text-white font-semibold  text-2xl ml-2">Nazamaha</span>
+  </a>
+  <h2 class="text-center text-white font-bold text-5xl mt-12 mb-4">Welcome to Nazamaha</h2>
+  <p class="text-center text-white font-medium text-2xl">To get started, please Signup</p>
+  </div>
+  <div class="register-form w-full xl:w-1/2">
+    <div class="form-container  mx-auto mt-32 w-516   p-6 sm:p-1">
+      <h2 class="text-3xl font-bold mb-3">Hey, Hello 👋</h2>
+      <p class="text-xl font-medium text-main-label mb-8">Create account to start using Nazamaha.</p>
+      <form [formGroup]="registerForm" (ngSubmit)="getRegister()">
+        <div class="input-text mb-4">
+          <label for="text" class="block text-sm font-medium text-main-label mb-2">Full Name</label>
+          <input type="text" class="block px-3 text-main-label rounded-lg w-full font-medium text-sm placeholder:text-sm placeholder:font-medium" placeholder="enter your name" formControlName="organization_name">
+            @if(recieveRegisterForm('organization_name')?.errors && (recieveRegisterForm('organization_name')?.touched || recieveRegisterForm('organization_name')?.dirty)){
+              @if(recieveRegisterForm('organization_name')?.errors?.['required']){
+                <small class="text-red-500 font-medium ">*Full name is required.</small>
+              }@else if(recieveRegisterForm('organization_name')?.errors?.['minlength']){
+                <small class="text-red-500 font-medium ">*Must have at least 3 characters.</small>
+              }@else if(recieveRegisterForm('organization_name')?.errors?.['maxlength']){
+                <small class="text-red-500 font-medium ">*Must have no more than 20 characters.</small>
+              }
+            }
+        </div>
+        <div class="input-email mb-4">
+          <label for="email" class="block text-sm font-medium text-main-label mb-2">Email</label>
+          <input type="email" class="block px-3 text-main-label rounded-lg w-full font-medium text-sm placeholder:text-sm placeholder:font-medium  " placeholder="ahmed@gmail.com" formControlName="email">
+          
+            @if(recieveRegisterForm('email')?.errors && (recieveRegisterForm('email')?.touched || recieveRegisterForm('email')?.dirty)){
+              @if(recieveRegisterForm('email')?.errors?.['required']){
+                <small class="text-red-500 font-medium ">*Email is required.</small>
+              }@else if(recieveRegisterForm('email')?.errors?.['email']){
+                <small class="text-red-500 font-medium ">*Email is not correct.</small>
+              }
+            }
+        </div>
+
+        <div class="input-password mb-4">
+          <label for="password" class="block text-sm font-medium text-main-label mb-2">Password</label>
+          <div class="input-parent relative">
+            <input [type]="isVisiblePassword?'text':'password'" id="password" class="block px-3 text-main-label rounded-lg w-full font-medium text-sm placeholder:text-sm placeholder:font-medium" placeholder="enter your password" formControlName="password">
+            <div class="absolute right-2.5 bottom-1.5 cursor-pointer" (click)="isVisibleOrNot()">
+              @if(isVisiblePassword){
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#475569" d="M12 9a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5c-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0a9.821 9.821 0 0 0-17.64 0"/></svg>
+              }@else {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#475569" d="M4.52 5.935L1.394 2.808l1.414-1.414l19.799 19.798l-1.414 1.415l-3.31-3.31A10.95 10.95 0 0 1 12 21c-5.392 0-9.878-3.88-10.818-9A11 11 0 0 1 4.52 5.935m10.238 10.237l-1.464-1.464a3 3 0 0 1-4.001-4.001L7.829 9.243a5 5 0 0 0 6.929 6.929M7.974 3.76C9.221 3.27 10.58 3 12 3c5.392 0 9.878 3.88 10.819 9a10.95 10.95 0 0 1-2.012 4.593l-3.86-3.86Q17 12.373 17 12a5 5 0 0 0-5.732-4.947z"/></svg>
+              }
+            </div>
+          </div>
+        
+          @if(recieveRegisterForm('password')?.errors && (recieveRegisterForm('password')?.touched || recieveRegisterForm('password')?.dirty)){
+            @if(recieveRegisterForm('password')?.errors?.['required']){
+              <small class="text-red-500 font-medium ">*Password is required.</small>
+            }@else if(recieveRegisterForm('password')?.errors?.['pattern']){
+              <small class="text-red-500 font-medium ">*Password must start with a capital letter and be 4–11 characters long,<br> using only lowercase letters and numbers.</small>
+            }
+          }
+        </div>
+
+        <div class="input-password--reconfirm mb-4">
+          <label for="confirm-password" class="block text-sm font-medium text-main-label mb-2">Confirm Password</label>
+          <div class="input-parent relative">
+            <input [type]="isVisibleConfirm?'text':'password'" id="confirm-password" class="block px-3 text-main-label rounded-lg w-full font-medium text-sm placeholder:text-sm placeholder:font-medium" placeholder="enter your password" formControlName="confirm_password">
+            <div class="absolute right-2.5 bottom-1.5 cursor-pointer" (click)="isVisibleOrNotConfirm()">
+              @if(isVisibleConfirm){
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#475569" d="M12 9a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5c-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0a9.821 9.821 0 0 0-17.64 0"/></svg>
+              }@else {
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#475569" d="M4.52 5.935L1.394 2.808l1.414-1.414l19.799 19.798l-1.414 1.415l-3.31-3.31A10.95 10.95 0 0 1 12 21c-5.392 0-9.878-3.88-10.818-9A11 11 0 0 1 4.52 5.935m10.238 10.237l-1.464-1.464a3 3 0 0 1-4.001-4.001L7.829 9.243a5 5 0 0 0 6.929 6.929M7.974 3.76C9.221 3.27 10.58 3 12 3c5.392 0 9.878 3.88 10.819 9a10.95 10.95 0 0 1-2.012 4.593l-3.86-3.86Q17 12.373 17 12a5 5 0 0 0-5.732-4.947z"/></svg>
+              }
+            </div>
+          </div>
+        
+          @if(recieveRegisterForm("confirm_password")?.errors && (recieveRegisterForm("confirm_password")?.touched || recieveRegisterForm("confirm_password")?.dirty)){
+            @if(recieveRegisterForm('confirm_password')?.errors?.['required']){
+              <small class="text-red-500 font-medium ">*confirm_password is required.</small>
+            }@else if(recieveRegisterForm('confirm_password')?.errors?.['pattern']){
+              <small class="text-red-500 font-medium">*confirm_password must start with a capital letter and be 4-11 characters long, using only lowercase letters and numbers.</small>
+            }
+          }
+          @if(registerForm.errors?.['mismatch'] && (recieveRegisterForm('confirm_password')?.touched || recieveRegisterForm('confirm_password')?.dirty)){
+            <small class="text-red-500 font-medium ">*Reconfirm password must be equal password.</small>
+          }
+        </div>
+
+        <div class="input-check flex items-center justify-between mt-5 mb-8">
+          <div class="flex items-center flex-1 mb-4">
+              <input id="link-checkbox" type="checkbox" value="remeber" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 cursor-pointer">
+              <label for="link-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"><a  class="text-main-label dark:text-blue-500 hover:underline">Remember me</a>.</label>
+          </div>
+          <a routerLink="" class="text-main text-sm font-medium cursor-pointer">Forget Password?</a>
+        </div>
+
+        <button type="submit" class="block w-full rounded-md text-sm font-semibold px-4 py-2 linear-bg-blue text-white hover:bg-blue-800 cursor-pointer transition-all transition-300 ease-in-out">Create an account</button>
+        <div class="flex items-center justify-center gap-2 mt-6">
+          <button type="button" class="rounded-full p-2 border border-gray-200 cursor-pointer hover:border-blue-500 transition transition-600 ease-in-out">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 128 128"><path fill="#fff" d="M44.59 4.21a63.28 63.28 0 0 0 4.33 120.9a67.6 67.6 0 0 0 32.36.35a57.13 57.13 0 0 0 25.9-13.46a57.44 57.44 0 0 0 16-26.26a74.3 74.3 0 0 0 1.61-33.58H65.27v24.69h34.47a29.72 29.72 0 0 1-12.66 19.52a36.2 36.2 0 0 1-13.93 5.5a41.3 41.3 0 0 1-15.1 0A37.2 37.2 0 0 1 44 95.74a39.3 39.3 0 0 1-14.5-19.42a38.3 38.3 0 0 1 0-24.63a39.25 39.25 0 0 1 9.18-14.91A37.17 37.17 0 0 1 76.13 27a34.3 34.3 0 0 1 13.64 8q5.83-5.8 11.64-11.63c2-2.09 4.18-4.08 6.15-6.22A61.2 61.2 0 0 0 87.2 4.59a64 64 0 0 0-42.61-.38"/><path fill="#e33629" d="M44.59 4.21a64 64 0 0 1 42.61.37a61.2 61.2 0 0 1 20.35 12.62c-2 2.14-4.11 4.14-6.15 6.22Q95.58 29.23 89.77 35a34.3 34.3 0 0 0-13.64-8a37.17 37.17 0 0 0-37.46 9.74a39.25 39.25 0 0 0-9.18 14.91L8.76 35.6A63.53 63.53 0 0 1 44.59 4.21"/><path fill="#f8bd00" d="M3.26 51.5a63 63 0 0 1 5.5-15.9l20.73 16.09a38.3 38.3 0 0 0 0 24.63q-10.36 8-20.73 16.08a63.33 63.33 0 0 1-5.5-40.9"/><path fill="#587dbd" d="M65.27 52.15h59.52a74.3 74.3 0 0 1-1.61 33.58a57.44 57.44 0 0 1-16 26.26c-6.69-5.22-13.41-10.4-20.1-15.62a29.72 29.72 0 0 0 12.66-19.54H65.27c-.01-8.22 0-16.45 0-24.68"/><path fill="#319f43" d="M8.75 92.4q10.37-8 20.73-16.08A39.3 39.3 0 0 0 44 95.74a37.2 37.2 0 0 0 14.08 6.08a41.3 41.3 0 0 0 15.1 0a36.2 36.2 0 0 0 13.93-5.5c6.69 5.22 13.41 10.4 20.1 15.62a57.13 57.13 0 0 1-25.9 13.47a67.6 67.6 0 0 1-32.36-.35a63 63 0 0 1-23-11.59A63.7 63.7 0 0 1 8.75 92.4"/></svg>
+          </button>
+          <button type="button" class="rounded-full p-2 border border-gray-200 cursor-pointer hover:border-blue-500 transition transition-600 ease-in-out">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48"><g fill-rule="evenodd" clip-rule="evenodd"><path d="M24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4ZM0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z"/><path d="M19.1833 45.4716C18.9898 45.2219 18.9898 42.9973 19.1833 38.798C17.1114 38.8696 15.8024 38.7258 15.2563 38.3667C14.437 37.828 13.6169 36.1667 12.8891 34.9959C12.1614 33.8251 10.5463 33.64 9.89405 33.3783C9.24182 33.1165 9.07809 32.0496 11.6913 32.8565C14.3044 33.6634 14.4319 35.8607 15.2563 36.3745C16.0806 36.8883 18.0515 36.6635 18.9448 36.2519C19.8382 35.8403 19.7724 34.3078 19.9317 33.7007C20.1331 33.134 19.4233 33.0083 19.4077 33.0037C18.5355 33.0037 13.9539 32.0073 12.6955 27.5706C11.437 23.134 13.0581 20.2341 13.9229 18.9875C14.4995 18.1564 14.4485 16.3852 13.7699 13.6737C16.2335 13.3589 18.1347 14.1343 19.4734 16.0001C19.4747 16.0108 21.2285 14.9572 24.0003 14.9572C26.772 14.9572 27.7553 15.8154 28.5142 16.0001C29.2731 16.1848 29.88 12.7341 34.5668 13.6737C33.5883 15.5969 32.7689 18.0001 33.3943 18.9875C34.0198 19.9749 36.4745 23.1147 34.9666 27.5706C33.9614 30.5413 31.9853 32.3523 29.0384 33.0037C28.7005 33.1115 28.5315 33.2855 28.5315 33.5255C28.5315 33.8856 28.9884 33.9249 29.6465 35.6117C30.0853 36.7362 30.117 39.948 29.7416 45.247C28.7906 45.4891 28.0508 45.6516 27.5221 45.7347C26.5847 45.882 25.5669 45.9646 24.5669 45.9965C23.5669 46.0284 23.2196 46.0248 21.837 45.8961C20.9154 45.8103 20.0308 45.6688 19.1833 45.4716Z"/></g></svg>          </button>
+        </div>
+        <div class="mt-5 2xl:mt-8 text-center text-base text-main-label font-normal mb-2">Don't have an account? <a class="text-primary cursor-pointer" routerLink="/login" class="text-main">Login</a></div>
+      </form>
+    </div>
+  </div>
+</div>
