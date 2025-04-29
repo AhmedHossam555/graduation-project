@@ -80,7 +80,7 @@
               <small class="text-red-500 font-medium">*confirm_password must start with a capital letter and be 4-11 characters long, using only lowercase letters and numbers.</small>
             }
           }
-          @if(registerForm.errors?.['mismatch'] && (recieveRegisterForm('confirm_password')?.touched || recieveRegisterForm('confirm_password')?.dirty)){
+          @if(registerForm.errors?.['passwordMismatch'] && (recieveRegisterForm('confirm_password')?.touched || recieveRegisterForm('confirm_password')?.dirty)){
             <small class="text-red-500 font-medium ">*Reconfirm password must be equal password.</small>
           }
         </div>
