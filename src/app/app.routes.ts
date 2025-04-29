@@ -1,8 +1,14 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './core/pages/login/login.component';
-import { RegisterComponent } from './core/pages/register/register.component';
+
 
 export const routes: Routes = [
-  {path:'login',component:LoginComponent},
-  {path:'register', component:RegisterComponent}
+  {path:'login',loadComponent: () => import('./core/pages/login/login.component').then(m => m.LoginComponent)},
+  {path:'register',loadComponent: () => import('./core/pages/register/register.component').then(m => m.RegisterComponent)},
+  {path:'main-dashboard', loadComponent: () => import('./pages/main-dashboard/main-dashboard.component').then(m => m.MainDashboardComponent), children:[
+    {path:'', redirectTo:'dashboard', pathMatch:'full'},
+    {path:'dashboard', loadComponent: () => import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent)},
+    {path:'projects', loadComponent: () => import('./pages/projects/projects.component').then(m => m.ProjectsComponent)}, 
+    {path:'chat', loadComponent: () => import('./pages/chat/chat.component').then(m => m.ChatComponent)}, 
+    {path:'notification', loadComponent: () => import('./pages/notification/notification.component').then(m => m.NotificationComponent)},
+  ] }
 ];
