@@ -1,1 +1,20 @@
-<p>sidebar works!</p>
+<aside class="sidebar w-60 bg-aside min-h-screen hidden xl:block">
+  <div id="logo-sidebar" class="px-4 py-4">
+    <div class="flex items-center">
+      <div class="flex-1">
+        <a class="flex items-center gap-x-3" routerLink="/main-dashboard">
+          <img src="assets/images/logo.svg" alt="logo-image" width="48" height="48">
+          <div class="flex-1  text-xl font-semibold">Nazamaha</div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <nav class="sidebar--nav">
+    <ul>
+      <li>
+        <a routerLink="/dashboard"></a>
+      </li>
+    </ul>
+  </nav>
+  
+</aside>
