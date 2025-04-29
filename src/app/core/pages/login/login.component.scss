@@ -5,3 +5,23 @@
 .linear-bg-blue {
   background: linear-gradient(-6.37deg, #58A8FF 0%, #1A88FF 100%);
 }
+input {
+  border: 1px solid #e2e8f0 !important;
+}
+input::placeholder {
+  color: #475569;
+  line-height: 12px;
+}
+input:focus {
+  border-color:#1A88FF;
+}
+
+.w-516 {
+  width: 516px;
+}
+
+@media (max-width:480px) {
+  .w-516 {
+    width: 100%;
+  }
+}
