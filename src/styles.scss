@@ -1,3 +1,4 @@
+
 /* You can add global styles to this file, and also import other style files */
 /*font-style popines*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -9,7 +10,6 @@
 
 // global variable
 $main-color: #278FFF;
-
 * {
   font-family: "Poppins", sans-serif;
 }
@@ -18,19 +18,26 @@ $main-color: #278FFF;
 .bg-primary {
   background-color: $main-color;
 }
-.bg-primary-hover {
-  background-color: #0066ff;
+.bg-primary-50 {
+  background-color: #D5E9FF !important;
 }
+.bg-primary-50:hover {
+  color: $main-color !important;
+}
+
+
+
 .text-main {
-  color: $main-color;
+  color: $main-color ;
 }
 .text-secondray {
-  color: #8F8F8F !important;
+  color: #8F8F8F ;
 }
 .text-main-label {
-  color: #475569 !important;
+  color: #475569 ;
 }
 
 .main-border {
-  border: 1px solid #F0F0F0 !important;  
+  border: 1px solid #F0F0F0 ;  
 }
+
