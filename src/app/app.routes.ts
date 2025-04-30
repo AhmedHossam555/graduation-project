@@ -7,6 +7,7 @@ export const routes: Routes = [
   {path:'main-dashboard', loadComponent: () => import('./pages/main-dashboard/main-dashboard.component').then(m => m.MainDashboardComponent), children:[
     {path:'', redirectTo:'dashboard', pathMatch:'full'},
     {path:'dashboard', loadComponent: () => import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent)},
+    {path:'task',loadComponent: () => import('./pages/task/task.component').then(m => m.TaskComponent)},
     {path:'projects', loadComponent: () => import('./pages/projects/projects.component').then(m => m.ProjectsComponent)}, 
     {path:'chat', loadComponent: () => import('./pages/chat/chat.component').then(m => m.ChatComponent)}, 
     {path:'notification', loadComponent: () => import('./pages/notification/notification.component').then(m => m.NotificationComponent)},
