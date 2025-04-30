@@ -13,14 +13,24 @@ $main-color: #278FFF;
 * {
   font-family: "Poppins", sans-serif;
 }
-.font-pop {
-  font-family: "Poppins", sans-serif;
-}
 
+
+.bg-primary {
+  background-color: $main-color;
+}
+.bg-primary-hover {
+  background-color: #0066ff;
+}
 .text-main {
   color: $main-color;
 }
-
+.text-secondray {
+  color: #8F8F8F !important;
+}
 .text-main-label {
-  color: #475569;
+  color: #475569 !important;
+}
+
+.main-border {
+  border: 1px solid #F0F0F0 !important;  
 }
