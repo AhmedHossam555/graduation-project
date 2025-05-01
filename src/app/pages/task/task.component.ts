@@ -91,7 +91,28 @@ export class TaskComponent {
       priority: "Normal"
     }
   ];
-  
-  
+  currentItem:any;
+  filterTask(status: string) {
+    return this.tasks.filter(task => task.status === status);
+  }
+  onStartDrag(item: any) {
+    this.currentItem = item;
+    console.log("Drag started", item);
+  }
+  onDrop(event: any, status: string) {
+    // console.log("on Drop", event);
+    event.preventDefault(); // Prevent default behavior
+    const record = this.tasks.find((m:any) => m.id == this.currentItem.id);
+    if(record!= undefined) {
+      record.status = status;
+    }
+    this.currentItem = null; // Clear the current item after drop
+    console.log(this.tasks);
+  }
+  onDragOver(event: any) {
+    event.preventDefault(); // Prevent default to allow drop
+    // console.log("Drag over", event);
+  }
+
 
 }
