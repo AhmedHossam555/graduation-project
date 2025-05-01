@@ -1,1 +1,56 @@
-<p>task works!</p>
+
+<h3 class="text-xl font-medium py-5">Kanban Board</h3>
+<div class="edit-kanban flex items-center gap-2 py-4 border-y border-gray-100 mb-1">
+  <button class="inline-flex items-center py-2 px-3 rounded-md text-sm font-medium main-border" type="button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.99.99 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z"/></svg>
+    <span>Filter</span>
+  </button>
+  <button class="inline-flex items-center py-2 px-3 rounded-md text-sm font-medium main-border" type="button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M19.9 12.66a1 1 0 0 1 0-1.32l1.28-1.44a1 1 0 0 0 .12-1.17l-2-3.46a1 1 0 0 0-1.07-.48l-1.88.38a1 1 0 0 1-1.15-.66l-.61-1.83a1 1 0 0 0-.95-.68h-4a1 1 0 0 0-1 .68l-.56 1.83a1 1 0 0 1-1.15.66L5 4.79a1 1 0 0 0-1 .48L2 8.73a1 1 0 0 0 .1 1.17l1.27 1.44a1 1 0 0 1 0 1.32L2.1 14.1a1 1 0 0 0-.1 1.17l2 3.46a1 1 0 0 0 1.07.48l1.88-.38a1 1 0 0 1 1.15.66l.61 1.83a1 1 0 0 0 1 .68h4a1 1 0 0 0 .95-.68l.61-1.83a1 1 0 0 1 1.15-.66l1.88.38a1 1 0 0 0 1.07-.48l2-3.46a1 1 0 0 0-.12-1.17ZM18.41 14l.8.9l-1.28 2.22l-1.18-.24a3 3 0 0 0-3.45 2L12.92 20h-2.56L10 18.86a3 3 0 0 0-3.45-2l-1.18.24l-1.3-2.21l.8-.9a3 3 0 0 0 0-4l-.8-.9l1.28-2.2l1.18.24a3 3 0 0 0 3.45-2L10.36 4h2.56l.38 1.14a3 3 0 0 0 3.45 2l1.18-.24l1.28 2.22l-.8.9a3 3 0 0 0 0 3.98m-6.77-6a4 4 0 1 0 4 4a4 4 0 0 0-4-4m0 6a2 2 0 1 1 2-2a2 2 0 0 1-2 2"/></svg>
+    <span>Setting</span>
+  </button>
+</div>
+<div class="kanban-board  grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 w-full">
+  <div class="column">
+    <h3 class="flex items-center justify-between py-5">
+      <div class="flex items-center gap-4">
+        <input  id="todo-checkbox" type="checkbox" value="" class="w-4 h-4 text-[#686868] bg-white border-gray-300 rounded-sm focus:ring-[#686868] dark:focus:ring-[#686868] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="todo-checkbox" class="ms-2 text-base font-medium text-gray-900 dark:text-gray-300">To Do</label>
+     </div>
+
+    <div class="edit flex items-center gap-4">
+      <button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0m7 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0m7 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/></svg>
+      </button>
+      <button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14"/></svg>     
+       </button>
+    </div>
+  
+    </h3>
+    <div class="card px-4 py-2.5 mb-3 main-border rounded-lg">
+       <div class="head-card flex items-center justify-between ">
+        <div class="flex items-center gap-2">
+          <input  id="todo-checkbox" type="checkbox" value="" class="w-4 h-4 text-[#686868] bg-white border-gray-300 rounded-sm focus:ring-[#686868] dark:focus:ring-[#686868] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="todo-checkbox" class="ms-2 text-base font-medium text-gray-900 dark:text-gray-300">To Do</label>
+       </div>
+       <button class="w-5 h-5 rounded-full bg-[#FEE3E2] inline-flex items-center  justify-center text-[#CFA5A6]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01"/></svg>
+       </button>
+       </div>
+    </div>
+  </div>
+  <div class="column" >
+    <h3>In Progress</h3>
+    <div class="card" draggable="true" >
+      Task2
+    </div>
+  </div>
+
+  <div class="column">
+    <h3>Done</h3>
+    <div class="card"  >
+      Task3
+    </div> 
+  </div>
+</div>
