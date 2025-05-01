@@ -40,7 +40,8 @@
               <div id="project-status--priority" class="flex gap-3 items-center justify-between my-4 p-0.5">
                 <div class="project-status w-1/2">
                   <label for="status" class="block font-medium text-sm mb-1.5">Status</label>
-                  <select id="status" class="block w-full  main-border px-3  text-xs  rounded-lg font-normal text-main-label" placeholder="Status">
+                  <select id="status" class="block w-full  main-border px-3  text-xs  rounded-lg font-normal text-main-label" >
+                    <option value="" disabled selected hidden>Status</option>
                     <option value="in progress">In Progress</option>
                     <option value="review">Review</option>
                     <option value="done">Done</option>
@@ -48,7 +49,8 @@
                 </div>
                 <div class="project-priority w-1/2">
                   <label for="priority" class="block font-medium text-sm mb-1.5">Priority</label>
-                  <select id="priority" class="block w-full  main-border px-3  text-xs  rounded-lg font-normal text-main-label" placeholder="Priority">
+                  <select id="priority" class="block w-full  main-border px-3  text-xs  rounded-lg font-normal text-main-label" >
+                    <option value="" disabled selected hidden>Priority</option>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
                     <option value="high">High</option>
@@ -57,12 +59,37 @@
               </div>
               <div class="project-assign my-4 p-0.5">
                 <label for="assign" class="block font-medium text-sm mb-1.5">Assign</label>
-                <select id="assign" class="block w-full  main-border px-3  text-xs  rounded-lg font-normal text-main-label" placeholder="Select...">
+                <select id="assign" class="block w-full main-border px-3 text-xs rounded-lg font-normal text-main-label">
+                  <option value="" disabled selected hidden>Select...</option>
                   <option value="Ahmed">Ahmed</option>
                   <option value="Mohamed">Mohamed</option>
                   <option value="Ali">Ali</option>
                 </select>
               </div>
+              
+              <div class="start-date relative my-4 p-0.5 ">
+                <label for="start-date" class="mb-1.5 block font-medium text-sm">Start Date:</label>
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 top-6 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                    </svg>
+                </div>
+                <label for="start-date" class="sr-only">Card expiration date:</label>
+                <input datepicker datepicker-format="mm/yy" id="start-date" type="text" class=" main-border text-main-label text-sm rounded-lg font-normal block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " placeholder="12/23" />
+              </div>
+              
+              <div class="due-date relative my-4 p-0.5 ">
+                <label for="due-date" class="mb-1.5 block font-medium text-sm">Due Date:</label>
+                <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 top-6 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                    </svg>
+                </div>
+                <label for="due-date" class="sr-only">due date:</label>
+                <input datepicker datepicker-format="mm/yy" id="due-date" type="text" class=" main-border text-main-label text-sm rounded-lg font-normal block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " placeholder="12/30" />
+              </div>
+
+
               
              
           
@@ -87,16 +114,29 @@
 
 
 
-<div class="project-date my-4 p-0.5">
-  <label class="block font-medium text-sm mb-1.5" for="project-name" >Project Name</label>
-  <input type="text" id="project-name" class="block w-full  main-border px-3  text-xs  rounded-lg font-normal text-main-label " placeholder="Project Name" >
-  <div class="relative max-w-sm ">
+<div class="start-date my-4 p-0.5">
+  <label class="block font-medium text-sm mb-1.5" for="start-date" >Start Date:</label>
+  <div class="relative max-w-sm">
     <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
         <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
         </svg>
     </div>
-    <label for="card-expiration-input" class="sr-only">Card expiration date:</label>
-    <input datepicker datepicker-format="mm/yy" id="card-expiration-input" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="12/23" required />
+    <label for="start-date" class="sr-only">Start Date:</label>
+    <input datepicker datepicker-format="mm/yy" id="start-date" type="text" class="block w-full  main-border px-4  text-xs  rounded-lg font-normal text-main-label  placeholder:pl-6" placeholder="12/23"  />
   </div>              
+</div>
+
+
+
+
+<div class="start-date relative my-4 p-0.5 ">
+  <label for="start-date" class="mb-1.5 block font-medium text-sm">Start Date:</label>
+  <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 top-6 pointer-events-none">
+      <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+      </svg>
+  </div>
+  <label for="start-date" class="sr-only">Card expiration date:</label>
+  <input datepicker datepicker-format="mm/yy" id="start-date" type="text" class=" main-border text-main-label text-sm rounded-lg font-normal block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white " placeholder="12/23" />
 </div>
