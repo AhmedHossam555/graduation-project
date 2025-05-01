@@ -1,9 +1,10 @@
+import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [],
+  imports: [NgFor],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })

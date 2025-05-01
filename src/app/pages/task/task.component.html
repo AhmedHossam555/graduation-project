@@ -12,7 +12,7 @@
 </div>
 <div class="kanban-board  grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 w-full">
   <!-- column to-do -------------- -->
-  <div class="column">
+  <div class="column" *ngFor="let item of filterTask('To-do')">
     <!-- Header To Do -->
     <h3 class="flex items-center justify-between py-5">
       <div class="flex items-center gap-4">
@@ -58,7 +58,7 @@
     </div>
   </div>
   <!-- column In-progress --------------- -->
-  <div class="column" >
+  <div class="column" *ngFor="let item of filterTask('In-progress')">
     <!-- header - In Progress -->
     <h3 class="flex items-center justify-between py-5">
       <div class="flex items-center gap-2">
@@ -106,7 +106,7 @@
     </div>
   </div>
   <!-- column Done ---------------- -->
-  <div class="column">
+  <div class="column" *ngFor="let item of filterTask('Done')">
     <!-- Header Done-->
     <h3 class="flex items-center justify-between py-5">
       <div class="flex items-center gap-2">
