@@ -14,7 +14,7 @@
 <!-- Kanban Board -->
 <div class="kanban-board  grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 w-full">
   <!-- column to-do -------------- -->
-  <div class="column" >
+  <div class="column" (drop)="onDrop($event, 'To-do')" (dragover)="onDragOver($event)">
     <!-- Header To Do -->
     <h3 class="flex items-center justify-between py-5">
       <div class="flex items-center gap-4">
@@ -33,7 +33,7 @@
   
     </h3>
     <!-- Card To Do -->
-    <div class="card px-4 py-2.5 mb-3 main-border rounded-lg" *ngFor="let item of filterTask('To-do')">
+    <div class="card px-4 py-2.5 mb-3 main-border rounded-lg" draggable="true"  (dragstart)="onStartDrag(item)" *ngFor="let item of filterTask('To-do')">
        <div class="card-header flex items-center justify-between mb-4">
         <div class="flex items-center gap-2">
           <input  id="todo-checkbox" type="checkbox" value="" class="w-4 h-4 text-[#686868] bg-white border-gray-300 rounded-sm focus:ring-[#686868] dark:focus:ring-[#686868] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -60,7 +60,7 @@
     </div>
   </div>
   <!-- column In-progress --------------- -->
-  <div class="column">
+  <div class="column" (drop)="onDrop($event, 'In-progress')" (dragover)="onDragOver($event)">
     <!-- header - In Progress -->
     <h3 class="flex items-center justify-between py-5">
       <div class="flex items-center gap-2">
@@ -81,7 +81,7 @@
   
     </h3>
     <!-- Card In Progress -->
-    <div class="card px-4 py-2.5 mb-3 main-border rounded-lg"  *ngFor="let item of filterTask('In-progress')">
+    <div class="card px-4 py-2.5 mb-3 main-border rounded-lg" draggable="true" (dragstart)="onStartDrag(item)" *ngFor="let item of filterTask('In-progress')">
        <div class="card-header flex items-center justify-between mb-4">
         <div class="flex items-center gap-2">
           <div class="w-3 h-3 rounded-default outline outline-[#686868] bg-[#686868]"></div>
@@ -108,7 +108,7 @@
     </div>
   </div>
   <!-- column Done ---------------- -->
-  <div class="column" >
+  <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'Done')">
     <!-- Header Done-->
     <h3 class="flex items-center justify-between py-5">
       <div class="flex items-center gap-2">
@@ -128,7 +128,7 @@
     </h3>
     <!-- Cart Done -->
      <div *ngIf="filterTask('Done').length > 0; else noItems">
-      <div class="card px-4 py-2.5 mb-3 main-border rounded-lg" *ngFor="let item of filterTask('Done')">
+      <div class="card px-4 py-2.5 mb-3 main-border rounded-lg" draggable="true" (dragstart)="onStartDrag(item)" *ngFor="let item of filterTask('Done')">
         <div class="card-header flex items-center justify-between mb-4">
          <div class="flex items-center gap-2">
            <div class="w-3 h-3 rounded-default outline outline-[#0EB357] bg-[#0EB357] shadow-xs shadow-[#0EB357]"></div>
@@ -158,6 +158,7 @@
   </div>
 </div>
 
+<!-- card column name's Done is empty -->
 <ng-template #noItems>
   <div class="card  px-4 py-2.5 mb-3 main-border rounded-lg flex flex-col items-center justify-center min-h-96" >
     <div class="inline-flex items-center justify-center w-[60px] h-[60px] rounded-full bg-[#F5F5F5] text-[#8F8F8F] mb-4">
