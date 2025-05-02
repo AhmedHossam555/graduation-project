@@ -14,7 +14,7 @@
 <!-- Kanban Board -->
 <div class="kanban-board  grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 w-full">
   <!-- column to-do -------------- -->
-  <div class="column" (dblclick)="show()" (drop)="onDrop($event, 'To-do')" (dragover)="onDragOver($event)">
+  <div class="column"  (drop)="onDrop($event, 'To-do')" (dragover)="onDragOver($event)">
     <!-- Header To Do -->
     <h3 class="flex items-center justify-between py-5">
       <div class="flex items-center gap-4">
@@ -33,7 +33,7 @@
   
     </h3>
     <!-- Card To Do -->
-    <div class="card px-4 py-2.5 mb-3 main-border rounded-lg" draggable="true"  (dragstart)="onStartDrag(item)" *ngFor="let item of filterTask('To-do')">
+    <div class="card px-4 py-2.5 mb-3 main-border rounded-lg" draggable="true" (dblclick)="show(item)"  (dragstart)="onStartDrag(item)" *ngFor="let item of filterTask('To-do')">
        <div class="card-header flex items-center justify-between mb-4">
         <div class="flex items-center gap-2">
           <input  id="todo-checkbox" type="checkbox" value="" class="w-4 h-4 text-[#686868] bg-white border-gray-300 rounded-sm focus:ring-[#686868] dark:focus:ring-[#686868] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -233,3 +233,8 @@
     </button>
   </div>
 </ng-template>
+
+
+<!-- Task Details -->
+
+<app-task-details [task]="itemDetais"></app-task-details>

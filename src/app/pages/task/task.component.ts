@@ -1,11 +1,12 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TaskDetailsComponent } from "../../shared/components/business/task-details/task-details.component";
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [NgFor,NgIf,FormsModule],
+  imports: [NgFor, NgIf, FormsModule, TaskDetailsComponent],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })
@@ -202,8 +203,9 @@ export class TaskComponent {
   }
   
   /////////////////////////////////Task Details
-  show(){
-    console.log("show");
+  itemDetais: any = null;
+  show(item: any) {
+    this.itemDetais = item;
   }
   
 }
