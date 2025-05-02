@@ -1,10 +1,10 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor,NgIf],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })
@@ -63,34 +63,35 @@ export class TaskComponent {
       tags: ["Product", "Design"],
       dueDate: "Jan 25",
       priority: "High"
-    },
-    {
-      id: 7,
-      title: "Design system update",
-      description: "Enhance design system for consistency and usability",
-      status: "Done",
-      tags: ["Design", "New releases"],
-      dueDate: "Jan 25",
-      priority: "High"
-    },
-    {
-      id: 8,
-      title: "Retention rate by 23%",
-      description: "Improve retention through campaigns and feature update",
-      status: "Done",
-      tags: ["Marking", "Product"],
-      dueDate: "Jan 25",
-      priority: "High"
-    },
-    {
-      id: 9,
-      title: "KYC Flow",
-      description: "Simplify KYC process for seamless user verification",
-      status: "Done",
-      tags: ["Product", "Design"],
-      dueDate: "Jan 25",
-      priority: "Normal"
     }
+    ,
+    // {
+    //   id: 7,
+    //   title: "Design system update",
+    //   description: "Enhance design system for consistency and usability",
+    //   status: "Done",
+    //   tags: ["Design", "New releases"],
+    //   dueDate: "Jan 25",
+    //   priority: "High"
+    // },
+    // {
+    //   id: 8,
+    //   title: "Retention rate by 23%",
+    //   description: "Improve retention through campaigns and feature update",
+    //   status: "Done",
+    //   tags: ["Marking", "Product"],
+    //   dueDate: "Jan 25",
+    //   priority: "High"
+    // },
+    // {
+    //   id: 9,
+    //   title: "KYC Flow",
+    //   description: "Simplify KYC process for seamless user verification",
+    //   status: "Done",
+    //   tags: ["Product", "Design"],
+    //   dueDate: "Jan 25",
+    //   priority: "Normal"
+    // }
   ];
   currentItem:any;
   filterTask(status: string) {
