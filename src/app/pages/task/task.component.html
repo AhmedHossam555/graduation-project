@@ -59,9 +59,20 @@
        </div>
     </div>
     <!-- Add task to To DO column -->
-    <button class="inline-flex items-center py-2.5 px-4 rounded-lg text-sm font-medium main-border text-secondray shadow-sm cursor-pointer w-full" type="button">
+     @if(isVisibleToDo){
+      <div class="px-4 py-2.5 main-border rounded-lg mb-3 ">
+        <h2 class="text-sm font-medium" >TasK Title</h2>
+        <input type="text" id="task-name" class="block w-full mt-3.5  main-border px-3  text-xs  rounded-lg font-normal text-main-label"  [(ngModel)]="taskValue" >
+        <div class="mt-3 flex items-center justify-end ">
+          <button type="button" class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" (click)="onAddTaskToDo()">Create</button>
+          <button type="button" class="text-white cursor-pointer bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" (click)="onCancelTaskToDo()">Cancel</button>
+        </div>
+     </div>
+     }
+     
+    <button (click)="onAddTask()" class="inline-flex items-center py-2.5 px-4 rounded-lg text-sm font-medium main-border text-secondray shadow-sm cursor-pointer w-full" type="button">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14"/></svg>     
-      <span class="ms-2">Add Task</span>
+      <span class="ms-2" >Add Task</span>
     </button>
   </div>
   <!-- column In-progress --------------- -->
@@ -100,7 +111,7 @@
            <p class="description font-normal text-secondray text-sm mb-2">
             Enchance design system for consistency and usability
            </p>
-           <div  class="job-title inline-flex items-center mb-3 rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors  border-transparent capitalize bg-[#D5E9FF] text-[#268EFF] hover:text-blue-600" >Design</div>
+           <div  class="job-title inline-flex items-center mb-3 rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors  border-transparent capitalize bg-[#D5E9FF] text-[#268EFF] hover:text-red-600" >Design</div>
           
        </div>
        <div class="card-footer flex items-center justify-between  h-11">
@@ -178,7 +189,7 @@
 <ng-template #noItems>
   <div class="card  px-4 py-2.5 mb-3 main-border rounded-lg flex flex-col items-center justify-center min-h-96" >
     <div class="inline-flex items-center justify-center w-[60px] h-[60px] rounded-full bg-[#F5F5F5] text-[#8F8F8F] mb-4">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 14.5s1.5 0 3.5 3.5c0 0 5.559-9.167 10.5-11" color="currentColor"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 14.5s1.5 0 3.5 3.5c0 0 5.559-9.167 10.5-11" color="currentColor"/></svg>
     </div>
     <h3 class="font-medium text-base text-center mb-4">No task completed yet</h3>
     <p class="text-secondray text-base font-normal">Completed tasks will appear here </p>

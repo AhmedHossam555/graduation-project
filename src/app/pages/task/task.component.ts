@@ -1,10 +1,11 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [NgFor,NgIf],
+  imports: [NgFor,NgIf,FormsModule],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })
@@ -116,5 +117,36 @@ export class TaskComponent {
     // console.log("Drag over", event);
   }
 
+
+  /// Add Task
+
+  taskValue: any = null
+  onAddTask() {
+    this.isVisibleToDo = !this.isVisibleToDo;
+    console.log("Add Task", this.taskValue);
+  }
+  //  Add Task To To-Do list
+  isVisibleToDo: boolean = false;
+  onAddTaskToDo() {
+    this.isVisibleToDo = !this.isVisibleToDo;
+    console.log("Add Task To Do", this.taskValue);
+    // if (this.taskValue != null) {
+    //   this.tasks.push({
+    //     id: this.tasks.length + 1,
+    //     title: this.taskValue,
+    //     description: "New Task",
+    //     status: "To-do",
+    //     tags: [],
+    //     dueDate: "Jan 25",
+    //     priority: "Normal"
+    //   });
+    //   this.taskValue = null;
+    // }
+  }
+  // Cancel Task To Do
+  onCancelTaskToDo() {
+    this.isVisibleToDo = !this.isVisibleToDo;
+    this.taskValue = null;
+  }
 
 }
