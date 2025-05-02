@@ -58,6 +58,11 @@
           </div>
        </div>
     </div>
+    <!-- Add task to To DO column -->
+    <button class="inline-flex items-center py-2.5 px-4 rounded-lg text-sm font-medium main-border text-secondray shadow-sm cursor-pointer w-full" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14"/></svg>     
+      <span class="ms-2">Add Task</span>
+    </button>
   </div>
   <!-- column In-progress --------------- -->
   <div class="column" (drop)="onDrop($event, 'In-progress')" (dragover)="onDragOver($event)">
@@ -154,7 +159,6 @@
         </div>
      </div>
      </div>
-  
   </div>
 </div>
 
