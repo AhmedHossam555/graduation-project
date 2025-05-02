@@ -50,7 +50,7 @@ export class TaskComponent {
     {
       id: 5,
       title: "Improve collection by 50 %",
-      description: "Streamline workflows to boost team collaboration significantly",
+      description: "Streamline workflows to boost ",
       status: "In-progress",
       tags: [],
       dueDate: "Jan 25",
@@ -153,11 +153,10 @@ export class TaskComponent {
   isVisibleInProgress: boolean = false;
   onAddTaskTwo() {
     this.isVisibleInProgress = !this.isVisibleInProgress;
-    console.log("Add Task In Progress", this.taskValue);
+  
   }
   onAddTaskInProgress() {
     this.isVisibleInProgress = !this.isVisibleInProgress;
-    console.log("Add Task In Progress", this.taskValue);
     if (this.taskValue != null) {
       this.tasks.push({
         id: this.tasks.length + 1,
@@ -180,11 +179,9 @@ export class TaskComponent {
   isVisibleDone: boolean = false;
   onAddTaskThree() {
     this.isVisibleDone = !this.isVisibleDone;
-    console.log("Add Task Done", this.taskValue);
   }
   onAddTaskDone() { 
     this.isVisibleDone = !this.isVisibleDone;
-    console.log("Add Task Done", this.taskValue);
     if (this.taskValue != null) {
       this.tasks.push({
         id: this.tasks.length + 1,
@@ -203,4 +200,10 @@ export class TaskComponent {
     this.isVisibleDone = !this.isVisibleDone;
     this.taskValue = null;
   }
+  
+  /////////////////////////////////Task Details
+  show(){
+    console.log("show");
+  }
+  
 }
