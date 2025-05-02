@@ -33,7 +33,7 @@
     <h2 class="text-xl font-semibold mb-2">Backlog <span class="text-sm text-gray-500">(1 issue)</span></h2>
     <div class="bg-white rounded shadow p-3 mb-2 ">
       <!-- body backlog -->
-      <div class="body-backlog py-2 main-border rounded-lg">
+      <div class="body-backlog  main-border rounded-sm">
         @for(item of backlogTasks; track $index){
           <div class="item-task-backlog flex items-center justify-between  p-3 ">
             <div class="flex items-center gap-2">
@@ -43,11 +43,15 @@
             <span class="text-gray-400 text-sm">{{item.id}}</span>
           </div>
         }
-    
-
+      <div>
+        @if (isVisibleCreateIssue ) {
+          <input type="text" id="backlog-value" (keyup)="addTaskToBacklogHandler($event)"  class="block backlog-input w-full   p-3  text-xs border-0   font-normal text-main-label focus:border-transparent"  [(ngModel)]="backlogVlaue" placeholder=" What needs to be done?">
+        }
       </div>
-      <button class="text-blue-600 cursor-pointer text-sm py-1.5">+ Create issue</button>
-
+      </div>
+      @if(!isVisibleCreateIssue){
+        <button class="text-blue-600 cursor-pointer text-sm py-1.5"   (click)="addTaskToBacklog()">+ Create issue</button>
+      }
     </div>
   </div>
 </div>
