@@ -9,9 +9,7 @@ import { Component, Input } from '@angular/core';
 })
 export class TaskDetailsComponent {
   @Input() task?: any;
-
   ngOnChanges() { 
     console.log('Task details updated:', this.task);  
   }
-
 }

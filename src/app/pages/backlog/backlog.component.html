@@ -1,1 +1,53 @@
-<p>backlog works!</p>
+
+
+<div class="px-4 py-6">
+  <h2 class="text-3xl font-bold mb-3">BackLog</h2>
+  <!-- Header -->
+  
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-2xl font-bold">Doggie <span class="text-sm text-gray-500">(1 issue)</span></h2>
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Start sprint</button>
+  </div>
+
+  <div class="text-gray-600 text-sm mb-6">
+    Let’s make our app awesome<br>
+    <span>11/Jul/22 10:06 AM – 25/Jul/22 10:06 AM</span>
+  </div>
+
+  <!-- Sprint List -->
+  <div class="bg-white rounded shadow p-4 mb-6">
+    <div class="mb-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-4 h-4 bg-green-500 rounded-sm"></div>
+          <span class="font-medium">Task 2</span>
+        </div>
+        <span class="text-gray-400 text-sm">DSP-1</span>
+      </div>
+    </div>
+    <button class="text-blue-600 hover:underline text-sm">+ Create issue</button>
+  </div>
+
+  <!-- Backlog List -->
+  <div>
+    <h2 class="text-xl font-semibold mb-2">Backlog <span class="text-sm text-gray-500">(1 issue)</span></h2>
+    <div class="bg-white rounded shadow p-3 mb-2 ">
+      <!-- body backlog -->
+      <div class="body-backlog py-2 main-border rounded-lg">
+        @for(item of backlogTasks; track $index){
+          <div class="item-task-backlog flex items-center justify-between  p-3 ">
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 bg-green-500 rounded-sm"></div>
+              <span class="font-medium">{{item.title}}</span>
+            </div>
+            <span class="text-gray-400 text-sm">{{item.id}}</span>
+          </div>
+        }
+    
+
+      </div>
+      <button class="text-blue-600 cursor-pointer text-sm py-1.5">+ Create issue</button>
+
+    </div>
+  </div>
+</div>

@@ -11,5 +11,6 @@ export const routes: Routes = [
     {path:'projects', loadComponent: () => import('./pages/projects/projects.component').then(m => m.ProjectsComponent)}, 
     {path:'chat', loadComponent: () => import('./pages/chat/chat.component').then(m => m.ChatComponent)}, 
     {path:'notification', loadComponent: () => import('./pages/notification/notification.component').then(m => m.NotificationComponent)},
+    {path:'backlog', loadComponent: () => import('./pages/backlog/backlog.component').then(m => m.BacklogComponent)},
   ] }
 ];
