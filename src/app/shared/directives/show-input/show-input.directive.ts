@@ -21,7 +21,7 @@ export class ShowInputDirective {
       if(event.key === 'Enter') {
         const inputValue = (event.target as HTMLInputElement).value;
         if (inputValue.match(/[0-9a-zA-Z]{1,100}/)) {
-          this.element.nativeElement.innerText = inputValue;
+          // this.element.nativeElement.innerText = inputValue;
           this.element.nativeElement.style.display = 'block';
           inputElement.style.display = 'none';
         } else {

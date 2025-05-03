@@ -1,7 +1,7 @@
 
 
 <div class="px-4 py-6">
-  <h2 class="text-2xl font-bold mb-6">BackLog</h2>
+  <h2 class="text-2xl font-bold py-5 border-b border-gray-100 mb-8">BackLog</h2>
 
   
 
@@ -18,22 +18,22 @@
         </button>
       </div>
       <!-- body backlog -->
-      <div class="body-sprint bg-white  main-border rounded-sm">
+      <div (drop)="onDrop($event,$index)" (dragover)="onDragOver($event)" class="body-sprint bg-white  main-border rounded-sm">
         @for(item of sprint['sprint-tasks']; track $index){
-          <div class="item-task-sprint flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
+          <div draggable="true" (dragstart)="onDragStart(item)" class="item-task-sprint flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
             <div class="flex items-center gap-2">
               <div class="w-4 h-4 bg-green-500 rounded-sm"></div>
               <span class="font-medium">{{item.title}}</span>
             </div>
-            <span class="text-gray-400 text-sm">{{item.id}}</span>
+            <span class="text-gray-400 text-sm">{{item.id+'DSL'}}</span>
           </div>
         }
       <div class="input-sprint-issue">
-        <input type="text" [id]="sprint.id" (keyup)="addTaskToSprintHandler($event,0)"  class="hidden backlog-input w-full   p-3  text-sm border-0   font-normal text-main-label focus:border-transparent"  [(ngModel)]="sprintTaskValue" placeholder=" What needs to be done?">
+        <input type="text" [id]="sprint.id+'DSL'" (keyup)="addTaskToSprintHandler($event,$index)"  class="hidden backlog-input w-full   p-3  text-sm border-0   font-normal text-main-label focus:border-transparent"  [(ngModel)]="sprintTaskValue" placeholder=" What needs to be done?">
       </div>
       </div>
     
-      <div class="p-3 hover:bg-gray-100 cursor-pointer" (click)="addTaskToSprint()" [appShowInput]="sprint.id" >
+      <div class="p-3 hover:bg-gray-100 cursor-pointer"  [appShowInput]="sprint.id+'DSL'" >
         <button class="text-blue-600 cursor-pointer text-sm font-semibold" >+ Create issue</button>
       </div>
     
@@ -53,7 +53,7 @@
 
 
 
-  <!-- Backlog List -->
+  <!----------------- Backlog List ---------------- -->
   <div id="backlog-list" class="mb-6">
     <div class="bg-[#f8f8f8] shadow py-3 px-2 mb-2 rounded ">
       <div class="flex justify-between items-center mb-4">
@@ -63,9 +63,9 @@
         </button>
       </div>
       <!-- body backlog -->
-      <div class="body-backlog bg-white  main-border rounded-sm">
+      <div (drop)="onDrop($event, 0)" (dragover)="onDragOver($event)" class="body-backlog bg-white  main-border rounded-sm">
         @for(item of backlogTasks; track $index){
-          <div class="item-task-backlog flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
+          <div draggable="true" (dragstart)="onDragStart(item)" class="item-task-backlog flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
             <div class="flex items-center gap-2">
               <div class="w-4 h-4 bg-green-500 rounded-sm"></div>
               <span class="font-medium">{{item.title}}</span>
@@ -100,7 +100,7 @@
 
 
 
-
+<!-- 
 
 
 <div id="accordion-collapse" data-accordion="collapse">
@@ -118,4 +118,4 @@
     </div>
   </div>
   
-</div>
+</div> -->

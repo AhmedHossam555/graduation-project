@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ShowInputDirective } from '../../shared/directives/show-input.directive';
+import { ShowInputDirective } from '../../shared/directives/show-input/show-input.directive';
 
 @Component({
   selector: 'app-backlog',
@@ -14,15 +14,16 @@ export class BacklogComponent {
     //   { title: 'Task 2', id: 'DSP-1' }
     // ];
     sprintTasks = [
-      { title: 'Doggie','sprint-tasks':[  { title: 'Task 2', id: 'DSP-1',status: 'To-do' }], id: 'DSP-1', startDate: '2023-10-01', endDate: '2023-10-15' },
-      { title: 'Project2','sprint-tasks':[  { title: 'Task 2', id: 'DSP-2',status: 'To-do' }], id: 'DSP-1', startDate: '2023-10-01', endDate: '2023-10-15'  }
+      { title: 'Doggie','sprint-tasks':[  { title: 'Task 2', id: 1,status: 'To-do' }], id: 1, startDate: '2023-10-01', endDate: '2023-10-15' },
+      { title: 'Fake','sprint-tasks':[  { title: 'Task 2', id: 2,status: 'To-do' }], id: 2, startDate: '2023-10-01', endDate: '2023-10-15' },
+
 
     ]
 
-    backlogTasks = [
-      { title: 'Task 2', id: 'DSP-2',status: 'To-do' },
-      { title: 'Task 2', id: 'DSP-2',status: 'To-do' },
-      { title: 'Task 2', id: 'DSP-2',status: 'To-do' },
+    backlogTasks:any[] = [
+      { title: 'Task 2', id: 1,status: 'To-do' },
+      { title: 'Task 2', id: 2,status: 'To-do' },
+      { title: 'Task 2', id: 3,status: 'To-do' },
     ];
 
     currentItem: any = null;
@@ -41,7 +42,7 @@ export class BacklogComponent {
       console.log(this.backlogVlaue);
       if(event.key === 'Enter') {
         if(this.backlogVlaue.match(/[0-9a-zA-Z]{1,100}/)) {
-          this.backlogTasks.push({ title: this.backlogVlaue, id: 'DSP-2', status: 'To-do' });
+          this.backlogTasks.push({ title: this.backlogVlaue, id: this.backlogTasks.length + 1, status: 'To-do' });
           this.backlogVlaue = '';
           this.isVisibleCreateIssue = false;
         }
@@ -49,24 +50,44 @@ export class BacklogComponent {
       }
     }
 
-    // Add task to sprint
-    // get isVisibleCreateSprintIssues() {
-    //   return this._isVisibleCreateSprintIssues;
-    // }
+
     isVisibleCreateSprintIssue:boolean =false;
     sprintTaskValue: string = '';
-    addTaskToSprint() {
-      this.isVisibleCreateSprintIssue = !this.isVisibleCreateSprintIssue;
-    }
+
     addTaskToSprintHandler(event:any,index: number) {
-      console.log(this.sprintTaskValue);
       if(event.key === 'Enter') {
         if(this.sprintTaskValue.match(/[0-9a-zA-Z]{1,100}/)) {
-          this.sprintTasks[0]['sprint-tasks'].push({ title: this.sprintTaskValue, id: 'DSP-2', status: 'To-do' });
+          this.sprintTasks[index]['sprint-tasks'].push({ title: this.sprintTaskValue, id: this.sprintTasks.length+1, status: 'To-do' });
           this.sprintTaskValue = '';
-          this.isVisibleCreateIssue = false;
         }
-        this.isVisibleCreateIssue = false;
       }
     }
+
+
+    /// Drag and Drop  Backlog and Sprint Task
+    onDragStart(item: any) {
+      this.currentItem = item;
+      // console.log("Drag started", item);
+    }
+    
+    onDrop(event: any, index: number) {
+      event.preventDefault(); // Prevent default behavior
+      console.log("on Drop", index);
+      console.log("on Drop", event);
+      if (!this.currentItem) return;
+      if (index > -1) {
+        const task = this.backlogTasks.splice(index, 1)[0];
+        this.sprintTasks[index]['sprint-tasks'].push(task); // Push to correct sprint
+      }
+    
+      // console.log("on Drop", event);
+    }
+
+    onDragOver(event: any) {
+      event.preventDefault(); // Prevent default to allow drop
+      // console.log("Drag over", event);
+    }
+
+
+
 }
