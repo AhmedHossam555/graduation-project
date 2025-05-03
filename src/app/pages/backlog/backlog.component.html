@@ -97,27 +97,49 @@
               <!-- Dropdown container -->
             <div class="relative inline-block text-left mr-2">
               <!-- Trigger button -->
-              <button [appEditButton]="'edit-status'+$index" class="inline-flex justify-center items-center bg-gray-200 text-sm uppercase font-medium text-gray-700 px-3 py-1 rounded hover:bg-gray-300">
-                {{item.status}}
-                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
-                </svg>
-              </button>
+              <button
+              [appDropdownStatus]="'edit-status' + $index"
+              [ngClass]="{
+                  'bg-blue-200 text-blue-800': item.status == 'In-progress',
+                'bg-gray-300 text-gray-800': item.status == 'To-do',
+              
+                'bg-lime-300 text-green-800': item.status == 'Done'
+              }"
+              class="inline-flex justify-center items-center text-sm uppercase font-medium px-3 py-1 rounded"
+            >
+              {{ item.status }}
+              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
 
               <!-- Dropdown menu -->
-              <div [id]="'edit-status'+$index"  class="absolute hidden mt-2 w-48 rounded-md shadow-lg bg-white z-10">
-                <div class="py-1">
-                  <div class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    <span class="bg-blue-200 text-blue-800 text-xs font-bold px-2 py-0.5 rounded">IN PROGRESS</span>
-                  </div>
-                  <div class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
-                    <span class="bg-lime-300 text-green-800 text-xs font-semibold px-2 py-0.5 rounded">DONE</span>
-                  </div>
-                  <div class="border-t border-gray-100 my-1"></div>
+              <div [id]="'edit-status'+$index"  class="absolute hidden py-1 mt-2 w-48 rounded-md shadow-lg bg-white z-10">
+                  @if(item.status != 'To-do'){
+                    <div class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer status" (click)="updateTaskStatus($event,item, 'To-do')">
+                      <span class="bg-gray-300 text-gray-800 text-xs font-semibold px-2 py-0.5 rounded status" >TO DO</span>
+                    </div>  
+                  }
+                  @if(item.status != 'In-progress'){
+                    <div class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer status" (click)="updateTaskStatus($event,item, 'In-progress')">
+                      <span class="bg-blue-200 text-blue-800 text-xs font-bold px-2 py-0.5 rounded status" >
+                        IN PROGRESS
+                      </span>
+                    </div>
+
+                  }
+                  @if(item.status != 'Done'){
+                    <div class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer status" (click)="updateTaskStatus($event,item, 'Done')">
+                      <span class="bg-lime-300 text-green-800 text-xs font-semibold px-2 py-0.5 rounded status" >DONE</span>
+                    </div>
+                  }
+              
+                
+                  <!-- <div class="border-t border-gray-100 my-1"></div>
                   <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
                     View workflow
-                  </div>
-                </div>
+                  </div> -->
+                
               </div>
             </div>
             <span class="text-gray-400 text-sm">{{item.id}}</span>
@@ -132,7 +154,7 @@
       </div>
       @if(!isVisibleCreateIssue){
         <div class="p-3 hover:bg-gray-100 cursor-pointer" (click)="addTaskToBacklog()" >
-          <button class="text-blue-600 cursor-pointer text-sm font-semibold"   >+ Create issue</button>
+          <button class="text-blue-600 cursor-pointer text-sm font-semibold">+ Create issue</button>
         </div>
     }
     

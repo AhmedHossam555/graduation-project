@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { ShowInputDirective } from '../../shared/directives/show-input/show-input.directive';
 import { NgClass } from '@angular/common';
 import { EditButtonDirective } from '../../shared/directives/edit-button/edit-button.directive';
+import { DropdownStatusDirective } from '../../shared/directives/dropdown-status/dropdown-status.directive';
 
 @Component({
   selector: 'app-backlog',
   standalone: true,
-  imports: [FormsModule, ShowInputDirective,NgClass,EditButtonDirective],
+  imports: [FormsModule, ShowInputDirective,NgClass,EditButtonDirective,DropdownStatusDirective],
   templateUrl: './backlog.component.html',
   styleUrl: './backlog.component.scss'
 })
@@ -22,7 +23,7 @@ export class BacklogComponent {
 
     backlogTasks:any[] = [
       { title: 'Task 1', id: 1,status: 'To-do' },
-      { title: 'Task 2', id: 2,status: 'To-do' },
+      { title: 'Task 2', id: 2,status: 'In-progress' },
       { title: 'Task 3', id: 3,status: 'To-do' },
     ];
 
@@ -92,6 +93,20 @@ export class BacklogComponent {
       // console.log("Drag over", event);
     }
 
+
+    //////(click)="updateTaskStatus(item, 'In Progress')"
+
+    updateTaskStatus(event:any,item:any, status:string){
+      const element  = event.target as HTMLElement;
+      const parentElemnt = element.parentElement as HTMLElement;
+      
+      // console.log("updateTaskStatus", item, status);
+      const record = this.backlogTasks.find((m:any) => m.id == item.id);
+      if(record!= undefined) {
+        record.status = status;
+      }
+      // parentElemnt.classList.toggle('hidden');
+    }
 
 
 }
