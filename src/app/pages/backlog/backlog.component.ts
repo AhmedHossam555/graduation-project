@@ -34,8 +34,8 @@ export class BacklogComponent {
     }
     addTaskToBacklogHandler(event:any) {
       if(event.key === 'Enter') {
-        // this.backlogTasks.push({ title: this.backlogVlaue, id: 'DSP-2', status: 'To-do' });
-        // this.backlogVlaue = '';
+        this.backlogTasks.push({ title: this.backlogVlaue, id: 'DSP-2', status: 'To-do' });
+        this.backlogVlaue = '';
         this.isVisibleCreateIssue = false;
       }
     }
