@@ -41,3 +41,11 @@ $main-color: #278FFF;
   border: 1px solid #F0F0F0 ;  
 }
 
+
+.active-button {
+  color: $main-color !important;  
+  border: 1px solid $main-color !important; 
+}
+.active-button svg {
+  color: $main-color !important;    
+}
