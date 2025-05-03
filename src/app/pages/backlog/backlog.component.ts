@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ShowInputDirective } from '../../shared/directives/show-input/show-input.directive';
 import { NgClass } from '@angular/common';
+import { EditButtonDirective } from '../../shared/directives/edit-button/edit-button.directive';
 
 @Component({
   selector: 'app-backlog',
   standalone: true,
-  imports: [FormsModule, ShowInputDirective,NgClass],
+  imports: [FormsModule, ShowInputDirective,NgClass,EditButtonDirective],
   templateUrl: './backlog.component.html',
   styleUrl: './backlog.component.scss'
 })

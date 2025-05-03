@@ -28,7 +28,7 @@
           }
           <!-- Edit Button -->
           <div class="parent-edit relative">
-            <button  class="inline-flex  self-center items-center cursor-pointer p-2 text-sm font-medium text-center text-gray-900 bg-gray-100 rounded hover:bg-gray-200   dark:text-white focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-800 " type="button">
+            <button  [appEditButton]="'edit-button-'+$index"  class="inline-flex  self-center items-center cursor-pointer p-2 text-sm font-medium text-center text-gray-900 bg-gray-100 rounded hover:bg-gray-200   dark:text-white focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-800 " type="button">
               <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-gray-700"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
            </button>
            <div [id]="'edit-button-'+$index" class="absolute hidden right-0  mt-2 w-40 origin-top-right rounded-md  bg-white shadow">
