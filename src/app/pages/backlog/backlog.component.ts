@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ShowInputDirective } from '../../shared/directives/show-input/show-input.directive';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-backlog',
   standalone: true,
-  imports: [FormsModule, ShowInputDirective],
+  imports: [FormsModule, ShowInputDirective,NgClass],
   templateUrl: './backlog.component.html',
   styleUrl: './backlog.component.scss'
 })
@@ -14,8 +15,8 @@ export class BacklogComponent {
     //   { title: 'Task 2', id: 'DSP-1' }
     // ];
     sprintTasks = [
-      { title: 'Doggie','sprint-tasks':[  { title: 'Task 2', id: 1,status: 'To-do' }], id: 1, startDate: '2023-10-01', endDate: '2023-10-15' },
-      { title: 'Fake','sprint-tasks':[  { title: 'Task 2', id: 2,status: 'To-do' }], id: 2, startDate: '2023-10-01', endDate: '2023-10-15' },
+      { title: 'Doggie','sprint-tasks':[  { title: 'Task 2', id: 1,status: 'To-do' }], id: 1, startDate: '2023-10-01', endDate: '2023-10-15',sprintGoal: 'authorization', sprintStart: false },
+      { title: 'Fake','sprint-tasks':[  { title: 'Task 2', id: 2,status: 'To-do' }], id: 2, startDate: '2023-10-01', endDate: '2023-10-15',sprintGoal: 'authorization', sprintStart: false },
     ]
 
     backlogTasks:any[] = [
@@ -24,10 +25,9 @@ export class BacklogComponent {
       { title: 'Task 3', id: 3,status: 'To-do' },
     ];
 
+    // currentItem
     currentItem: any = null;
-    
-
-
+  
 
     /// Add task to backlog
     isVisibleCreateIssue:boolean =false;
