@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ModalService } from '../../../services/modal/modal.service';
 
 @Component({
   selector: 'app-sprint-edit-model',
@@ -7,13 +8,17 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
   templateUrl: './sprint-edit-model.component.html',
   styleUrl: './sprint-edit-model.component.scss'
 })
-export class SprintEditModelComponent implements OnChanges{
-  @Input()  itemSprint?: any; 
-  ngOnChanges(changes: SimpleChanges): void {
+export class SprintEditModelComponent {
+  item:any;
+  constructor(private _modalService: ModalService) {
   
   }
-  ngAfterViewInit(){
-    console.log( this.itemSprint);
+  ngOnInit() {
+    this._modalService.ItemSprint.subscribe({
+      next: (value)=>{
+        this.item = value;
+      }
+    })
   }
 
 }

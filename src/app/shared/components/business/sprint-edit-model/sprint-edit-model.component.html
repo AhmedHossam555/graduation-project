@@ -2,14 +2,13 @@
 
 <!-- Main modal -->
 <div id="update-sprint-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-  <div class="relative p-4 w-full max-w-md max-h-full">
+  <div class="relative p-4 w-full max-w-lg max-h-full">
       <!-- Modal content -->
       <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
           <!-- Modal header -->
           <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
-              <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                  Sign in to our platform
-              </h3>
+            <h2 class="text-lg font-semibold mb-4">Edit sprint: <span class="font-medium">DSP Sprint 1</span></h2>
+
               <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="update-sprint-modal">
                   <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
@@ -18,31 +17,45 @@
               </button>
           </div>
           <!-- Modal body -->
-          <div class="p-4 md:p-5">
-              <form class="space-y-4" action="#">
-                  <!-- <div>
-                      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
-                      <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="name@company.com" required />
-                  </div>
-                  <div>
-                      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
-                      <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required />
-                  </div>
-                  <div class="flex justify-between">
-                      <div class="flex items-start">
-                          <div class="flex items-center h-5">
-                              <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded-sm bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
-                          </div>
-                          <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
-                      </div>
-                      <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Lost Password?</a>
-                  </div> -->
-                  <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login to your account</button>
-                  <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                      Not registered? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
-                  </div>
+          <div class="bg-white w-full  rounded-md shadow-lg p-6">
+            
+              <form>
+                <!-- { title: 'Doggie','sprint-tasks':[  { title: 'Task 2', id: 1,status: 'To-do' }], id: 1, startDate: '2023-10-01', endDate: '2023-10-15',sprintGoal: 'authorization', sprintStart: false }, -->
+
+                <!-- Sprint name -->
+                <div class="mb-4">
+                  <label for="sprint-name" class="block text-sm font-medium text-gray-700 mb-1">Sprint name<span class="text-red-500">*</span></label>
+                  <input type="text" id="sprint-name" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none  text-sm" [value]="item?.title">
+                </div>
+
+            
+                <!-- Start Date -->
+                <div class="mb-4">
+                  <label for="start-date" class="block text-sm font-medium text-gray-700 mb-1">Start date:</label>
+                  <input type="date" id="start-date" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none " [value]="item?.startDate">
+                </div>
+
+                <!-- End Date -->
+                <div class="mb-4">
+                  <label for="end-date" class="block text-sm font-medium text-gray-700 mb-1">End date:</label>
+                  <input type="date" id="end-date" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none " [value]="item?.endDate">
+                </div>
+
+                <!-- Sprint Goal -->
+                <div class="mb-6">
+                  <label for="sprint-goal" class="block text-sm font-medium text-gray-700 mb-1">Sprint goal:</label>
+                  <textarea id="sprint-goal"  class="w-full border h-32 resize-none border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none " [value]="item?.sprintGoal"></textarea>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex justify-end gap-4">
+                  <button type="button" class="text-gray-800  px-4 py-2 rounded-md  font-medium hover:bg-gray-700 hover:text-white  text-sm  transition-all ease-in-out duration-300 cursor-pointer" data-modal-hide="update-sprint-modal">Cancel</button>
+                  <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-500 transition-all ease-in-out duration-300 cursor-pointer">Update</button>
+                </div>
               </form>
+
           </div>
       </div>
   </div>
 </div> 
+=
