@@ -1,1 +1,73 @@
-<p>sprint-start-model works!</p>
+
+
+<!-- Main modal -->
+<div id="start-sprint-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+  <div class="relative p-4 w-full max-w-2xl max-h-full">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
+          <!-- Modal header -->
+          <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-200">
+            <h2 class="text-lg font-semibold mb-4">Start sprint <span class="font-medium">DSP Sprint 1</span></h2>
+
+              <button type="button" class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="start-sprint-modal">
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                  </svg>
+                  <span class="sr-only">Close modal</span>
+              </button>
+          </div>
+          <!-- Modal body -->
+             <!-- Warning Box -->
+            <div class="flex items-start bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+              <svg class="h-5 w-5 text-yellow-400 mt-1 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 2a10 10 0 100 20 10 10 0 000-20z" />
+              </svg>
+              <p class="text-sm text-gray-700">
+                Issues @for (nameSprint of item?.['sprint-tasks']; track $index) {
+                  <strong>{{nameSprint.title}}</strong>,
+                }and do not have a value for the <strong>'Estimate'</strong> field.
+                Values entered after the start of the sprint will be treated as scope change.
+              </p>
+            </div>
+          <div class="bg-white w-full  rounded-md shadow-lg p-6">
+            
+              <form>
+                <!-- { title: 'Doggie','sprint-tasks':[  { title: 'Task 2', id: 1,status: 'To-do' }], id: 1, startDate: '2023-10-01', endDate: '2023-10-15',sprintGoal: 'authorization', sprintStart: false }, -->
+
+                <!-- Sprint name -->
+                <div class="mb-4">
+                  <label for="sprint-name" class="block text-sm font-medium text-gray-700 mb-1">Sprint name<span class="text-red-500">*</span></label>
+                  <input  type="text" id="sprint-name" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none  text-sm" [value]="item?.title">
+                </div>
+
+            
+                <!-- Start Date -->
+                <div class="mb-4">
+                  <label for="start-date" class="block text-sm font-medium text-gray-700 mb-1">Start date:</label>
+                  <input type="date" id="start-date" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none " [value]="item?.startDate">
+                </div>
+
+                <!-- End Date -->
+                <div class="mb-4">
+                  <label for="end-date" class="block text-sm font-medium text-gray-700 mb-1">End date:</label>
+                  <input type="date" id="end-date" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none " [value]="item?.endDate">
+                </div>
+
+                <!-- Sprint Goal -->
+                <div class="mb-6">
+                  <label for="sprint-goal" class="block text-sm font-medium text-gray-700 mb-1">Sprint goal:</label>
+                  <textarea id="sprint-goal"  class="w-full border h-32 resize-none border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none " [value]="item?.sprintGoal"></textarea>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex justify-end gap-4">
+                  <button type="button" class="text-gray-800  px-4 py-2 rounded-md  font-medium hover:bg-gray-700 hover:text-white  text-sm  transition-all ease-in-out duration-300 cursor-pointer" data-modal-hide="start-sprint-modal">Cancel</button>
+                  <button type="button" (click)="onStartSprint()" class="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-500 transition-all ease-in-out duration-300 cursor-pointer">start</button>
+                </div>
+              </form>
+              
+          </div>
+      </div>
+  </div>
+</div> 
+<!-- End Main modal -->

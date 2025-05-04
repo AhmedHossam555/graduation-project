@@ -6,5 +6,7 @@ import { Subject } from 'rxjs';
 })
 export class ModalService {
   ItemSprint = new Subject<any>();
+  itemStartSprint = new Subject<any>();
+  
   constructor() { }
 }

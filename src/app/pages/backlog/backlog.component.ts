@@ -8,11 +8,12 @@ import { SprintEditModelComponent } from "../../shared/components/business/sprin
 import { FlowbiteService } from '../../shared/services/flowbite/flowbite.service';
 import { initFlowbite } from 'flowbite';
 import { ModalService } from '../../shared/services/modal/modal.service';
+import { SprintStartModelComponent } from '../../shared/components/business/sprint-start-model/sprint-start-model.component';
 
 @Component({
   selector: 'app-backlog',
   standalone: true,
-  imports: [FormsModule, ShowInputDirective, NgClass, EditButtonDirective, DropdownStatusDirective, SprintEditModelComponent],
+  imports: [FormsModule, ShowInputDirective, NgClass, EditButtonDirective, DropdownStatusDirective, SprintEditModelComponent,SprintStartModelComponent],
   templateUrl: './backlog.component.html',
   styleUrl: './backlog.component.scss'
 })
@@ -157,5 +158,9 @@ export class BacklogComponent {
       this.sprintItemInput = item;
     }
   
+    /// onStartSprint
+    onStartSprint(item:any){
+      this._modalService.itemStartSprint.next(item);
+    }
 
 }

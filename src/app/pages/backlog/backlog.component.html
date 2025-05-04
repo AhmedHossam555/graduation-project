@@ -15,7 +15,7 @@
         <h2 class="text-xl font-medium mb-2">{{sprint.title}} <span class="text-sm  text-gray-500 pl-3">{{sprint.startDate}} – {{sprint.endDate}} &nbsp; ({{sprint['sprint-tasks'].length}} issue)</span></h2>
         <div class="inline-flex items-center gap-2">
           @if(!sprint.sprintStart){
-            <button   [disabled]="$index > 0" 
+            <button (click)="onStartSprint(sprint)" data-modal-target="start-sprint-modal" data-modal-toggle="start-sprint-modal"  [disabled]="$index > 0" 
               [ngClass]="{'bg-blue-600 hover:bg-blue-700 cursor-pointer': $index === 0,
               'bg-gray-300 cursor-not-allowed': $index > 0}" 
               class="px-4 py-1 cursor-pointer border bg-blue-600 rounded-md text-white font-medium hover:bg-blue-700 transition-all ease-in-out duration-300">
@@ -173,3 +173,4 @@
 
 
 
+<app-sprint-start-model></app-sprint-start-model>
