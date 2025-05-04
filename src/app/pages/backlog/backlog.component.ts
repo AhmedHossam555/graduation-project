@@ -4,11 +4,15 @@ import { ShowInputDirective } from '../../shared/directives/show-input/show-inpu
 import { NgClass } from '@angular/common';
 import { EditButtonDirective } from '../../shared/directives/edit-button/edit-button.directive';
 import { DropdownStatusDirective } from '../../shared/directives/dropdown-status/dropdown-status.directive';
+import { SprintEditModelComponent } from "../../shared/components/business/sprint-edit-model/sprint-edit-model.component";
+import { FlowbiteService } from '../../shared/services/flowbite/flowbite.service';
+import { initFlowbite } from 'flowbite';
+import { ModalService } from '../../shared/services/modal/modal.service';
 
 @Component({
   selector: 'app-backlog',
   standalone: true,
-  imports: [FormsModule, ShowInputDirective,NgClass,EditButtonDirective,DropdownStatusDirective],
+  imports: [FormsModule, ShowInputDirective, NgClass, EditButtonDirective, DropdownStatusDirective, SprintEditModelComponent],
   templateUrl: './backlog.component.html',
   styleUrl: './backlog.component.scss'
 })
@@ -26,6 +30,19 @@ export class BacklogComponent {
       { title: 'Task 2', id: 2,status: 'In-progress' },
       { title: 'Task 3', id: 3,status: 'To-do' },
     ];
+    
+      constructor(private _flowbiteService: FlowbiteService, private _modalService:ModalService){
+      }
+      ngOnInit(): void {
+        this._flowbiteService.loadFlowbite((flowbite) => {
+          initFlowbite();
+        });
+      }
+
+     
+
+
+
 
     // currentItem
     currentItem: any = null;
@@ -130,6 +147,14 @@ export class BacklogComponent {
       // console.log('Start Date:', formattedStartDate);
       // console.log('Two Weeks Later (End Date):', formattedEndDate);
       this.sprintTasks.push({ title: 'Sprint-'+this.sprintTasks.length, id: this.sprintTasks.length + 1, startDate: formattedStartDate , endDate: formattedEndDate, sprintGoal: '', sprintStart: false, 'sprint-tasks': [] });
+    }
+
+
+    /////////update sprint
+    sprintItemInput:any;
+    updateSprintItem(item:any){
+      this._modalService.ItemSprint.next(item);
+      this.sprintItemInput = item;
     }
   
 
