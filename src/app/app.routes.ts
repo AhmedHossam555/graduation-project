@@ -12,5 +12,6 @@ export const routes: Routes = [
     {path:'chat', loadComponent: () => import('./pages/chat/chat.component').then(m => m.ChatComponent)}, 
     {path:'notification', loadComponent: () => import('./pages/notification/notification.component').then(m => m.NotificationComponent)},
     {path:'backlog', loadComponent: () => import('./pages/backlog/backlog.component').then(m => m.BacklogComponent)},
+    {path:'active-sprint', loadComponent: () => import('./pages/active-sprint/active-sprint.component').then(m => m.ActiveSprintComponent)},
   ] }
 ];
