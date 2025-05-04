@@ -1,1 +1,97 @@
-<p>chat works!</p>
+<div class="flex h-screen bg-gray-50  main-border shadow">
+  <!-- Sidebar -->
+  <aside class="w-1/4 bg-white border-r border-[#f0f0f0]  flex flex-col">
+    <div class="p-4 border-b border-[#f0f0f0]  flex items-center justify-between">
+      <div>
+        <h2 class="font-semibold">Mr. Bean</h2>
+        <p class="text-xs text-gray-500">UX/UI Designer</p>
+      </div>
+      <button class="text-gray-500">⋮</button>
+    </div>
+
+    <div class="p-2">
+      <input type="text" placeholder="Search by name"
+             class="w-full p-2 border border-[#f0f0f0]  rounded text-sm focus:outline-none" />
+    </div>
+
+    <nav class="flex justify-around py-2 border-b border-gray-100 text-gray-600 text-sm">
+      <button class="font-semibold">Chats</button>
+      <button>Groups</button>
+      <button>Notification</button>
+    </nav>
+
+    <!-- Chat List -->
+    <ul class="overflow-y-auto flex-1">
+      <li class="flex items-center p-3 hover:bg-gray-100 cursor-pointer bg-gray-50 border-l-4 border-blue-500">
+        <img src="https://i.pravatar.cc/32" class="rounded-full w-8 h-8 mr-2" />
+        <div class="flex-1">
+          <p class="font-medium text-sm">Felecia Rower</p>
+          <p class="text-xs text-gray-500">if it takes long you can mail</p>
+        </div>
+        <span class="text-xs text-gray-500">10 AM</span>
+      </li>
+      <li class="flex items-center p-3 hover:bg-gray-100 cursor-pointer">
+        <img src="https://i.pravatar.cc/33" class="rounded-full w-8 h-8 mr-2" />
+        <div class="flex-1">
+          <p class="font-medium text-sm">Abdallah</p>
+          <p class="text-xs text-gray-500">I want to edit design</p>
+        </div>
+        <span class="text-xs text-blue-500 font-bold">1</span>
+      </li>
+      <!-- Add more list items -->
+    </ul>
+  </aside>
+
+  <!-- Chat Window -->
+  <section class="flex-1 flex flex-col bg-white">
+    <!-- Header -->
+    <header class="p-4 border-b border-gray-100 flex items-center justify-between">
+      <div>
+        <h2 class="font-medium">Your name</h2>
+        <p class="text-xs text-gray-500">Status</p>
+      </div>
+      <div class="flex gap-3 text-blue-500 text-lg">
+        <button>📞</button>
+        <button>🎥</button>
+        <button>⚙️</button>
+      </div>
+    </header>
+
+    <!-- Messages -->
+    <div class="flex-1 p-4 space-y-4 overflow-y-auto bg-gray-50">
+
+        <div class="max-w-md bg-gray-200 text-sm p-3 rounded mr-auto">
+          Molestie molestie eget elit massa facilisi nibh...
+        </div>
+        <div class="max-w-md bg-gray-200 text-sm p-3 rounded mr-auto">
+          4140 Parker Rd. Allentown, New Mexico 31134
+        </div>
+    
+      
+        <div class="max-w-lg self-end bg-purple-100 p-3 rounded-lg text-sm shadow ml-auto">
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+          <div class="mt-2 flex gap-2 text-xs text-right text-gray-700 justify-end">
+            <span class="bg-gray-100 px-2 py-1 rounded">Savannah Nguyen</span>
+            <span class="bg-gray-100 px-2 py-1 rounded">Leslie Alexander</span>
+            <span class="bg-gray-100 px-2 py-1 rounded">Darlene Robertson</span>
+          </div>
+        </div>
+        <div class="max-w-lg self-end bg-purple-200 p-3 rounded-lg text-sm shadow ml-auto">
+          <p>Lorem ipsum dolor sit amet consectetur...</p>
+        </div>
+    
+  
+    </div>
+
+    <!-- Input -->
+    <footer class="p-4 border-t border-gray-200 flex items-center gap-3">
+      <button>📷</button>
+      <button>😊</button>
+      <input type="text" placeholder="input text"
+             class="flex-1 p-2  main-border rounded-full focus:outline-none text-sm" />
+      <button class="bg-blue-500 text-white  rounded-full px-4 py-1 text-sm hover:bg-blue-600">➤</button>
+    </footer>
+  </section>
+</div>
+
+
