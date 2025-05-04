@@ -127,11 +127,8 @@ export class BacklogComponent {
       // Format the start and end dates
       const formattedStartDate = formatDate(startDate);
       const formattedEndDate = formatDate(twoWeeksLater);
-      console.log('Start Date:', formattedStartDate);
-      console.log('Two Weeks Later (End Date):', formattedEndDate);
-      
-    
-      
+      // console.log('Start Date:', formattedStartDate);
+      // console.log('Two Weeks Later (End Date):', formattedEndDate);
       this.sprintTasks.push({ title: 'Sprint-'+this.sprintTasks.length, id: this.sprintTasks.length + 1, startDate: formattedStartDate , endDate: formattedEndDate, sprintGoal: '', sprintStart: false, 'sprint-tasks': [] });
     }
   

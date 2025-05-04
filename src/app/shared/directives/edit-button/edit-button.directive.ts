@@ -17,5 +17,12 @@ export class EditButtonDirective {
       this.elementRef.nativeElement.classList.toggle('active-button');
       editElement.classList.toggle('hidden');
     }
-  }
+    this.document.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if(target.classList.contains('edit')){
+        this.elementRef.nativeElement.classList.remove('active-button');
+        editElement?.classList.add('hidden');
+      }
+  });
+}
 }
