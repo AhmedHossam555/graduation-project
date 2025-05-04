@@ -98,15 +98,42 @@ export class BacklogComponent {
 
     updateTaskStatus(event:any,item:any, status:string){
       const element  = event.target as HTMLElement;
-      const parentElemnt = element.parentElement as HTMLElement;
       
       // console.log("updateTaskStatus", item, status);
       const record = this.backlogTasks.find((m:any) => m.id == item.id);
       if(record!= undefined) {
         record.status = status;
       }
-      // parentElemnt.classList.toggle('hidden');
+    
     }
 
+    /////////////// onCreateSprint
+    onCreateSprint() {
+         // Helper function to format date to dd-mm-yyyy
+        const formatDate = (date:any) => {
+          const day = String(date.getDate()).padStart(2, '0');
+          const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is zero-indexed
+          const year = date.getFullYear();
+          return `${day}-${month}-${year}`;
+      };
+      // Get the start date from the last sprint's end date or set it to today's date if there are no previous sprints
+      const lastSprintEndDate = this.sprintTasks.length > 0 ? this.sprintTasks[this.sprintTasks.length - 1]['endDate'] : new Date();
+        
+      // Create a new start date for the new sprint
+      const startDate = new Date(lastSprintEndDate);
+      
+      // Calculate the end date as two weeks later
+      const twoWeeksLater = new Date(startDate.getTime() + (14 * 24 * 60 * 60 * 1000));
+      // Format the start and end dates
+      const formattedStartDate = formatDate(startDate);
+      const formattedEndDate = formatDate(twoWeeksLater);
+      console.log('Start Date:', formattedStartDate);
+      console.log('Two Weeks Later (End Date):', formattedEndDate);
+      
+    
+      
+      this.sprintTasks.push({ title: 'Sprint-'+this.sprintTasks.length, id: this.sprintTasks.length + 1, startDate: formattedStartDate , endDate: formattedEndDate, sprintGoal: '', sprintStart: false, 'sprint-tasks': [] });
+    }
+  
 
 }
