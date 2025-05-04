@@ -7,11 +7,11 @@ import { FooterComponent } from "../../shared/layout/footer/footer.component";
 @Component({
   selector: 'app-main-dashboard',
   standalone: true,
-  imports: [RouterOutlet, SidebarComponent, HeaderComponent, FooterComponent],
+  imports: [RouterOutlet, SidebarComponent, HeaderComponent],
   templateUrl: './main-dashboard.component.html',
   styleUrl: './main-dashboard.component.scss'
 })
 export class MainDashboardComponent {
-  
+
 
 }
