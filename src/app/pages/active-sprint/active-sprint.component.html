@@ -1,1 +1,236 @@
-<p>active-sprint works!</p>
+
+<h3 class="text-xl font-medium py-5">Kanban Board</h3>
+<!-- Edit Kanban -->
+<div class="edit-kanban flex items-center gap-2 py-4 border-y border-gray-100 mb-1">
+  <button class="inline-flex items-center py-2 px-3 rounded-md text-sm font-medium main-border" type="button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M15 19.88c.04.3-.06.62-.29.83a.996.996 0 0 1-1.41 0L9.29 16.7a.99.99 0 0 1-.29-.83v-5.12L4.21 4.62a1 1 0 0 1 .17-1.4c.19-.14.4-.22.62-.22h14c.22 0 .43.08.62.22a1 1 0 0 1 .17 1.4L15 10.75zM7.04 5L11 10.06v5.52l2 2v-7.53L16.96 5z"/></svg>
+    <span>Filter</span>
+  </button>
+  <button class="inline-flex items-center py-2 px-3 rounded-md text-sm font-medium main-border" type="button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M19.9 12.66a1 1 0 0 1 0-1.32l1.28-1.44a1 1 0 0 0 .12-1.17l-2-3.46a1 1 0 0 0-1.07-.48l-1.88.38a1 1 0 0 1-1.15-.66l-.61-1.83a1 1 0 0 0-.95-.68h-4a1 1 0 0 0-1 .68l-.56 1.83a1 1 0 0 1-1.15.66L5 4.79a1 1 0 0 0-1 .48L2 8.73a1 1 0 0 0 .1 1.17l1.27 1.44a1 1 0 0 1 0 1.32L2.1 14.1a1 1 0 0 0-.1 1.17l2 3.46a1 1 0 0 0 1.07.48l1.88-.38a1 1 0 0 1 1.15.66l.61 1.83a1 1 0 0 0 1 .68h4a1 1 0 0 0 .95-.68l.61-1.83a1 1 0 0 1 1.15-.66l1.88.38a1 1 0 0 0 1.07-.48l2-3.46a1 1 0 0 0-.12-1.17ZM18.41 14l.8.9l-1.28 2.22l-1.18-.24a3 3 0 0 0-3.45 2L12.92 20h-2.56L10 18.86a3 3 0 0 0-3.45-2l-1.18.24l-1.3-2.21l.8-.9a3 3 0 0 0 0-4l-.8-.9l1.28-2.2l1.18.24a3 3 0 0 0 3.45-2L10.36 4h2.56l.38 1.14a3 3 0 0 0 3.45 2l1.18-.24l1.28 2.22l-.8.9a3 3 0 0 0 0 3.98m-6.77-6a4 4 0 1 0 4 4a4 4 0 0 0-4-4m0 6a2 2 0 1 1 2-2a2 2 0 0 1-2 2"/></svg>
+    <span>Setting</span>
+  </button>
+</div>
+<!-- Kanban Board -->
+<div class="kanban-board  grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 w-full">
+  <!-- column to-do -------------- -->
+  <div class="column"  (drop)="onDrop($event, 'To-do')" (dragover)="onDragOver($event)">
+    <!-- Header To Do -->
+    <h3 class="flex items-center justify-between py-5">
+      <div class="flex items-center gap-4">
+        <input  id="todo-checkbox" type="checkbox" value="" class="w-4 h-4 text-[#686868] bg-white border-gray-300 rounded-sm focus:ring-[#686868] dark:focus:ring-[#686868] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <label for="todo-checkbox" class="ms-2 text-base font-medium text-gray-900 dark:text-gray-300">To Do</label>
+     </div>
+
+    <div class="edit flex items-center gap-4">
+      <button >
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0m7 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0m7 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/></svg>
+      </button>
+      <button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14"/></svg>     
+      </button>
+    </div>
+  
+    </h3>
+    <!-- Card To Do -->
+    <div class="card px-4 py-2.5 mb-3 main-border rounded-lg" draggable="true"  (dragstart)="onStartDrag(item)" *ngFor="let item of filterTask('To-do')">
+       <div class="card-header flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <input  id="todo-checkbox" type="checkbox" value="" class="w-4 h-4 text-[#686868] bg-white border-gray-300 rounded-sm focus:ring-[#686868] dark:focus:ring-[#686868] dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+          <label for="todo-checkbox" class="ms-2 text-base font-medium text-gray-900 dark:text-gray-300 ">{{item?.title}}</label>
+       </div>
+       <button class="w-5 h-5 rounded-full bg-[#FEE3E2] inline-flex items-center  justify-center text-[#CFA5A6] hover:text-red-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01"/></svg>
+       </button>
+       </div>
+       <div class="card-body">
+           <p class="description font-normal text-secondray text-sm mb-2 whitespace-nowrap overflow-ellipsis overflow-hidden">
+            {{item?.description}}
+           </p>
+           <div  class="job-title inline-flex items-center mb-3 rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors  border-transparent capitalize bg-[#D5E9FF] text-[#268EFF] hover:text-blue-600" >Design</div>
+          
+       </div>
+       <!-- <div class="card-footer flex items-center justify-between  h-11">
+          <span class="inline-flex text-secondray font-medium text-xs">{{item.dueDate}}</span>
+          <div class="inline-flex items-center">
+            <span class="w-6 h-6  border-[2px] border-white rounded-full bg-[#EEEEEE] text-transparent -mr-1"> </span>
+            <span class="w-6 h-6  border-[2px] border-white rounded-full bg-[#EEEEEE] text-transparent"> </span>
+          </div>
+       </div> -->
+    </div>
+    <!-- Add task to To DO column -->
+     @if(isVisibleToDo){
+      <div class="px-4 py-2.5 main-border rounded-lg mb-3 ">
+        <h2 class="text-sm font-medium" >TasK Title</h2>
+        <input type="text" id="task-name" class="block w-full mt-3.5  main-border px-3  text-xs  rounded-lg font-normal text-main-label"  [(ngModel)]="taskValue" >
+        <div class="mt-3 flex items-center justify-end ">
+          <button type="button" class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" (click)="onAddTaskToDo()">Create</button>
+          <button type="button" class="text-white cursor-pointer bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" (click)="onCancelTaskToDo()">Cancel</button>
+        </div>
+     </div>
+     }
+     
+    <button (click)="onAddTask()" class="inline-flex items-center py-2.5 px-4 rounded-lg text-sm font-medium main-border text-secondray shadow-sm cursor-pointer w-full" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14"/></svg>     
+      <span class="ms-2" >Add Task</span>
+    </button>
+  </div>
+  <!-- column In-progress --------------- -->
+  <div class="column" (drop)="onDrop($event, 'In-progress')" (dragover)="onDragOver($event)">
+    <!-- header - In Progress -->
+    <h3 class="flex items-center justify-between py-5">
+      <div class="flex items-center gap-2">
+      
+        <div class="w-3 h-3 rounded-default outline outline-[#686868] bg-[#686868]"></div>
+      
+        <div for="done-radio-1" class="ms-2 text-base font-medium text-gray-900 dark:text-gray-300 ">In Progress</div>
+     </div>
+
+    <div class="edit flex items-center gap-4">
+      <button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0m7 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0m7 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/></svg>
+      </button>
+      <button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14"/></svg>     
+       </button>
+    </div>
+  
+    </h3>
+    <!-- Card In Progress -->
+    <div class="card px-4 py-2.5 mb-3 main-border rounded-lg" draggable="true" (dragstart)="onStartDrag(item)" *ngFor="let item of filterTask('In-progress')">
+       <div class="card-header flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <div class="w-3 h-3 rounded-default outline outline-[#686868] bg-[#686868]"></div>
+          <span class="ms-2 text-base font-medium text-gray-900 dark:text-gray-300 ">{{item?.title}}</span>
+       </div>
+       <button class="w-5 h-5 rounded-full bg-[#FEE3E2] inline-flex items-center  justify-center text-[#CFA5A6] hover:text-red-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01"/></svg>
+       </button>
+       </div>
+       <div class="card-body">
+           <p class="description font-normal text-secondray text-sm mb-2 whitespace-nowrap overflow-ellipsis overflow-hidden">
+            {{item?.description}}
+           </p>
+           <div  class="job-title inline-flex items-center mb-3 rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors  border-transparent capitalize bg-[#D5E9FF] text-[#268EFF] hover:text-red-600" >Design</div>
+          
+       </div>
+       <!-- <div class="card-footer flex items-center justify-between  h-11">
+          <span class="inline-flex text-secondray font-medium text-xs">{{item.dueDate}}</span>
+          <div class="inline-flex items-center">
+            <span class="w-6 h-6  border-[2px] border-white rounded-full bg-[#EEEEEE] text-transparent -mr-1"> </span>
+            <span class="w-6 h-6  border-[2px] border-white rounded-full bg-[#EEEEEE] text-transparent"> </span>
+          </div>
+       </div> -->
+    </div>
+    <!-- Add task to In Progress column -->
+    @if(isVisibleInProgress){
+      <div class="px-4 py-2.5 main-border rounded-lg mb-3 ">
+        <h2 class="text-sm font-medium" >TasK Title</h2>
+        <input type="text" id="task-name" class="block w-full mt-3.5  main-border px-3  text-xs  rounded-lg font-normal text-main-label"  [(ngModel)]="taskValue" >
+        <div class="mt-3 flex items-center justify-end ">
+          <button type="button" class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" (click)="onAddTaskInProgress()">Create</button>
+          <button type="button" class="text-white cursor-pointer bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" (click)="onCancelTaskInProgress()">Cancel</button>
+        </div>
+     </div>
+     }
+     
+    <!-- Add task to In Progress column -->
+    <button (click)="onAddTaskTwo()" class="inline-flex items-center py-2.5 px-4 rounded-lg text-sm font-medium main-border text-secondray shadow-sm cursor-pointer w-full" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14"/></svg>     
+      <span class="ms-2">Add Task</span>
+    </button>
+  </div>
+  <!-- column Done ---------------- -->
+  <div class="column" (dragover)="onDragOver($event)" (drop)="onDrop($event, 'Done')">
+    <!-- Header Done-->
+    <h3 class="flex items-center justify-between py-5">
+      <div class="flex items-center gap-2">
+        <div class="w-3 h-3 rounded-default outline outline-[#0EB357] bg-[#0EB357] shadow-xs shadow-[#0EB357]"></div>
+        <span  class="ms-2 text-base font-medium text-gray-900 dark:text-gray-300">Done</span>
+     </div>
+
+    <div class="edit flex items-center gap-4">
+      <button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0m7 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0m7 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/></svg>
+      </button>
+      <button>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14"/></svg>     
+       </button>
+    </div>
+  
+    </h3>
+    <!-- Cart Done -->
+     <div *ngIf="filterTask('Done').length > 0; else noItems">
+      <div class="card px-4 py-2.5 mb-3 main-border rounded-lg" draggable="true" (dragstart)="onStartDrag(item)" *ngFor="let item of filterTask('Done')">
+        <div class="card-header flex items-center justify-between mb-4">
+         <div class="flex items-center gap-2">
+           <div class="w-3 h-3 rounded-default outline outline-[#0EB357] bg-[#0EB357] shadow-xs shadow-[#0EB357]"></div>
+           <span class="ms-2 text-base font-medium text-gray-900 dark:text-gray-300 line-through">{{item.title}} </span>
+         </div>
+        <button class="w-5 h-5 rounded-full bg-[#FEE3E2] inline-flex items-center  justify-center text-[#CFA5A6] hover:text-red-300">
+           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01"/></svg>
+        </button>
+        </div>
+        <div class="card-body">
+            <p class="description font-normal text-secondray text-sm mb-2">
+             {{item?.description}}
+            </p>
+            <div  class="job-title inline-flex items-center mb-3 rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors  border-transparent capitalize bg-[#D5E9FF] text-[#268EFF] hover:text-blue-600" >Design</div>
+           
+        </div>
+        <!-- <div class="card-footer flex items-center justify-between  h-11">
+           <span class="inline-flex text-secondray font-medium text-xs ">{{item.dueDate}}</span>
+           <div class="inline-flex items-center">
+             <span class="w-6 h-6  border-[2px] border-white rounded-full bg-[#EEEEEE] text-transparent -mr-1"> </span>
+             <span class="w-6 h-6  border-[2px] border-white rounded-full bg-[#EEEEEE] text-transparent"> </span>
+           </div>
+        </div> -->
+     </div>
+     <!-- Add task to Done column -->
+    @if(isVisibleDone){
+      <div class="px-4 py-2.5 main-border rounded-lg mb-3 ">
+        <h2 class="text-sm font-medium" >TasK Title</h2>
+        <input type="text" id="task-name" class="block w-full mt-3.5  main-border px-3  text-xs  rounded-lg font-normal text-main-label"  [(ngModel)]="taskValue" >
+        <div class="mt-3 flex items-center justify-end ">
+          <button type="button" class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" (click)="onAddTaskDone()">Create</button>
+          <button type="button" class="text-white cursor-pointer bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" (click)="onCancelTaskDone()">Cancel</button>
+        </div>
+     </div>
+     }
+       <!-- Add task to Done column -->
+      <button (click)="onAddTaskThree()" class="inline-flex items-center py-2.5 px-4 rounded-lg text-sm font-medium main-border text-secondray shadow-sm cursor-pointer w-full" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14"/></svg>     
+        <span class="ms-2">Add Task</span>
+      </button>
+     </div>
+  
+     
+  </div>
+</div>
+
+<!-- card column name's Done is empty -->
+<ng-template #noItems>
+  <div class="card  px-4 py-2.5 mb-3 main-border rounded-lg flex flex-col items-center justify-center min-h-96" >
+    <div class="inline-flex items-center justify-center w-[60px] h-[60px] rounded-full bg-[#F5F5F5] text-[#8F8F8F] mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 14.5s1.5 0 3.5 3.5c0 0 5.559-9.167 10.5-11" color="currentColor"/></svg>
+    </div>
+    <h3 class="font-medium text-base text-center mb-4">No task completed yet</h3>
+    <p class="text-secondray text-base font-normal">Completed tasks will appear here </p>
+       <!-- Add task to Done column -->
+       @if(isVisibleDone){
+        <div class="px-4 py-2.5 main-border rounded-lg mb-3 w-full">
+          <h2 class="text-sm font-medium" >TasK Title</h2>
+          <input type="text" id="task-name" class="block w-full mt-3.5  main-border px-3  text-xs  rounded-lg font-normal text-main-label"  [(ngModel)]="taskValue" >
+          <div class="mt-3 flex items-center justify-end ">
+            <button type="button" class="text-white cursor-pointer bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" (click)="onAddTaskDone()">Create</button>
+            <button type="button" class="text-white cursor-pointer bg-red-500 hover:bg-red-600 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800" (click)="onCancelTaskDone()">Cancel</button>
+          </div>
+       </div>
+      }
+    <button (click)="onAddTaskThree()" class="inline-flex items-center py-2.5 px-4 rounded-md text-sm font-medium main-border mt-4 shadow-sm cursor-pointer" type="button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m-7-7h14"/></svg>     
+      <span class="ms-2">Add Task</span>
+    </button>
+  </div>
+</ng-template>
+

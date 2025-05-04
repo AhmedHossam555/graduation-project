@@ -22,7 +22,7 @@ export class BacklogComponent {
     //   { title: 'Task 2', id: 'DSP-1' }
     // ];
     sprintTasks = [
-      { title: 'Doggie','sprint-tasks':[  { title: 'Task 2', id: 1,status: 'To-do' }], id: 1, startDate: '2023-10-01', endDate: '2023-10-15',sprintGoal: 'authorization', sprintStart: false },
+      { title: 'Doggie','sprint-tasks':[  { title: 'Task 2', id: 1,status: 'To-do' }, { title: 'Task 2', id: 2,status: 'To-do' }], id: 1, startDate: '2023-10-01', endDate: '2023-10-15',sprintGoal: 'authorization', sprintStart: false },
       { title: 'Fake','sprint-tasks':[  { title: 'Task 2', id: 2,status: 'To-do' }], id: 2, startDate: '2023-10-01', endDate: '2023-10-15',sprintGoal: 'authorization', sprintStart: false },
     ]
 

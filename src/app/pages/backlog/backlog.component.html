@@ -142,7 +142,7 @@
                 
               </div>
             </div>
-            <span class="text-gray-400 text-sm">{{item.id}}</span>
+            <span class="text-gray-400 text-sm" [ngClass]="{'line-through': item.status == 'Done'}">DSL-{{item.id}}</span>
           </div>
         }
       <div>

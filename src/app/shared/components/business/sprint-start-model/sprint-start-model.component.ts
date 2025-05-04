@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalService } from '../../../services/modal/modal.service';
-import {  Router } from '@angular/router';
-import { relative } from 'path';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-sprint-start-model',
@@ -13,7 +13,8 @@ import { relative } from 'path';
 export class SprintStartModelComponent {
   item?:any;
 
-  constructor(private _modalService: ModalService, private _route:Router) {
+  constructor(private _modalService: ModalService, private _router:Router) {
+    this.item = this._modalService.ItemSprint;
   
   }
   ngOnInit() {
@@ -24,6 +25,8 @@ export class SprintStartModelComponent {
     });
   }
   onStartSprint() {
-    this._route.navigate(['backlog']);
+    this.item.sprintStart = true;
+    this._router.navigate(['/main-dashboard/active-sprint']);
+    this._modalService.itemStartSprint.next(this.item);
   }
 }
