@@ -12,7 +12,7 @@
       <div class="bg-[#f8f8f8] shadow py-3 px-2 mb-2 rounded ">
         <!-- Header -->
       <div class="flex justify-between items-center mb-4">
-        <h2 class="text-xl font-medium mb-2">{{sprint.title}} <span class="text-sm  text-gray-500 pl-3">{{sprint.startDate}} – {{sprint.endDate}} &nbsp; ({{sprint['sprint-tasks'].length}} issue)</span></h2>
+        <h2 class="text-xl font-medium mb-2">{{sprint.title}} <span class="text-sm  text-gray-500 pl-3">{{sprint.startDate}} – {{sprint.endDate}} &nbsp; ({{sprint['sprintTasks'].length}} issue)</span></h2>
         <div class="inline-flex items-center gap-2">
           @if(!sprint.sprintStart){
             <button (click)="onStartSprint(sprint)" data-modal-target="start-sprint-modal" data-modal-toggle="start-sprint-modal"  [disabled]="$index > 0" 
@@ -43,9 +43,15 @@
         
       </div>
       <!-- body sprint -->
-      <div (drop)="onDrop($event,$index)" (dragover)="onDragOver($event)" class="body-sprint bg-white  main-border rounded-sm">
-        @for(item of sprint['sprint-tasks']; track $index){
-          <div draggable="true" (dragstart)="onDragStart(item)" class="item-task-sprint flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
+      <div   
+      cdkDropList
+      [id]="'sprint-'+sprint.id"
+      [cdkDropListData]="sprint.sprintTasks"
+      [cdkDropListConnectedTo]="getConnectedDropListIds(sprint.id)"
+  
+      (cdkDropListDropped)="drop($event)"  class="body-sprint bg-white  main-border rounded-sm">
+        @for(item of sprint['sprintTasks']; track $index){
+          <div cdkDrag  class="item-task-sprint flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
             <div class="flex items-center gap-2">
               <div class="w-4 h-4 bg-green-500 rounded-sm"></div>
               <span class="font-medium">{{item.title}}</span>
@@ -87,9 +93,14 @@
         </button>
       </div>
       <!-- body backlog -->
-      <div (drop)="onDrop($event, 0)" (dragover)="onDragOver($event)" class="body-backlog bg-white  main-border rounded-sm">
+      <div cdkDropList
+      id="backloglist"
+      [cdkDropListData]="backlogTasks"
+      [cdkDropListConnectedTo]="sprintDropIds"
+    
+      (cdkDropListDropped)="drop($event)" class="body-backlog bg-white  main-border rounded-sm">
         @for(item of backlogTasks; track $index){
-          <div draggable="true" (dragstart)="onDragStart(item)" class="item-task-backlog gap-10 flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
+          <div  cdkDrag class="item-task-backlog gap-10 flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
             <div class="flex items-center gap-2 flex-1">
               <div class="w-4 h-4 bg-green-500 rounded-sm"></div>
               <span class="font-medium">{{item.title}}</span>

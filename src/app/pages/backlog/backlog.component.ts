@@ -9,11 +9,12 @@ import { FlowbiteService } from '../../shared/services/flowbite/flowbite.service
 import { initFlowbite } from 'flowbite';
 import { ModalService } from '../../shared/services/modal/modal.service';
 import { SprintStartModelComponent } from '../../shared/components/business/sprint-start-model/sprint-start-model.component';
+import { DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-backlog',
   standalone: true,
-  imports: [FormsModule, ShowInputDirective, NgClass, EditButtonDirective, DropdownStatusDirective, SprintEditModelComponent,SprintStartModelComponent],
+  imports: [FormsModule, ShowInputDirective, NgClass, EditButtonDirective, DropdownStatusDirective, SprintEditModelComponent,SprintStartModelComponent, DragDropModule],
   templateUrl: './backlog.component.html',
   styleUrl: './backlog.component.scss'
 })
@@ -22,14 +23,33 @@ export class BacklogComponent {
     //   { title: 'Task 2', id: 'DSP-1' }
     // ];
     sprintTasks = [
-      { title: 'Doggie','sprint-tasks':[  { title: 'Task 2', id: 1,status: 'To-do' }, { title: 'Task 2', id: 2,status: 'To-do' }], id: 1, startDate: '2023-10-01', endDate: '2023-10-15',sprintGoal: 'authorization', sprintStart: false },
-      { title: 'Fake','sprint-tasks':[  { title: 'Task 2', id: 2,status: 'To-do' }], id: 2, startDate: '2023-10-01', endDate: '2023-10-15',sprintGoal: 'authorization', sprintStart: false },
-    ]
+      {
+        title: 'Sprint 1',
+        sprintTasks: [
+          { title: 'Task 1', id: 1, status: 'To-do' },
+          { title: 'Task 2', id: 2, status: 'To-do' },
+        ],
+        id: 1,
+        startDate: '2023-10-01',
+        endDate: '2023-10-15',
+        sprintGoal: 'Authorization',
+        sprintStart: false,
+      },
+      {
+        title: 'Sprint 2',
+        sprintTasks: [{ title: 'Task 3', id: 3, status: 'To-do' }],
+        id: 2,
+        startDate: '2023-10-16',
+        endDate: '2023-10-31',
+        sprintGoal: 'Authentication',
+        sprintStart: false,
+      },
+    ];
 
     backlogTasks:any[] = [
-      { title: 'Task 1', id: 1,status: 'To-do' },
-      { title: 'Task 2', id: 2,status: 'In-progress' },
-      { title: 'Task 3', id: 3,status: 'To-do' },
+      { title: 'Task 1', id: 4,status: 'To-do' },
+      { title: 'Task 2', id: 5,status: 'In-progress' },
+      { title: 'Task 3', id: 6,status: 'To-do' },
     ];
     
       constructor(private _flowbiteService: FlowbiteService, private _modalService:ModalService){
@@ -40,7 +60,35 @@ export class BacklogComponent {
         });
       }
 
-     
+      get sprintDropIds(): string[] {
+        return this.sprintTasks.map(s => `sprint-${s.id}`);
+      }
+    
+      drop(event: any) {
+        if (event.previousContainer === event.container) {
+          moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+        } else {
+          transferArrayItem(
+            event.previousContainer.data,
+            event.container.data,
+            event.previousIndex,
+            event.currentIndex
+          );
+        }
+      }
+      getConnectedDropListIds(currentSprintId: number): string[] {
+        return ['backloglist', ...this.sprintDropIds.filter(id => id !== `sprint-${currentSprintId}`)];
+      }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -75,41 +123,41 @@ export class BacklogComponent {
     addTaskToSprintHandler(event:any,index: number) {
       if(event.key === 'Enter') {
         if(this.sprintTaskValue.match(/[0-9a-zA-Z]{1,100}/)) {
-          this.sprintTasks[index]['sprint-tasks'].push({ title: this.sprintTaskValue, id: this.sprintTasks.length+1, status: 'To-do' });
+          this.sprintTasks[index]['sprintTasks'].push({ title: this.sprintTaskValue, id: this.sprintTasks.length+1, status: 'To-do' });
           this.sprintTaskValue = '';
         }
       }
     }
 
 
-    /// Drag and Drop  Backlog and Sprint Task
-    onDragStart(item: any) {
-      this.currentItem = item;
-      // console.log("Drag started", item);
-    }
+    // /// Drag and Drop  Backlog and Sprint Task
+    // onDragStart(item: any) {
+    //   this.currentItem = item;
+    //   // console.log("Drag started", item);
+    // }
     
-    onDrop(event: any, index: number) {
-      event.preventDefault(); // Prevent default behavior
-      // console.log("on Drop", index);
-      // console.log("on Drop", event);
-      if (!this.currentItem) return;
-      const record = this.backlogTasks.findIndex((m:any) => m.id == this.currentItem.id);
-      if (index > -1) {
-        // console.log("on Drop", index);
-        // console.log("on Drop Index record", record);
+    // onDrop(event: any, index: number) {
+    //   event.preventDefault(); // Prevent default behavior
+    //   // console.log("on Drop", index);
+    //   // console.log("on Drop", event);
+    //   if (!this.currentItem) return;
+    //   const record = this.backlogTasks.findIndex((m:any) => m.id == this.currentItem.id);
+    //   if (index > -1) {
+    //     // console.log("on Drop", index);
+    //     // console.log("on Drop Index record", record);
       
-        const task:any = this.backlogTasks.splice(record, 1)[0];
-        // console.log("on Drop task", task);
-        this.sprintTasks[index]['sprint-tasks'].push(task); // Push to correct sprint
-      }
+    //     const task:any = this.backlogTasks.splice(record, 1)[0];
+    //     // console.log("on Drop task", task);
+    //     this.sprintTasks[index]['sprint-tasks'].push(task); // Push to correct sprint
+    //   }
     
-      // console.log("on Drop", event);
-    }
+    //   // console.log("on Drop", event);
+    // }
 
-    onDragOver(event: any) {
-      event.preventDefault(); // Prevent default to allow drop
-      // console.log("Drag over", event);
-    }
+    // onDragOver(event: any) {
+    //   event.preventDefault(); // Prevent default to allow drop
+    //   // console.log("Drag over", event);
+    // }
 
 
     //////(click)="updateTaskStatus(item, 'In Progress')"
@@ -147,7 +195,7 @@ export class BacklogComponent {
       const formattedEndDate = formatDate(twoWeeksLater);
       // console.log('Start Date:', formattedStartDate);
       // console.log('Two Weeks Later (End Date):', formattedEndDate);
-      this.sprintTasks.push({ title: 'Sprint-'+this.sprintTasks.length, id: this.sprintTasks.length + 1, startDate: formattedStartDate , endDate: formattedEndDate, sprintGoal: '', sprintStart: false, 'sprint-tasks': [] });
+      this.sprintTasks.push({ title: 'Sprint-'+this.sprintTasks.length, id: this.sprintTasks.length + 1, startDate: formattedStartDate , endDate: formattedEndDate, sprintGoal: '', sprintStart: false, 'sprintTasks': [] });
     }
 
 
