@@ -7,6 +7,7 @@ export const routes: Routes = [
   {path:'home', loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),children:[
     {path:'', redirectTo:'projects', pathMatch:'full'},
     {path:'projects', loadComponent: () => import('./pages/projects/projects.component').then(m => m.ProjectsComponent)}, 
+    {path:'teams', loadComponent: ()=> import('./pages/teams/teams.component').then(m => m.TeamsComponent)}
   ]},
   {path:'main-dashboard', loadComponent: () => import('./pages/main-dashboard/main-dashboard.component').then(m => m.MainDashboardComponent), children:[
     {path:'', redirectTo:'dashboard', pathMatch:'full'},
