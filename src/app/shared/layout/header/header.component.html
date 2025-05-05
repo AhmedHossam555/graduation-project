@@ -1,11 +1,14 @@
-<header id="header-dashboard" class="fixed top-0 left-0 border-b main-border w-full px-4 py-4 bg-white">
-  <div class="search-header flex items-center justify-between px-2 py-2">
+<header id="header-dashboard" class="fixed top-0 left-0 border-b border-[#eee] w-full px-4 py-4 bg-white">
+  <div class="search-header flex items-center justify-between px-2 py-2 gap-40">
     <button class="inline-flex items-center gap-2">
       <span class="search-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="#000" d="M9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l5.6 5.6q.275.275.275.7t-.275.7t-.7.275t-.7-.275l-5.6-5.6q-.75.6-1.725.95T9.5 16m0-2q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14"/></svg>
       </span>
       <span class="text-sm font-normal">Search...</span>
     </button>
+    <div class="search-bar w-full flex-1 sm:w-fit">
+      <input type="text" class="w-full px-4 py-2 main-border rounded-lg text-sm placeholder:text-sm font-medium focus:ring focus:ring-blue-500" placeholder="Search..." aria-label="Search" aria-describedby="search-addon" />
+    </div>
     <div class="nav-tools flex items-center gap-2 ">
       
       <button class="inline-flex items-center text-sm font-medium text-center text-gray-950 hover:text-blue-500 hover:bg-gray-100 p-1 rounded-full cursor-pointer transition-all duration-300 ease-in-out focus:outline-none dark:hover:text-white dark:text-gray-400">
