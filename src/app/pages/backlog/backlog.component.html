@@ -12,7 +12,13 @@
       <div class="bg-[#f8f8f8] shadow py-3 px-2 mb-2 rounded ">
         <!-- Header -->
       <div class="flex justify-between items-center mb-4">
-        <h2 class="text-xl font-medium mb-2">{{sprint.title}} <span class="text-sm  text-gray-500 pl-3">{{sprint.startDate}} – {{sprint.endDate}} &nbsp; ({{sprint['sprintTasks'].length}} issue)</span></h2>
+        <div class="inline-flex items-center gap-2 mb-2">
+          <span class="cursor-pointer">
+            <svg [appAccordion]="'sprint'+$index" class="w-5 h-5 rotate-90 transition-all duration-150 linear"  fill="none" viewBox="0 0 12 12" role="presentation" ><path fill="currentcolor" fill-rule="evenodd" d="M7.94 6 3.97 2.03 5.03.97l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5-1.06-1.06z" clip-rule="evenodd"></path></svg>
+          </span>
+          <h2 class="text-xl font-medium">{{sprint.title}} <span class="text-sm  text-gray-500 pl-3">{{sprint.startDate}} – {{sprint.endDate}} &nbsp; ({{sprint['sprintTasks'].length}} issue)</span></h2>
+        </div>
+    
         <div class="inline-flex items-center gap-2">
           @if(!sprint.sprintStart){
             <button (click)="onStartSprint(sprint)" data-modal-target="start-sprint-modal" data-modal-toggle="start-sprint-modal"  [disabled]="$index > 0" 
@@ -43,26 +49,29 @@
         
       </div>
       <!-- body sprint -->
-      <div   
-      cdkDropList
-      [id]="'sprint-'+sprint.id"
-      [cdkDropListData]="sprint.sprintTasks"
-      [cdkDropListConnectedTo]="getConnectedDropListIds(sprint.id)"
-  
-      (cdkDropListDropped)="drop($event)"  class="body-sprint bg-white  main-border rounded-sm">
-        @for(item of sprint['sprintTasks']; track $index){
-          <div cdkDrag  class="item-task-sprint flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
-            <div class="flex items-center gap-2">
-              <div class="w-4 h-4 bg-green-500 rounded-sm"></div>
-              <span class="font-medium">{{item.title}}</span>
+       <section [id]="'sprint'+$index">
+        <div   
+        cdkDropList
+        [id]="'sprint-'+sprint.id"
+        [cdkDropListData]="sprint.sprintTasks"
+        [cdkDropListConnectedTo]="getConnectedDropListIds(sprint.id)"
+    
+        (cdkDropListDropped)="drop($event)"  class="body-sprint bg-white  main-border rounded-sm">
+          @for(item of sprint['sprintTasks']; track $index){
+            <div cdkDrag  class="item-task-sprint flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
+              <div class="flex items-center gap-2">
+                <div class="w-4 h-4 bg-green-500 rounded-sm"></div>
+                <span class="font-medium">{{item.title}}</span>
+              </div>
+              <span class="text-gray-400 text-sm">{{item.id+'DSL'}}</span>
             </div>
-            <span class="text-gray-400 text-sm">{{item.id+'DSL'}}</span>
-          </div>
-        }
-      <div class="input-sprint-issue">
-        <input type="text" [id]="sprint.id+'DSL'" (keyup)="addTaskToSprintHandler($event,$index)"  class="hidden backlog-input w-full   p-3  text-sm border-0   font-normal text-main-label focus:border-transparent"  [(ngModel)]="sprintTaskValue" placeholder=" What needs to be done?">
-      </div>
-      </div>
+          }
+        <div class="input-sprint-issue">
+          <input type="text" [id]="sprint.id+'DSL'" (keyup)="addTaskToSprintHandler($event,$index)"  class="hidden backlog-input w-full   p-3  text-sm border-0   font-normal text-main-label focus:border-transparent"  [(ngModel)]="sprintTaskValue" placeholder=" What needs to be done?">
+        </div>
+        </div>
+       </section>
+  
     
       <div class="p-3 hover:bg-gray-100 cursor-pointer"  [appShowInput]="sprint.id+'DSL'" >
         <button class="text-blue-600 cursor-pointer text-sm font-semibold" >+ Create issue</button>
@@ -89,7 +98,7 @@
       <div  class="flex justify-between items-center mb-4">
         <div class="inline-flex items-center gap-2 mb-2">
           <span class="cursor-pointer">
-            <svg [appAccordion]="backlog-1" class="w-5 h-5 rotate-90 transition-all duration-150 linear"  fill="none" viewBox="0 0 12 12" role="presentation" ><path fill="currentcolor" fill-rule="evenodd" d="M7.94 6 3.97 2.03 5.03.97l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5-1.06-1.06z" clip-rule="evenodd"></path></svg>
+            <svg [appAccordion]="'backlog-1'" class="w-5 h-5 rotate-90 transition-all duration-150 linear"  fill="none" viewBox="0 0 12 12" role="presentation" ><path fill="currentcolor" fill-rule="evenodd" d="M7.94 6 3.97 2.03 5.03.97l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5-1.06-1.06z" clip-rule="evenodd"></path></svg>
           </span>
           <h2 class="text-xl x font-medium ">Backlog <span class="text-sm  text-gray-500">({{backlogTasks.length}} issue)</span></h2>
         </div>
