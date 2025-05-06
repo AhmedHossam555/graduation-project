@@ -4,7 +4,7 @@
     <h1 class="text-2xl font-medium">People and teams</h1>
     <!-- Buttons -->
     <div class="space-x-2">
-      <button class="border border-gray-300 rounded px-4 py-1 hover:bg-gray-100" >Create team</button>
+      <button class="border border-gray-300 rounded px-4 py-1 hover:bg-gray-100" data-modal-target="creat-team-modal" data-modal-toggle="creat-team-modal">Create team</button>
       <button class="bg-blue-600 text-white rounded px-4 py-1 hover:bg-blue-700" data-modal-target="add-people-modal" data-modal-toggle="add-people-modal" >Add people</button>
     </div>
   </div>
@@ -85,3 +85,10 @@
 <!-- Modal add-people -->
 
 <app-add-people-modal></app-add-people-modal>
+
+
+
+
+
+<!-- Main modal -->
+<app-create-team-modal></app-create-team-modal>
