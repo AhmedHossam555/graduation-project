@@ -86,83 +86,91 @@
   <!----------------- Backlog List ---------------- -->
   <div id="backlog-list" class="mb-6">
     <div class="bg-[#f8f8f8] shadow py-3 px-2 mb-2 rounded ">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-xl font-medium mb-2">Backlog <span class="text-sm  text-gray-500">({{backlogTasks.length}} issue)</span></h2>
+      <div  class="flex justify-between items-center mb-4">
+        <div class="inline-flex items-center gap-2 mb-2">
+          <span class="cursor-pointer">
+            <svg class="w-5 h-5 rotate-90 transition-all duration-150 linear"  fill="none" viewBox="0 0 12 12" role="presentation" ><path fill="currentcolor" fill-rule="evenodd" d="M7.94 6 3.97 2.03 5.03.97l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5-1.06-1.06z" clip-rule="evenodd"></path></svg>
+          </span>
+          <h2 class="text-xl x font-medium ">Backlog <span class="text-sm  text-gray-500">({{backlogTasks.length}} issue)</span></h2>
+        </div>
         <button (click)="onCreateSprint()" class="px-4 py-1 border border-gray-300 rounded-md text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-800 transition-all ease-in-out duration-300">
           Create sprint
         </button>
       </div>
       <!-- body backlog -->
-      <div cdkDropList
-      id="backloglist"
-      [cdkDropListData]="backlogTasks"
-      [cdkDropListConnectedTo]="sprintDropIds"
-    
-      (cdkDropListDropped)="drop($event)" class="body-backlog bg-white  main-border rounded-sm">
-        @for(item of backlogTasks; track $index){
-          <div  cdkDrag class="item-task-backlog gap-10 flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
-            <div class="flex items-center gap-2 flex-1">
-              <div class="w-4 h-4 bg-green-500 rounded-sm"></div>
-              <span class="font-medium">{{item.title}}</span>
-            </div>
-              <!-- Dropdown container -->
-            <div class="relative inline-block text-left mr-2">
-              <!-- Trigger button -->
-              <button
-              [appDropdownStatus]="'edit-status' + $index"
-              [ngClass]="{
-                  'bg-blue-200 text-blue-800': item.status == 'In-progress',
-                'bg-gray-300 text-gray-800': item.status == 'To-do',
-              
-                'bg-lime-300 text-green-800': item.status == 'Done'
-              }"
-              class="inline-flex justify-center items-center text-sm uppercase font-medium px-3 py-1 rounded"
-            >
-              {{ item.status }}
-              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-
-              <!-- Dropdown menu -->
-              <div [id]="'edit-status'+$index"  class="absolute hidden py-1 mt-2 w-48 rounded-md shadow-lg bg-white z-10">
-                  @if(item.status != 'To-do'){
-                    <div class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer status" (click)="updateTaskStatus($event,item, 'To-do')">
-                      <span class="bg-gray-300 text-gray-800 text-xs font-semibold px-2 py-0.5 rounded status" >TO DO</span>
-                    </div>  
-                  }
-                  @if(item.status != 'In-progress'){
-                    <div class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer status" (click)="updateTaskStatus($event,item, 'In-progress')">
-                      <span class="bg-blue-200 text-blue-800 text-xs font-bold px-2 py-0.5 rounded status" >
-                        IN PROGRESS
-                      </span>
-                    </div>
-
-                  }
-                  @if(item.status != 'Done'){
-                    <div class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer status" (click)="updateTaskStatus($event,item, 'Done')">
-                      <span class="bg-lime-300 text-green-800 text-xs font-semibold px-2 py-0.5 rounded status" >DONE</span>
-                    </div>
-                  }
-              
-                
-                  <!-- <div class="border-t border-gray-100 my-1"></div>
-                  <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
-                    View workflow
-                  </div> -->
-                
+       <section id="backlog-1">
+        <div cdkDropList
+        id="backloglist"
+        [cdkDropListData]="backlogTasks"
+        [cdkDropListConnectedTo]="sprintDropIds"
+      
+        (cdkDropListDropped)="drop($event)" class="body-backlog bg-white  main-border rounded-sm">
+          @for(item of backlogTasks; track $index){
+            <div  cdkDrag class="item-task-backlog gap-10 flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
+              <div class="flex items-center gap-2 flex-1">
+                <div class="w-4 h-4 bg-green-500 rounded-sm"></div>
+                <span class="font-medium">{{item.title}}</span>
               </div>
+                <!-- Dropdown container -->
+              <div class="relative inline-block text-left mr-2">
+                <!-- Trigger button -->
+                <button
+                [appDropdownStatus]="'edit-status' + $index"
+                [ngClass]="{
+                    'bg-blue-200 text-blue-800': item.status == 'In-progress',
+                  'bg-gray-300 text-gray-800': item.status == 'To-do',
+                
+                  'bg-lime-300 text-green-800': item.status == 'Done'
+                }"
+                class="inline-flex justify-center items-center text-sm uppercase font-medium px-3 py-1 rounded"
+              >
+                {{ item.status }}
+                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+  
+                <!-- Dropdown menu -->
+                <div [id]="'edit-status'+$index"  class="absolute hidden py-1 mt-2 w-48 rounded-md shadow-lg bg-white z-10">
+                    @if(item.status != 'To-do'){
+                      <div class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer status" (click)="updateTaskStatus($event,item, 'To-do')">
+                        <span class="bg-gray-300 text-gray-800 text-xs font-semibold px-2 py-0.5 rounded status" >TO DO</span>
+                      </div>  
+                    }
+                    @if(item.status != 'In-progress'){
+                      <div class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer status" (click)="updateTaskStatus($event,item, 'In-progress')">
+                        <span class="bg-blue-200 text-blue-800 text-xs font-bold px-2 py-0.5 rounded status" >
+                          IN PROGRESS
+                        </span>
+                      </div>
+  
+                    }
+                    @if(item.status != 'Done'){
+                      <div class="flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer status" (click)="updateTaskStatus($event,item, 'Done')">
+                        <span class="bg-lime-300 text-green-800 text-xs font-semibold px-2 py-0.5 rounded status" >DONE</span>
+                      </div>
+                    }
+                
+                  
+                    <!-- <div class="border-t border-gray-100 my-1"></div>
+                    <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
+                      View workflow
+                    </div> -->
+                  
+                </div>
+              </div>
+              <span class="text-gray-400 text-sm" [ngClass]="{'line-through': item.status == 'Done'}">DSL-{{item.id}}</span>
             </div>
-            <span class="text-gray-400 text-sm" [ngClass]="{'line-through': item.status == 'Done'}">DSL-{{item.id}}</span>
-          </div>
-        }
-      <div>
-        @if (isVisibleCreateIssue ) {
-          <input type="text" id="backlog-value" (keyup)="addTaskToBacklogHandler($event)"  class="block backlog-input w-full   p-3  text-sm border-0   font-normal text-main-label focus:border-transparent"  [(ngModel)]="backlogVlaue" placeholder=" What needs to be done?">
-        }
-      </div>
-    
-      </div>
+          }
+        <div>
+          @if (isVisibleCreateIssue ) {
+            <input type="text" id="backlog-value" (keyup)="addTaskToBacklogHandler($event)"  class="block backlog-input w-full   p-3  text-sm border-0   font-normal text-main-label focus:border-transparent"  [(ngModel)]="backlogVlaue" placeholder=" What needs to be done?">
+          }
+        </div>
+      
+        </div>
+       </section>
+  
       @if(!isVisibleCreateIssue){
         <div class="p-3 hover:bg-gray-100 cursor-pointer" (click)="addTaskToBacklog()" >
           <button class="text-blue-600 cursor-pointer text-sm font-semibold">+ Create issue</button>
