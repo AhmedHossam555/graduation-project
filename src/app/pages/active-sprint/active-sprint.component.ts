@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ModalService } from '../../shared/services/modal/modal.service';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TaskDetailsComponent } from "../../shared/components/business/task-details/task-details.component";
 
 @Component({
   selector: 'app-active-sprint',
   standalone: true,
-  imports: [NgIf, NgFor,FormsModule],
+  imports: [NgIf, NgFor, FormsModule, TaskDetailsComponent],
   templateUrl: './active-sprint.component.html',
   styleUrl: './active-sprint.component.scss'
 })
