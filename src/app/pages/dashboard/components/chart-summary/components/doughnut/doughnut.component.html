@@ -1,10 +1,10 @@
 
-  <div id="doughnut-task" class="p-3 rounded-xl text-center main-border flex flex-col gap-4">
+  <div id="doughnut-task" class="p-3 rounded-xl text-center main-border flex flex-col justify-between gap-4 h-full w-full">
       <div class="text-left">
-        <h4 class="font-bold text-gray-900">Status overview</h4>
-        <p class="text-sm font-normal text-gray-700">Get a snapshot of the status of your work items. <a class="text-main underline ">View all work items</a> </p>
+        <h4 class="font-bold text-gray-900 mb-2">Status overview</h4>
+        <p class="text-sm font-normal text-gray-700">Get a snapshot of the status of your work items. <a class="text-main hover:underline ">View all work items</a> </p>
       </div>
-      <div class="card flex justify-content-center">
+      <div class="card inline-flex justify-content-center">
         <div class="relative w-full">
             <p-chart type="doughnut" [data]="data" [options]="options"  />
          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-medium">

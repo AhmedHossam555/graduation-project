@@ -33,7 +33,11 @@ priorityOptions = {
         stepSize: 1
       }
     }
-  }
+  },
+  resposive: true,
+  maintainAspectRatio: false,
+  aspectRatio: 1,
+
 };
 
 }

@@ -1,14 +1,13 @@
 
-  <div id="bar-task" class="p-3 rounded-xl text-center main-border flex flex-col items-stretch ">
+  <div id="bar-task" class="p-3 rounded-xl text-center main-border flex flex-col justify-between h-full w-full gap-4 ">
       <div class="text-left">
-        <h4 class="font-bold text-gray-900">Priority breakdown</h4>
-        <p class="text-sm font-normal text-gray-700"> Get a holistic view of how work is being prioritized. <a class="text-main underline ">See what your team's been focusing on</a> </p>
+        <h4 class="font-bold text-gray-900 mb-2">Priority breakdown</h4>
+        <p class="text-sm font-normal text-gray-700"> Get a holistic view of how work is being prioritized. <a class="text-main hover:underline ">See what your team's been focusing on</a> </p>
       </div>
-      <div>
-         <p-chart type="bar" [data]="priorityData" [options]="priorityOptions" ></p-chart>
+      <div class="w-full h-full inline-flex">
+         <p-chart class="w-full h-full" type="bar" [data]="priorityData" [options]="priorityOptions"></p-chart>
       </div>
     
-  
 
       <div>
 
