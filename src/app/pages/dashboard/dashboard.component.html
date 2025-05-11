@@ -1,4 +1,24 @@
-<div class="card flex justify-content-center">
-    <p-menu #menu [model]="items" [popup]="true" />
-    <p-button (onClick)="menu.toggle($event)" icon="pi pi-ellipsis-v"/>
-</div>
+
+
+<main class="summary p-6">
+  <div class="flex flex-wrap items-center">
+    <!-- Completed task -->
+    <div id="completed-task" class="p-3 rounded-xl text-center w-1/2 md:w-1/4 main-border flex items-center gap-4">
+      <div class="bg-green-100 w-10 h-10 inline-flex items-center justify-center font-mono">
+        <span aria-hidden="true" class="text-xs text-green-600" >
+          <svg width="24" height="24" fill="none" viewBox="-4 -4 24 24" role="presentation" class="css-2l1v34"><path fill="currentcolor" fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13m4.326 3.98-5 6a.75.75 0 0 1-1.152 0l-2.5-3 1.152-.96L6.75 9.828l4.424-5.308z" clip-rule="evenodd"></path></svg></span>
+        </div>
+        <div class="text-left">
+          <h4 class="text-sm font-bold">5 Completed</h4>
+          <p class="text-xs text-gray-600">in the last 7 days</p>
+        </div>
+    </div>
+    <!-- Add 3 more cards: Updated, Created, Due Soon -->
+    <div class="w-1/2">
+
+    </div>
+  </div>
+
+</main>
+
+
