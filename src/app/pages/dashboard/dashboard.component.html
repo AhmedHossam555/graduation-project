@@ -1,60 +1,15 @@
 
 
 <main class="summary p-6">
-  <div class="flex flex-wrap items-center">
+  <app-header-summary></app-header-summary>
+  <section class="grid grid-cols-1 sm:grid-cols-2  gap-5">
     <!-- Completed task -->
-    <div id="completed-task" class="p-3 rounded-xl text-center w-full sm:w-1/2 md:w-1/4 main-border flex items-center gap-4">
-      <div class="bg-green-100 w-10 h-10 inline-flex items-center justify-center font-mono">
-        <span aria-hidden="true" class="text-xs text-green-600" >
-          <svg width="24" height="24" fill="none" viewBox="-4 -4 24 24" role="presentation" class="css-2l1v34"><path fill="currentcolor" fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13m4.326 3.98-5 6a.75.75 0 0 1-1.152 0l-2.5-3 1.152-.96L6.75 9.828l4.424-5.308z" clip-rule="evenodd"></path></svg></span>
-        </div>
-        <div class="text-left">
-          <h4 class="text-sm font-bold text-gray-900">5 Completed</h4>
-          <p class="text-xs text-gray-600">in the last 7 days</p>
-        </div>
+    <div id="completed-task" class="p-3 rounded-xl text-center main-border flex items-center gap-4">
+      
     </div>
-    <!-- Updated task -->
-    <div id="updated-task" class="p-3 rounded-xl text-center w-full sm:w-1/2 md:w-1/4 main-border flex items-center gap-4">
-      <div class="bg-gray-100 w-10 h-10 inline-flex items-center justify-center font-mono">
-        <span aria-hidden="true" class="text-xs text-gray-600" >
-         <svg width="24" height="24" fill="none" viewBox="-4 -4 24 24" role="presentation" class="css-2l1v34"><path fill="currentcolor" fill-rule="evenodd" d="M1 1.75A.75.75 0 0 1 1.75 1h2.5a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-.75.75h-2.5A.75.75 0 0 1 1 4.25zm1.5.75v1h1v-1zm9.836.104a2 2 0 0 1 2.828 0l.232.232a2 2 0 0 1 0 2.828l-4.848 4.849a2 2 0 0 1-1.022.547l-2.129.425a.75.75 0 0 1-.882-.882l.425-2.129a2 2 0 0 1 .547-1.022zm1.768 1.06a.5.5 0 0 0-.708 0L13.061 4l.939.94.336-.336a.5.5 0 0 0 0-.708zM12.939 6 12 5.06 8.548 8.514a.5.5 0 0 0-.137.255l-.205 1.026 1.026-.205a.5.5 0 0 0 .255-.137zM1 6.75A.75.75 0 0 1 1.75 6h2.5a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-.75.75h-2.5A.75.75 0 0 1 1 9.25zm1.5.75v1h1v-1zM1 11.75a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1-.75-.75zm1.5.75v1h1v-1z" clip-rule="evenodd"></path></svg>    
-        </span>
-      </div>
-        <div class="text-left">
-          <h4 class="text-sm font-bold text-gray-900">6 Updated</h4>
-          <p class="text-xs text-gray-600">in the last 7 days</p>
-        </div>
-    </div>
-      <!-- created task -->
-    <div id="created-task" class="p-3 rounded-xl text-center w-full sm:w-1/2 md:w-1/4 main-border flex items-center gap-4">
-      <div class="bg-gray-100 w-10 h-10 inline-flex items-center justify-center font-mono">
-        <span aria-hidden="true" class="text-xs text-gray-600" >
-        <svg width="24" height="24" fill="none" viewBox="-4 -4 24 24" role="presentation" class="css-2l1v34"><path fill="currentcolor" fill-rule="evenodd" d="M1 3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2zm2-.5a.5.5 0 0 0-.5.5v8a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5zm6.426 1.517 1.148.966-4 4.75a.75.75 0 0 1-1.148 0l-2-2.375 1.148-.966L6 8.086z" clip-rule="evenodd"></path><path fill="currentcolor" fill-rule="evenodd" d="M16 6v6.75A3.25 3.25 0 0 1 12.75 16H6v-1.5h6.75a1.75 1.75 0 0 0 1.75-1.75V6z" clip-rule="evenodd"></path></svg>    
-       </span>
-      </div>
-        <div class="text-left">
-          <h4 class="text-sm font-bold text-gray-900">0 Created</h4>
-          <p class="text-xs text-gray-600">in the last 7 days</p>
-        </div>
-    </div>
-      <!-- due task -->
-    <div id="due-task" class="p-3 rounded-xl text-center w-full sm:w-1/2 md:w-1/4 main-border flex items-center gap-4">
-      <div class="bg-gray-100 w-10 h-10 inline-flex items-center justify-center font-mono">
-      <span aria-hidden="true" class="text-xs text-gray-600" >
-        <svg width="24" height="24" fill="none" viewBox="-4 -4 24 24" role="presentation" class="css-2l1v34"><path fill="currentcolor" fill-rule="evenodd" d="M4.5 2.5v2H6v-2h4v2h1.5v-2H13a.5.5 0 0 1 .5.5v3h-11V3a.5.5 0 0 1 .5-.5zm-2 5V13a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V7.5zm9-6.5H13a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1.5V0H6v1h4V0h1.5z" clip-rule="evenodd"></path></svg> 
-      </span>
-      </div>
-        <div class="text-left">
-          <h4 class="text-sm font-bold text-gray-900">0 due soon</h4>
-          <p class="text-xs text-gray-600">in the next 7 days</p>
-        </div>
-    </div>
-    <!-- Add 3 more cards: Updated, Created, Due Soon -->
-    <div class="w-1/2">
-
-    </div>
-  </div>
-
+  
+  
+  </section>
 </main>
 
 

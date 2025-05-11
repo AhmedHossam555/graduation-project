@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { MenuModule } from 'primeng/menu';
 import { ButtonModule } from 'primeng/button';
+import { HeaderSummaryComponent } from "./components/header-summary/header-summary.component";
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MenuModule, ButtonModule],
+  imports: [MenuModule, ButtonModule, HeaderSummaryComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
