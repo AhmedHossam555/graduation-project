@@ -44,11 +44,12 @@ export class DoughnutComponent {
         this.options = {
           cutout: '70%',
           plugins: {
-             position: 'right',
+            
             labels: {
               color: '#374151',
               boxWidth: 12,
-              padding: 15
+              padding: 16,
+              
             },
           tooltip: {
                     callbacks: {
@@ -57,11 +58,12 @@ export class DoughnutComponent {
                               const value = context.parsed;
                               const total = context.dataset.data.reduce((sum: number, val: number) => sum + val, 0);
                               const percentage = Math.floor((value / total) * 100);
-                                // Use NgZone to trigger change detection
+                              // Use NgZone to trigger change detection
                               this.zone.run(() => {
                                   this.totalNumber = `${percentage}%`;
                                   this.hoveredValue = `${label}`;
                             });
+                      
                             return `${label}: ${value} (${percentage}%)`;
                         }
                     }
@@ -69,6 +71,19 @@ export class DoughnutComponent {
           },
           responsive: true,
           maintainAspectRatio: false
+          ,
+          // Reset to default values when the mouse leaves the chart
+        events: ['mousemove', 'mouseout'],
+        onHover: (event: any, chartElement: any[]) => {
+          if (chartElement.length === 0) {
+              // Reset to default values when the mouse leaves the chart
+              this.zone.run(() => {
+                  this.totalNumber = '15'; // Default total number
+                  this.hoveredValue = 'Total works items'; // Default label
+              });
+          } 
+        }         
+
         };
   
       }    
