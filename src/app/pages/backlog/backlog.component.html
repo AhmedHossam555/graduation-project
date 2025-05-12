@@ -70,12 +70,13 @@
           <input type="text" [id]="sprint.id+'DSL'" (keyup)="addTaskToSprintHandler($event,$index)"  class="hidden backlog-input w-full   p-3  text-sm border-0   font-normal text-main-label focus:border-transparent"  [(ngModel)]="sprintTaskValue" placeholder=" What needs to be done?">
         </div>
         </div>
+        <div class="p-3 hover:bg-gray-100 cursor-pointer"  [appShowInput]="sprint.id+'DSL'" >
+        <button class="text-blue-600 cursor-pointer text-sm font-semibold" >+ Create issue</button>
+       </div>
        </section>
   
     
-      <div class="p-3 hover:bg-gray-100 cursor-pointer"  [appShowInput]="sprint.id+'DSL'" >
-        <button class="text-blue-600 cursor-pointer text-sm font-semibold" >+ Create issue</button>
-      </div>
+  
     
     </div>
     }
@@ -178,13 +179,14 @@
         </div>
       
         </div>
-       </section>
-  
-      @if(!isVisibleCreateIssue){
+          @if(!isVisibleCreateIssue){
         <div class="p-3 hover:bg-gray-100 cursor-pointer" (click)="addTaskToBacklog()" >
           <button class="text-blue-600 cursor-pointer text-sm font-semibold">+ Create issue</button>
         </div>
     }
+       </section>
+  
+    
     
     </div>
   </div>
