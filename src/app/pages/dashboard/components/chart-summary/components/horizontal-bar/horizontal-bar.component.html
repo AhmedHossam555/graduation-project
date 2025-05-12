@@ -1,10 +1,10 @@
 
-  <div id="work-type-task" class="p-3 rounded-xl text-center main-border flex flex-col  ">
+  <div id="work-type-task" class="p-3 rounded-xl text-center main-border flex flex-col w-full h-full ">
       <div class="text-left">
         <h4 class="font-bold text-gray-900 mb-2">Types of work</h4>
-        <p class="text-sm font-normal text-gray-700 mb-4"> Get a breakdown of work items by their types. <a class="text-main hover:underline ">View all items</a> </p>
+        <p class="text-sm font-normal text-gray-700 mb-6"> Get a breakdown of work items by their types. <a class="text-main hover:underline ">View all items</a> </p>
       </div>
-      <div *ngFor="let type of workTypes" class="mb-3">
+      <div *ngFor="let type of workTypes" class="mb-5">
       <div class="flex justify-between mb-1 text-sm text-gray-700">
         <span class="flex items-center gap-1">
           <i [class]="type.icon"></i> {{ type.label }}
@@ -25,3 +25,5 @@
       </div>
     </div>
   
+
+    

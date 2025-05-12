@@ -9,35 +9,39 @@ import { ChartModule } from 'primeng/chart';
   styleUrl: './bar-team-work.component.scss'
 })
 export class BarTeamWorkComponent {
- chartData = {
-    labels: ['Assigned', 'Unassigned'],
+  chartData = {
+    labels: ['Unassigned','assigned'],
     datasets: [
       {
-        data: [75, 25],
-        backgroundColor: [
-          '#3B82F6', // blue-500
-          '#E5E7EB'  // gray-200
-        ],
-        hoverBackgroundColor: [
-          '#2563EB', // blue-600
-          '#D1D5DB'  // gray-300
-        ],
-        borderWidth: 0
+        label: 'Work distribution',
+        data: [100,50],
+        backgroundColor: ['#6B7280'], // Tailwind slate-gray
+        barThickness: 20, // Set the exact height of the bars
+        maxBarThickness: 30 // Optional: Set the maximum bar height
       }
     ]
   };
 
   chartOptions = {
-    cutout: '70%',
+    indexAxis: 'y',
+    maintainAspectRatio: false,
+    aspectRatio: 4,
+    responsive: true,
     plugins: {
-      legend: {
+      legend: { display: false },
+      tooltip: { enabled: true }
+    },
+    scales: {
+      x: {
+        min: 0,
+        max: 100,
         display: false
       },
-      tooltip: {
-        enabled: true
+      y: {
+        display: false,
+        // categoryPercentage:0.5, // Reduces the category width (space between bars)
+        // barPercentage: 0.2 // Adjusts the width of the bars within the category
       }
-    },
-    responsive: true,
-    maintainAspectRatio: false
+    }
   };
 }
