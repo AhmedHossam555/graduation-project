@@ -1,1 +1,80 @@
-<p>workflow works!</p>
+
+
+
+
+
+
+  <svg data-drag-type="pan" width="812" height="403.390625" version="1.1" 
+     xmlns="http://www.w3.org/2000/svg" 
+     xmlns:xlink="http://www.w3.org/1999/xlink" 
+     viewBox="1.565 -222.033 812 403.391" 
+     preserveAspectRatio="xMinYMin" 
+     class="_1reo15vq _18m915vq _s7n4nkob _bfhkvuon _uiztglyw">
+
+  <!-- START Node -->
+  <g data-drag-type="start-node" data-drag-id="START">
+    <ellipse cx="80" cy="-50" rx="20" ry="20" fill="#44546F"></ellipse>
+    <text x="80" y="-50" text-anchor="middle" font-size="8px" fill="#FFFFFF" font-weight="bold">
+      <tspan dy="2.75">START</tspan>
+    </text>
+  </g>
+
+  <!-- TO DO Node -->
+  <g>
+    <rect x="177" y="-19" width="90.816" height="38" rx="6" ry="6" [attr.stroke]="workflow[0].id == 'todo' ? activeStroke : ''" fill-opacity="0" stroke-width="2"></rect>
+    <g data-drag-type="status" data-drag-id="10000">
+      <rect x="180" y="-16" width="84.816" height="32" rx="4" ry="4" fill="#F1F2F4" stroke="#DCDFE4" stroke-width="2"></rect>
+      <text x="222.408" y="3.25" font-size="11px" fill="#091E42" text-anchor="middle" font-weight="bold">
+        <tspan>TO DO</tspan>
+      </text>
+    </g>
+  </g>
+
+  <!-- IN PROGRESS Node -->
+  <g data-drag-type="status" data-drag-id="10001">
+    <rect x="324.816" y="-16" width="125.738" height="32" rx="4" ry="4" fill="#E9F2FF" [attr.stroke]="workflow[0].id == 'inprogress' ? activeStroke : '#CCE0FF'"  stroke-width="2"></rect>
+    <text x="387.685" y="3.25" font-size="11px" fill="#09326C" text-anchor="middle" font-weight="bold">
+      <tspan>IN PROGRESS</tspan>
+    </text>
+  </g>
+
+  <!-- DONE Node -->
+  <g data-drag-type="status" data-drag-id="10002">
+    <rect x="510.553" y="-16" width="81.488" height="32" rx="4" ry="4" fill="#DCFFF1" [attr.stroke]="workflow[0].id == 'done' ? activeStroke : '#BAF3DB'"   stroke-width="2"></rect>
+    <text x="551.297" y="3.25" font-size="11px" fill="#164B35" text-anchor="middle" font-weight="bold">
+      <tspan>DONE</tspan>
+    </text>
+  </g>
+
+  <!-- Transitions -->
+  <!-- From TO DO to IN PROGRESS -->
+  <g>
+    <path d="M272.816,0L292.816,0L292.816,-10" fill="none" stroke="#2C3E5D" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M267.816,5L272.816,0L277.816,5" fill="none" stroke="#2C3E5D" stroke-width="2" transform="rotate(-90 272.816 0)"/>
+    <rect x="267.816" y="-34" width="50" height="24" rx="12" ry="12" fill="#44546F"></rect>
+    <text x="290.816" y="-18" font-size="11px" fill="#FFFFFF" text-anchor="left"><tspan>Any</tspan></text>
+  </g>
+
+  <!-- From IN PROGRESS to DONE -->
+  <g>
+    <path d="M458.553,0L478.554,0L478.554,-10" fill="none" stroke="#8590A2" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M453.553,5L458.553,0L463.553,5" fill="none" stroke="#8590A2" stroke-width="2" transform="rotate(-90 458.553 0)"/>
+    <rect x="453.553" y="-34" width="50" height="24" rx="12" ry="12" fill="#44546F"></rect>
+    <text x="476.554" y="-18" font-size="11px" fill="#FFFFFF" text-anchor="left"><tspan>Any</tspan></text>
+  </g>
+
+  <!-- From DONE to ??? (Unclear from original) -->
+  <g>
+    <path d="M600.041,0L620.041,0L620.041,-10" fill="none" stroke="#8590A2" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M595.041,5L600.041,0L605.041,5" fill="none" stroke="#8590A2" stroke-width="2" transform="rotate(-90 600.041 0)"/>
+    <rect x="595.041" y="-34" width="50" height="24" rx="12" ry="12" fill="#44546F"></rect>
+    <text x="618.041" y="-18" font-size="11px" fill="#FFFFFF" text-anchor="left"><tspan>Any</tspan></text>
+  </g>
+
+  <!-- Path from START to TO DO -->
+  <g>
+    <path d="M80,-32.5L80,-12.5L139.424,-12.5L139.424,-41.5L198.848,-41.5L198.848,-21.5" fill="none" stroke="#2C3E5D" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M193.848,-16.5L198.848,-21.5L203.848,-16.5" fill="none" stroke="#2C3E5D" stroke-width="2" transform="rotate(180 198.848 -21.5)"/>
+  </g>
+
+</svg>

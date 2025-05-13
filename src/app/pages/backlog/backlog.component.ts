@@ -11,11 +11,12 @@ import { ModalService } from '../../shared/services/modal/modal.service';
 import { SprintStartModelComponent } from '../../shared/components/business/sprint-start-model/sprint-start-model.component';
 import { DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { AccordionDirective } from '../../shared/directives/accordion/accordion.directive';
+import { WorkflowComponent } from "../../shared/components/business/workflow/workflow.component";
 
 @Component({
   selector: 'app-backlog',
   standalone: true,
-  imports: [FormsModule, ShowInputDirective, NgClass, EditButtonDirective, DropdownStatusDirective, SprintEditModelComponent,SprintStartModelComponent, DragDropModule,AccordionDirective],
+  imports: [FormsModule, ShowInputDirective, NgClass, EditButtonDirective, DropdownStatusDirective, SprintEditModelComponent, SprintStartModelComponent, DragDropModule, AccordionDirective, WorkflowComponent],
   templateUrl: './backlog.component.html',
   styleUrl: './backlog.component.scss'
 })
