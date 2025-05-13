@@ -3,8 +3,11 @@
 
 
 
+<!-- Svg For Workflow  -->
 
-  <svg data-drag-type="pan" width="812" height="403.390625" version="1.1" 
+<svg data-drag-type="pan"   #svgElement
+      [attr.width]="812 * zoomLevel"
+      [attr.height]="403.390625 * zoomLevel" version="1.1" 
      xmlns="http://www.w3.org/2000/svg" 
      xmlns:xlink="http://www.w3.org/1999/xlink" 
      viewBox="1.565 -222.033 812 403.391" 
@@ -78,3 +81,72 @@
   </g>
 
 </svg>
+
+
+<div class="p-6">
+  <!-- Header -->
+  <div class="flex items-center space-x-2 mb-6">
+    <div class="w-5 h-5 border-2 border-blue-500 rounded flex items-center justify-center">
+      <svg class="w-3 h-3 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 111.414-1.414L8.414 12.586l7.879-7.879a1 1 0 011.414 0z" clip-rule="evenodd" />
+      </svg>
+    </div>
+    <h2 class="text-lg font-bold px-2 py-0.5 rounded">Task workflow</h2>
+  </div>
+
+  <!-- Status Row -->
+  <div class="flex items-start justify-between w-full max-w-4xl">
+    <!-- Current status -->
+    <div>
+      <h3 class="font-semibold mb-2">Current status</h3>
+      <button class="text-xs px-2 py-0.5 border border-gray-300 rounded">TO DO</button>
+    </div>
+
+    <!-- Transition options -->
+    <div>
+      <h3 class="font-semibold mb-2">This work item can be moved to</h3>
+      <div class="space-x-2">
+        <button class="text-xs px-2 py-0.5 border border-blue-500 rounded text-blue-700">IN PROGRESS</button>
+        <button class="text-xs px-2 py-0.5 border border-green-300 rounded text-green-700">DONE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<button (click)="zoomIn()" class="p-5 rounded-lg bg-blue-100" >+</button>
+<input type="range" [(ngModel)]="zoomValue" [value]="zoomValue">
+<button (click)="zoomOut()" class="p-5 rounded-lg bg-red-100">-</button>
+
+
+
+<div class="flex items-center space-x-4">
+  <!-- Zoom Out Icon -->
+  <button
+    class="text-gray-600 hover:text-black"
+    (click)="zoomOut()"
+    aria-label="Zoom Out">
+    <i class="pi pi-search-minus text-xl"></i>
+  </button>
+
+  <!-- Slider -->
+  <p-slider
+    [(ngModel)]="zoomLevel"
+    [min]="minZoom"
+    [max]="maxZoom"
+    [step]="0.1"
+    class="w-64"
+  ></p-slider>
+  
+
+  <!-- Zoom In Icon -->
+  <button
+    class="text-gray-600 hover:text-black"
+    (click)="zoomIn()"
+    aria-label="Zoom In">
+    <i class="pi pi-search-plus text-xl"></i>
+  </button>
+</div>
+
+
+
