@@ -124,7 +124,7 @@
                 <!-- Dropdown container -->
               <div class="relative inline-block text-left mr-2">
                 <!-- Trigger button -->
-                <button
+                <button 
                 [appDropdownStatus]="'edit-status' + $index"
                 [ngClass]="{
                     'bg-blue-200 text-blue-800': item.status == 'In-progress',
@@ -162,15 +162,16 @@
                     }
                 
                   
-                    <!-- <div class="border-t border-gray-100 my-1"></div>
-                    <div class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
+                    <div class="border-t border-gray-100 my-1"></div>
+                    <div [attr.data-modal-target]="'workflow'+$index" [attr.data-modal-toggle]="'workflow'+$index" class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer status">
                       View workflow
-                    </div> -->
+                    </div>
                   
                 </div>
               </div>
               <span class="text-gray-400 text-sm" [ngClass]="{'line-through': item.status == 'Done'}">DSL-{{item.id}}</span>
             </div>
+            <app-workflow [modalId]="'workflow'+$index"></app-workflow>
           }
         <div>
           @if (isVisibleCreateIssue ) {
@@ -194,7 +195,7 @@
 
 
 
-<app-workflow></app-workflow>
+
 
 
 
