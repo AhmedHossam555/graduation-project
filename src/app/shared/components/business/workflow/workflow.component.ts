@@ -28,7 +28,7 @@ export class WorkflowComponent {
 
   // }
 
-zoomLevel = 1;
+zoomLevel = 1.2;
 minZoom = 0.1;
 maxZoom = 2;
 
