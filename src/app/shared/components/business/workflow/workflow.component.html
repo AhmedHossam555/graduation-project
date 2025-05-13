@@ -112,8 +112,46 @@
   </section>
 </main>
 
-<!-- footer workflow -->
- 
+<div class="flex items-center space-x-4 justify-end py-3">
+  <!-- Zoom Out Icon -->
+  <button
+    class="text-gray-500 bg-blue-50 rounded-lg p-3  inline-flex items-center justify-center hover:text-black cursor-pointer"
+    (click)="zoomOut()"
+    aria-label="Zoom Out">
+    <i class="pi pi-search-minus text-xl"></i>
+  </button>
+
+  <!-- Slider -->
+  <p-slider
+    [(ngModel)]="zoomLevel"
+    [min]="minZoom"
+    [max]="maxZoom"
+    [step]="0.1"
+    class="w-64"
+  ></p-slider>
+  
+
+  <!-- Zoom In Icon -->
+  <button
+    class="text-gray-500 bg-blue-50 rounded-lg p-3  inline-flex items-center justify-center hover:text-black cursor-pointer"
+    (click)="zoomIn()"
+    aria-label="Zoom In">
+    <i class="pi pi-search-plus text-xl"></i>
+  </button>
 </div>
+
+<footer class="flex items-center justify-end gap-2">
+  <button class="px-4 py-1 cursor-default border bg-gray-200 border-gray-300 rounded-md text-gray-700 font-medium hover:bg-gray-100 hover:text-gray-600 transition-all ease-in-out duration-300">
+              Edit WorkFlow
+  </button>
+    <button class="px-4 py-1 cursor-pointer border bg-white border-gray-300 rounded-md text-gray-900 font-medium hover:bg-gray-100 hover:text-gray-600 transition-all ease-in-out duration-300">
+              Close
+  </button>
+</footer>
+
+
+</div>
+
+
 
 
