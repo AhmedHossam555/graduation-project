@@ -7,12 +7,12 @@ import { TaskDetailsComponent } from "../../shared/components/business/task-deta
 @Component({
   selector: 'app-active-sprint',
   standalone: true,
-  imports: [NgIf, NgFor, FormsModule, TaskDetailsComponent],
+  imports: [NgIf, NgFor, FormsModule],
   templateUrl: './active-sprint.component.html',
   styleUrl: './active-sprint.component.scss'
 })
 export class ActiveSprintComponent {
-  tasks:any[]=[{id:1, title:'task1',status:'To-do'}];
+  tasks:any[]=[{id:1, title:'task1',status:'To-do',description:'lorem addpad p'}];
   constructor(private _modalService:ModalService){
 
   }

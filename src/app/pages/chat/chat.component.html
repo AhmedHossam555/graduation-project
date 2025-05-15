@@ -1,20 +1,22 @@
-<div class="flex h-screen bg-gray-50 px-6   main-border shadow">
+
+
+<div class="flex h-screen bg-gray-50 dark:bg-black-100 px-6 main-border shadow">
   <!-- Sidebar -->
-  <aside class="w-1/4 bg-white border-r border-[#f0f0f0]  flex flex-col">
-    <div class="p-4 border-b border-[#f0f0f0]  flex items-center justify-between">
+  <aside class="w-1/4 bg-white dark:bg-black-200 border-r border-[#f0f0f0] dark:border-gray-800 flex flex-col">
+    <div class="p-4 border-b border-[#f0f0f0] dark:border-gray-800 flex items-center justify-between">
       <div>
-        <h2 class="font-semibold">Mr. Bean</h2>
-        <p class="text-xs text-gray-500">UX/UI Designer</p>
+        <h2 class="font-semibold text-gray-900 dark:text-gray-100">Mr. Bean</h2>
+        <p class="text-xs text-gray-500 dark:text-gray-400">UX/UI Designer</p>
       </div>
-      <button class="text-gray-500">⋮</button>
+      <button class="text-gray-500 dark:text-gray-400">⋮</button>
     </div>
 
     <div class="p-2">
       <input type="text" placeholder="Search by name"
-             class="w-full p-2 border border-[#f0f0f0]  rounded text-sm focus:outline-none" />
+             class="w-full p-2 border border-[#f0f0f0] dark:border-gray-800 bg-white dark:bg-black-100 rounded text-sm focus:outline-none text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500" />
     </div>
 
-    <nav class="flex justify-around py-2 border-b border-gray-100 text-gray-600 text-sm">
+    <nav class="flex justify-around py-2 border-b border-gray-100 dark:border-gray-800 text-gray-600 dark:text-gray-300 text-sm">
       <button class="font-semibold">Chats</button>
       <button>Groups</button>
       <button>Notification</button>
@@ -22,19 +24,19 @@
 
     <!-- Chat List -->
     <ul class="overflow-y-auto flex-1">
-      <li class="flex items-center p-3 hover:bg-gray-100 cursor-pointer bg-gray-50 border-l-4 border-blue-500">
+      <li class="flex items-center p-3 hover:bg-gray-100 dark:hover:bg-gray-900 cursor-pointer bg-gray-50 dark:bg-black-100 border-l-4 border-blue-500">
         <img src="https://i.pravatar.cc/32" class="rounded-full w-8 h-8 mr-2" />
         <div class="flex-1">
-          <p class="font-medium text-sm">Felecia Rower</p>
-          <p class="text-xs text-gray-500">if it takes long you can mail</p>
+          <p class="font-medium text-sm text-gray-900 dark:text-gray-100">Felecia Rower</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">if it takes long you can mail</p>
         </div>
-        <span class="text-xs text-gray-500">10 AM</span>
+        <span class="text-xs text-gray-500 dark:text-gray-400">10 AM</span>
       </li>
-      <li class="flex items-center p-3 hover:bg-gray-100 cursor-pointer">
+      <li class="flex items-center p-3 hover:bg-gray-100 dark:hover:bg-gray-900 cursor-pointer bg-gray-50 dark:bg-black-100">
         <img src="https://i.pravatar.cc/33" class="rounded-full w-8 h-8 mr-2" />
         <div class="flex-1">
-          <p class="font-medium text-sm">Abdallah</p>
-          <p class="text-xs text-gray-500">I want to edit design</p>
+          <p class="font-medium text-sm text-gray-900 dark:text-gray-100">Abdallah</p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">I want to edit design</p>
         </div>
         <span class="text-xs text-blue-500 font-bold">1</span>
       </li>
@@ -43,12 +45,12 @@
   </aside>
 
   <!-- Chat Window -->
-  <section class="flex-1 flex flex-col bg-white">
+  <section class="flex-1 flex flex-col bg-white dark:bg-black-100">
     <!-- Header -->
-    <header class="p-4 border-b border-gray-100 flex items-center justify-between">
+    <header class="p-4 border-b border-gray-100 dark:border-gray-800 flex items-center justify-between">
       <div>
-        <h2 class="font-medium">Your name</h2>
-        <p class="text-xs text-gray-500">Status</p>
+        <h2 class="font-medium text-gray-900 dark:text-gray-100">Your name</h2>
+        <p class="text-xs text-gray-500 dark:text-gray-400">Status</p>
       </div>
       <div class="flex gap-3 text-blue-500 text-lg">
         <button>📞</button>
@@ -58,40 +60,33 @@
     </header>
 
     <!-- Messages -->
-    <div class="flex-1 p-4 space-y-4 overflow-y-auto bg-gray-50">
-
-        <div class="max-w-md bg-gray-200 text-sm p-3 rounded mr-auto">
-          Molestie molestie eget elit massa facilisi nibh...
+    <div class="flex-1 p-4 space-y-4 overflow-y-auto bg-gray-50 dark:bg-black-200">
+      <div class="max-w-md bg-gray-200 dark:bg-gray-800 text-sm p-3 rounded mr-auto text-gray-900 dark:text-gray-100">
+        Molestie molestie eget elit massa facilisi nibh...
+      </div>
+      <div class="max-w-md bg-gray-200 dark:bg-gray-800 text-sm p-3 rounded mr-auto text-gray-900 dark:text-gray-100">
+        4140 Parker Rd. Allentown, New Mexico 31134
+      </div>
+      <div class="max-w-lg self-end bg-purple-100 dark:bg-purple-900 p-3 rounded-lg text-sm shadow ml-auto text-gray-900 dark:text-gray-100">
+        <p>Lorem ipsum dolor sit amet consectetur...</p>
+        <div class="mt-2 flex gap-2 text-xs text-right text-gray-700 dark:text-gray-300 justify-end">
+          <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">Savannah Nguyen</span>
+          <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">Leslie Alexander</span>
+          <span class="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">Darlene Robertson</span>
         </div>
-        <div class="max-w-md bg-gray-200 text-sm p-3 rounded mr-auto">
-          4140 Parker Rd. Allentown, New Mexico 31134
-        </div>
-    
-      
-        <div class="max-w-lg self-end bg-purple-100 p-3 rounded-lg text-sm shadow ml-auto">
-          <p>Lorem ipsum dolor sit amet consectetur...</p>
-          <div class="mt-2 flex gap-2 text-xs text-right text-gray-700 justify-end">
-            <span class="bg-gray-100 px-2 py-1 rounded">Savannah Nguyen</span>
-            <span class="bg-gray-100 px-2 py-1 rounded">Leslie Alexander</span>
-            <span class="bg-gray-100 px-2 py-1 rounded">Darlene Robertson</span>
-          </div>
-        </div>
-        <div class="max-w-lg self-end bg-purple-200 p-3 rounded-lg text-sm shadow ml-auto">
-          <p>Lorem ipsum dolor sit amet consectetur...</p>
-        </div>
-    
-  
+      </div>
+      <div class="max-w-lg self-end bg-purple-200 dark:bg-purple-800 p-3 rounded-lg text-sm shadow ml-auto text-gray-900 dark:text-gray-100">
+        <p>Lorem ipsum dolor sit amet consectetur...</p>
+      </div>
     </div>
 
     <!-- Input -->
-    <footer class="p-4 border-t border-gray-200 flex items-center gap-3">
+    <footer class="p-4 border-t border-gray-200 dark:border-gray-800 flex items-center gap-3 bg-white dark:bg-black-100">
       <button>📷</button>
       <button>😊</button>
       <input type="text" placeholder="input text"
-             class="flex-1 p-2  main-border rounded-full focus:outline-none text-sm" />
-      <button class="bg-blue-500 text-white  rounded-full px-4 py-1 text-sm hover:bg-blue-600">➤</button>
+             class="flex-1 p-2 main-border rounded-full focus:outline-none text-sm bg-gray-50 dark:bg-black-200 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500" />
+      <button class="bg-blue-500 text-white rounded-full px-4 py-1 text-sm hover:bg-blue-600">➤</button>
     </footer>
   </section>
 </div>
-
-
