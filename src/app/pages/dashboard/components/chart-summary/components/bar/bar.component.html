@@ -1,8 +1,8 @@
 
   <div id="bar-task" class="p-3 rounded-xl text-center main-border flex flex-col justify-between h-full w-full gap-4 dark:bg-black-100 dark:border-gray-700 ">
       <div class="text-left">
-        <h4 class="font-bold text-gray-900 mb-2 dark:text-gray-300">Priority breakdown</h4>
-        <p class="text-sm font-normal text-gray-700 dark:text-gray-200"> Get a holistic view of how work is being prioritized. <a class="text-main hover:underline ">See what your team's been focusing on</a> </p>
+        <h4 class="font-bold text-gray-900 mb-2 dark:text-gray-200">Priority breakdown</h4>
+        <p class="text-sm font-normal text-gray-700 dark:text-gray-300"> Get a holistic view of how work is being prioritized. <a class="text-main hover:underline ">See what your team's been focusing on</a> </p>
       </div>
       <div class="w-full h-full inline-flex">
          <p-chart class="w-full h-full" type="bar" [data]="priorityData" [options]="priorityOptions" class="dark:text-black-50"></p-chart>
