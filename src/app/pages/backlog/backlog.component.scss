@@ -1,11 +1,16 @@
-.body-backlog > div:not(:last-child) {
-  border-bottom: 1px solid #f3f3f3;
-}
+// .body-backlog > div:not(:last-child) {
+//   border-bottom: 1px solid #f3f3f3;
+// }
 
-.body-sprint > div:not(:last-child) {
-  border-bottom: 1px solid #f3f3f3;
-}
+// .body-sprint > div:not(:last-child) {
+//   border-bottom: 1px solid #f3f3f3;
+// }
 
 
-// background-color: #f8f8f8;
-
+// // background-color: #f8f8f8;
+// .dark .body-backlog > div:not(:last-child) {
+//   border-bottom: 1px solid #23272e !important;
+// }
+// .dark .body-sprint > div:not(:last-child) {
+//   border-bottom: 1px solid #23272e !important;
+// }

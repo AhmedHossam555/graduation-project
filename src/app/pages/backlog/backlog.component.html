@@ -1,22 +1,22 @@
 
 
-<div class="p-4 sm:p-8">
-  <h2 class="text-2xl font-bold py-5 border-b border-gray-100 mb-8 dark:bg-gray-900">Sprint</h2>
+<div class="p-4 sm:p-8 ">
+  <h2 class="text-2xl font-bold py-5 border-b border-gray-100 mb-8  dark:text-white">Sprint</h2>
 
 
   <!-- Sprint List -->
   <div id="sprint-list" class="mb-10">
     @for (sprint of sprintTasks; track  $index) {
-      <div class="bg-[#f8f8f8] shadow py-3 px-2 mb-2 rounded ">
+      <div class="bg-[#f8f8f8] shadow py-3 px-2 mb-2 rounded dark:bg-black-100 dark:text-white">
         <!-- Header -->
-      <div class="flex justify-between items-center mb-4">
+      <div class="flex justify-between items-center mb-4 ">
         <div class="inline-flex items-center gap-2 mb-2">
           <span class="cursor-pointer">
             <svg [appAccordion]="'sprint'+$index" class="w-5 h-5 rotate-90 transition-all duration-150 linear"  fill="none" viewBox="0 0 12 12" role="presentation" ><path fill="currentcolor" fill-rule="evenodd" d="M7.94 6 3.97 2.03 5.03.97l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5-1.06-1.06z" clip-rule="evenodd"></path></svg>
           </span>
-          <h2 class="text-xl font-medium">{{sprint.title}} <span class="text-sm  text-gray-500 pl-3">{{sprint.startDate}} – {{sprint.endDate}} &nbsp; ({{sprint['sprintTasks'].length}} issue)</span></h2>
+          <h2 class="text-xl font-medium">{{sprint.title}} <span class="text-sm  text-gray-500 pl-3 dark:text-white">{{sprint.startDate}} – {{sprint.endDate}} &nbsp; ({{sprint['sprintTasks'].length}} issue)</span></h2>
         </div>
-    
+       
         <div class="inline-flex items-center gap-2">
           @if(!sprint.sprintStart){
             <button (click)="onStartSprint(sprint)" data-modal-target="start-sprint-modal" data-modal-toggle="start-sprint-modal"  [disabled]="$index > 0" 
@@ -46,7 +46,7 @@
   
         
       </div>
-      <!-- body sprint -->
+      <!----------------------- body sprint ------------------->
        <section [id]="'sprint'+$index">
         <div   
         cdkDropList
@@ -54,9 +54,9 @@
         [cdkDropListData]="sprint.sprintTasks"
         [cdkDropListConnectedTo]="getConnectedDropListIds(sprint.id)"
     
-        (cdkDropListDropped)="drop($event)"  class="body-sprint bg-white  main-border rounded-sm">
-          @for(item of sprint['sprintTasks']; track $index){
-            <div cdkDrag  class="item-task-sprint flex items-center justify-between hover:bg-gray-100 cursor-move p-3 ">
+        (cdkDropListDropped)="drop($event)"  class="body-sprint bg-white  main-border rounded-sm dark:bg-[#1D2328] dark:text-white dark:border-gray-900 ">
+          @for(item of sprint['sprintTasks']; track $index; let last = $last ){
+            <div cdkDrag  class="item-task-sprint flex items-center justify-between hover:bg-gray-100 cursor-move p-3 " [ngClass]="{'border-b border-[#f3f3f3] dark:border-gray-900': !last}">
               <div class="flex items-center gap-2">
                 <div class="w-4 h-4 bg-green-500 rounded-sm"></div>
                 <span class="font-medium">{{item.title}}</span>
