@@ -1,7 +1,7 @@
 
-<main class="project bg-[#fefefe] dark:bg-black-100 py-6 px-6 min-h-screen">
+<main class="project bg-[#fefefe] dark:bg-black-100 py-6 px-6 min-h-screen dark:bg-black-200">
   <!-- create project and search -->
-  <div class="project-header w-full flex items-center justify-between flex-wrap px-6 py-6 main-border rounded-lg shadow-sm bg-white dark:bg-gray-800 dark:border-gray-700">
+  <div class="project-header w-full flex items-center justify-between flex-wrap px-6 py-6 main-border rounded-lg shadow-sm bg-white dark:bg-black-100 dark:border-gray-700">
     <div id="create-project" class="flex-1 mb-4 sm:mb-0">
       <button data-modal-target="create-project-model" data-modal-toggle="create-project-model"
         class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors cursor-pointer bg-blue-600 hover:bg-blue-700 text-white h-10 px-4 py-3 whitespace-nowrap">
@@ -24,7 +24,7 @@
   <!-- projects items -->
   <div class="project-table grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 w-full mt-6" style="perspective: 800px;">
     <div routerLink="/projects/SCRUM/boards/1"
-      class="cell-project main-border rounded-lg shadow-sm bg-white dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg transition-all ease-in-out duration-300 cursor-pointer transform-3d hover:translate-3d">
+      class="cell-project main-border rounded-lg shadow-sm bg-white dark:bg-black-100 dark:border-gray-700 hover:shadow-lg transition-all ease-in-out duration-300 cursor-pointer transform-3d hover:translate-3d">
       <div class="cell-project px-4 py-4">
         <div class="header-project flex items-center gap-3 mb-3">
           <div id="status-project" class="flex-1">
@@ -44,7 +44,7 @@
           </div>
           <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots-one"
             data-dropdown-placement="bottom-start"
-            class="inline-flex self-center items-center p-2 text-sm font-medium text-center text-gray-900 bg-gray-100 rounded-full hover:bg-gray-200 dark:text-white focus:ring-gray-50 dark:bg-gray-900 dark:hover:bg-gray-800"
+            class="inline-flex self-center items-center p-2 text-sm font-medium text-center text-gray-900 bg-gray-100 rounded-full hover:bg-gray-200 dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-800"
             type="button">
             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24"
               height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
