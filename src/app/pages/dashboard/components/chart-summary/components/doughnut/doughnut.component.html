@@ -1,17 +1,17 @@
 
-  <div id="doughnut-task" class="p-3 rounded-xl text-center main-border flex flex-col justify-between gap-4 h-full w-full">
+  <div id="doughnut-task" class="p-3 rounded-xl text-center main-border flex flex-col justify-between gap-4 h-full w-full dark:bg-black-100 dark:border-gray-700 ">
       <div class="text-left">
-        <h4 class="font-bold text-gray-900 mb-2">Status overview</h4>
-        <p class="text-sm font-normal text-gray-700">Get a snapshot of the status of your work items. <a class="text-main hover:underline ">View all work items</a> </p>
+        <h4 class="font-bold text-gray-900 mb-2 dark:text-gray-300">Status overview</h4>
+        <p class="text-sm font-normal text-gray-700 dark:text-gray-200">Get a snapshot of the status of your work items. <a class="text-main hover:underline ">View all work items</a> </p>
       </div>
       <div class="card inline-flex justify-content-center">
         <div class="relative w-full">
-            <p-chart type="doughnut" [data]="data" [options]="options"  />
+            <p-chart type="doughnut" [data]="data" [options]="options" class="dark:text-dark-50" />
          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-medium">
-           <h5 class="font-medium text-2xl">
+           <h5 class="font-medium text-2xl dark:text-white">
             {{totalNumber}}
            </h5>
-           <p class="text-gray-600 capitalize">{{hoveredValue}}</p>
+           <p class="text-gray-600 capitalize dark:text-black-50">{{hoveredValue}}</p>
         </div>
         </div>
     
