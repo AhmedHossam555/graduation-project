@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { ToggleSidebarComponent } from "./components/toggle-sidebar/toggle-sidebar.component";
 import { initFlowbite } from 'flowbite';
 import { FlowbiteService } from '../../services/flowbite/flowbite.service';
-import { DarkModeService } from '../../services/dark-mode/dark-mode.service';
+
 import { isPlatformBrowser, NgIf } from '@angular/common';
 
 @Component({
