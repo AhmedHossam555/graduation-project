@@ -9,7 +9,7 @@ import { WorkflowComponent } from "./shared/components/business/workflow/workflo
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ToggleSidebarComponent, WorkflowComponent],
+  imports: [RouterOutlet, WorkflowComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
