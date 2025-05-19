@@ -2,7 +2,6 @@ import { Component, signal } from '@angular/core';
 import { FlowbiteService } from '../../shared/services/flowbite/flowbite.service';
 import { initFlowbite } from 'flowbite';
 import { ProjectModalComponent } from '../../shared/components/ui/project-modal/project-modal.component';
-import { RouterLink } from '@angular/router';
 import { ProjectService } from '../../shared/services/project/project.service';
 import { Project } from '../../shared/interfaces/project';
 import { ProjectItemComponent } from "../../shared/components/ui/project-item/project-item.component";
@@ -78,7 +77,7 @@ export class ProjectsComponent {
           },
           error:(err)=>{
             console.log(err);
-            // delete error message 
+            // added error message 
             this.toast.error("Failed to added project");
           }
         })
