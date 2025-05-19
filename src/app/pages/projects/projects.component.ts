@@ -36,5 +36,10 @@ export class ProjectsComponent {
        }
       
 
+       // onDelete Project 
+       onDeleteProject(event:any){
+        console.log(event);
+       }
+
 
 }
