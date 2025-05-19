@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../Enviroment/enviroment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,19 @@ export class ProjectService {
 
   constructor(private _httpClient:HttpClient) { }
 
+  // create project 
   createProject(x:any):Observable<any>{
-    return this._httpClient.post("http://localhost:3000/api/v1/project",x);
+    return this._httpClient.post(`${environment.apiUrl}/project`,x);
   }
+
+  // get all project
   getAllProject():Observable<any>{
-    return this._httpClient.get("http://localhost:3000/api/v1/project");
+    return this._httpClient.get(`${environment.apiUrl}/project`);
+  }
+  
+  // delete one project
+  softDeleteProject(id:number):Observable<any>{
+    return this._httpClient.delete(`${environment.apiUrl}/project/soft/${id}`);
   }
 }
 

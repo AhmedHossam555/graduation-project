@@ -25,7 +25,8 @@ export class ProjectsComponent {
           });
           this.getAllProject();
         }
-
+      
+      // get All project 
        getAllProject(){
         this.projectService.getAllProject().subscribe({
           next:(res)=>{
@@ -38,7 +39,13 @@ export class ProjectsComponent {
 
        // onDelete Project 
        onDeleteProject(event:any){
-        console.log(event);
+        this.projectService.softDeleteProject(event).subscribe({
+          next: (res)=>{
+            if(res.status == "success"){
+              this.getAllProject();
+            }
+          }
+        })
        }
 
 
