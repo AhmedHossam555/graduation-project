@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { ProjectService } from '../../../services/project/project.service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
+import { Project } from '../../../interfaces/project';
 
 @Component({
   selector: 'app-project-modal',
@@ -11,16 +12,16 @@ import { CalendarModule } from 'primeng/calendar';
   styleUrl: './project-modal.component.scss'
 })
 export class ProjectModalComponent {
-   
+  // output signal create project
+  OnCreateProject = output<Project>()
   
-
+  
   // project form
   projectForm = new FormGroup({
     'name': new FormControl(null, [Validators.required]),
     'description': new FormControl(null, [Validators.required]),
     'start_date': new FormControl(null,[Validators.required]),
     'end_date': new FormControl(null,[Validators.required]),
-
   });
   
 
@@ -42,7 +43,8 @@ export class ProjectModalComponent {
     start_date: this.formatDate(raw.start_date),
     end_date: this.formatDate(raw.end_date),
   };
-  console.log(payload);
+
+  this.OnCreateProject.emit(payload);
   
  }
   
