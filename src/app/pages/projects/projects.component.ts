@@ -16,7 +16,8 @@ import { HotToastService } from '@ngneat/hot-toast';
   styleUrl: './projects.component.scss'
 })
 export class ProjectsComponent {
-       projects = signal<Project[]>([])
+       projects = signal<Project[]>([]);
+       isLoading = signal<boolean>(true);
       constructor(private _flowbiteService: FlowbiteService, private projectService:ProjectService,private toast: HotToastService){
         }
       
@@ -31,8 +32,13 @@ export class ProjectsComponent {
        getAllProject(){
         this.projectService.getAllProject().subscribe({
           next:(res)=>{
+            this.isLoading.set(false);
             this.projects.set(res.data.response.projects);
             console.log(res.data.response.projects);
+          },
+          error:(err)=>{
+            this.isLoading.set(false);
+            console.log(err);
           }
         })
        }

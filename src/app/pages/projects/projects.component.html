@@ -1,4 +1,68 @@
 
+@if(isLoading()){
+<!-- Skeleton Loader Container (Wrap multiple for a grid) -->
+
+ <main class="project bg-[#fefefe] dark:bg-black-100 py-6 px-6 min-h-screen dark:bg-black-200">
+ <header class=" animate-pulse flex items-center justify-between">
+  <div class="h-12  bg-gray-200 rounded-lg dark:bg-gray-700 w-40 mb-4"></div>
+  <div class="h-8  bg-gray-200 rounded-lg dark:bg-gray-700 w-52 mb-4"></div>
+
+ </header>
+  <div class="grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 ">
+  @for(item of [1,2,3,4,5,6]; track $index){
+  <div role="status" class="p-6 max-w-sm w-full rounded-lg border border-gray-200 shadow animate-pulse">
+    <!-- Header Row -->
+    <div class="flex justify-between items-center mb-4">
+      <div class="h-6 w-24 bg-gray-200 rounded-full"></div>
+      <div class="h-6 w-6 bg-gray-200 rounded-full"></div>
+    </div>
+    <!-- Avatar & Title -->
+    <div class="flex items-center gap-4 mb-2">
+      <div class="h-10 w-10 rounded-full bg-gray-200"></div>
+      <div class="flex-1">
+        <div class="h-4 w-full bg-gray-200 rounded-full mb-1"></div>
+        <div class="h-3 w-full bg-gray-200 rounded-full"></div>
+      </div>
+    </div>
+
+    <!-- Team Avatars -->
+    <div class="mb-4">
+      <div class="h-3 w-16 bg-gray-200 rounded-full mb-2"></div>
+      <div class="flex space-x-2">
+        <div class="h-4 w-4 rounded-full bg-gray-200"></div>
+        <div class="h-4 w-4 rounded-full bg-gray-200"></div>
+        <div class="h-4 w-4 rounded-full bg-gray-200"></div>
+        <div class="h-4 w-4 rounded-full bg-gray-200"></div>
+      </div>
+    </div>
+
+    <!-- Priority & Progress -->
+    
+    <div class="h-3 w-full bg-gray-200 rounded-full mb-4"></div>
+
+    <!-- Dates -->
+    <div class="flex justify-between">
+      <div>
+        <div class="h-3 w-20 bg-gray-200 rounded-full mb-1"></div>
+        <div class="h-3 w-16 bg-gray-200 rounded-full"></div>
+      </div>
+      <div>
+        <div class="h-3 w-20 bg-gray-200 rounded-full mb-1"></div>
+        <div class="h-3 w-16 bg-gray-200 rounded-full"></div>
+      </div>
+    </div>
+
+    <span class="sr-only">Loading...</span>
+  </div>
+  }
+
+  </div>
+ </main>
+
+}
+
+
+@if(!isLoading()){
 <main class="project bg-[#fefefe] dark:bg-black-100 py-6 px-6 min-h-screen dark:bg-black-200">
   <!-- create project and search -->
   <div class="project-header w-full flex items-center justify-between flex-wrap px-6 py-6 main-border rounded-lg shadow-sm bg-white dark:bg-black-100 dark:border-gray-700">
@@ -20,10 +84,6 @@
         placeholder="Search..." aria-label="Search" aria-describedby="search-addon" />
     </div>
   </div>
-
-
-
-
   <!-- projects items -->
   <div class="project-table grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 w-full mt-6" style="perspective: 800px;">
     @for (project of projects(); track project.id) {
@@ -33,6 +93,11 @@
   
   </div>
 </main>
+}
+
+
+
+
 
 
 <!-- Model toggle create project -->
@@ -40,79 +105,3 @@
 
 
 
-<!-- 
-      <div routerLink="/projects/SCRUM/boards/1"
-      class="cell-project main-border rounded-lg shadow-sm bg-white dark:bg-black-100 dark:border-gray-700 hover:shadow-lg transition-all ease-in-out duration-300 cursor-pointer transform-3d hover:translate-3d">
-      <div class="cell-project px-4 py-4">
-        <div class="header-project flex items-center gap-3 mb-3">
-          <div id="status-project" class="flex-1">
-            <div
-              class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors border-transparent text-main bg-primary-50 capitalize dark:bg-blue-900 dark:text-blue-300">
-              in progress
-            </div>
-          </div>
-          <div class="flex-none cursor-pointer">
-            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img"
-              class="text-yellow-400 w-[18px] h-[18px] iconify iconify--heroicons" width="1em" height="1em"
-              viewBox="0 0 24 24">
-              <path fill="currentColor" fill-rule="evenodd"
-                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006l5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527l1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354L7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273l-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </div>
-          <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots-one"
-            data-dropdown-placement="bottom-start"
-            class="inline-flex self-center items-center p-2 text-sm font-medium text-center text-gray-900 bg-gray-100 rounded-full hover:bg-gray-200 dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-800"
-            type="button">
-            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24"
-              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="1"></circle>
-              <circle cx="19" cy="12" r="1"></circle>
-              <circle cx="5" cy="12" r="1"></circle>
-            </svg>
-          </button>
-        </div>
-        <div class="body-project flex items-center justify-between gap-4 mb-3">
-          <div
-            class="project-title inline-flex items-center justify-center text-sm font-medium text-[#22C55E] bg-[#BCEDCE] p-3 w-12 h-12 rounded-lg capitalize dark:bg-green-900 dark:text-green-300">
-            AC
-          </div>
-          <section id="prject-description">
-            <h2 class="text-sm font-medium text-black mb-1 dark:text-gray-100">Acculance - A POS Application</h2>
-            <p class="text-secondray text-xs font-normal dark:text-gray-400">Acculance stand out as a web application crafted for point of sale, inventory management</p>
-          </section>
-        </div>
-        <div class="flex mt-6 gap-10">
-          <section id="team" class="flex-1">
-            <h3 class="text-sm font-medium mb-1.5 dark:text-gray-200">Team:</h3>
-            <div class="flex items-center mt-1">
-              <img class="w-6 h-6 rounded-full" src="assets/images/person1.svg" alt="Jese image">
-              <img class="w-6 h-6 rounded-full -ml-1" src="assets/images/person1.svg" alt="Joseph image">
-              <img class="w-6 h-6 rounded-full -ml-1" src="assets/images/person1.svg" alt="Jese image">
-              <img class="w-6 h-6 rounded-full -ml-1" src="assets/images/person1.svg" alt="Joseph image">
-            </div>
-          </section>
-          <section id="Priority">
-            <h3 class="text-sm font-medium mb-1.5 dark:text-gray-200">Priority:</h3>
-            <div
-              class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors border-transparent bg-[#06b6d4] text-white capitalize dark:bg-cyan-900">
-              Low
-            </div>
-          </section>
-        </div>
-        <div class="w-full mt-5 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-          <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%"></div>
-        </div>
-      </div>
-      <div class="items-center flex justify-between border-t border-gray-100 dark:border-gray-700 p-4">
-        <div>
-          <div class="text-xs text-secondray mb-[2px] dark:text-gray-400">Assigned Date:</div>
-          <span class="text-xs font-medium text-gray-900 dark:text-gray-100">24 June 2023</span>
-        </div>
-        <div>
-          <div class="text-xs text-secondray mb-[2px] dark:text-gray-400">Due Date:</div>
-          <span class="text-xs font-medium text-gray-900 dark:text-gray-100">02 March 2024</span>
-        </div>
-      </div>
-        </div> -->
