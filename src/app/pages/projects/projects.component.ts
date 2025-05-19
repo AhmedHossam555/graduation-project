@@ -10,7 +10,7 @@ import { ProjectItemComponent } from "../../shared/components/ui/project-item/pr
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [ProjectModalComponent, RouterLink, ProjectItemComponent],
+  imports: [ProjectModalComponent,  ProjectItemComponent],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
 })

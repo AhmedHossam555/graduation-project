@@ -1,4 +1,5 @@
-  <div routerLink="/projects/SCRUM/boards/1"
+  
+  <div [routerLink]="['/projects/SCRUM/boards', project()?.id]"
       class="cell-project main-border rounded-lg shadow-sm bg-white dark:bg-black-100 dark:border-gray-700 hover:shadow-lg transition-all ease-in-out duration-300 cursor-pointer transform-3d hover:translate-3d">
       <div class="cell-project px-4 py-4">
         <div class="header-project flex items-center gap-3 mb-3">
@@ -9,6 +10,7 @@
             </div>
           </div>
           <div class="flex-none cursor-pointer">
+            <!-- favorite project -->
             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img"
               class="text-yellow-400 w-[18px] h-[18px] iconify iconify--heroicons" width="1em" height="1em"
               viewBox="0 0 24 24">
@@ -17,10 +19,11 @@
                 clip-rule="evenodd"></path>
             </svg>
           </div>
-          <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots-one"
+          <!-- dropdown edit item -->
+          <button id="dropdownMenuIconButton"  [attr.data-dropdown-toggle]="'dropdownedit'+project()?.id"
             data-dropdown-placement="bottom-start"
             class="inline-flex self-center items-center p-2 text-sm font-medium text-center text-gray-900 bg-gray-100 rounded-full hover:bg-gray-200 dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-800"
-            type="button">
+            type="button" (click)="onclick($event)">
             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24"
               height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
@@ -77,3 +80,21 @@
         </div>
       </div>
         </div>
+
+
+
+<!-- dropdown edit icon -->
+<div 
+     [id]="'dropdownedit'+ project()?.id"
+     
+     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-40 dark:bg-gray-700 dark:divide-gray-600">
+  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+    <li >
+      <a class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        (click)="onDeleteProject(project()?.id)">Delete</a>
+    </li>
+    <li>
+      <a   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+    </li>
+  </ul>
+</div>
