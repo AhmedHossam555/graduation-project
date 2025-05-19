@@ -6,6 +6,7 @@ import { RouterLink } from '@angular/router';
 import { ProjectService } from '../../shared/services/project/project.service';
 import { Project } from '../../shared/interfaces/project';
 import { ProjectItemComponent } from "../../shared/components/ui/project-item/project-item.component";
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-projects',
@@ -16,7 +17,7 @@ import { ProjectItemComponent } from "../../shared/components/ui/project-item/pr
 })
 export class ProjectsComponent {
        projects = signal<Project[]>([])
-      constructor(private _flowbiteService: FlowbiteService, private projectService:ProjectService){
+      constructor(private _flowbiteService: FlowbiteService, private projectService:ProjectService,private toast: HotToastService){
         }
       
         ngOnInit(): void {
@@ -39,12 +40,21 @@ export class ProjectsComponent {
 
        // onDelete Project 
        onDeleteProject(event:any){
+        const element =  document.getElementById("dropdownedit"+event) as HTMLElement;
+        element.classList.toggle("hidden");
         this.projectService.softDeleteProject(event).subscribe({
           next: (res)=>{
             if(res.status == "success"){
               this.getAllProject();
-              
+              this.toast.success("Project deleted successfully",{
+                duration: 2000,
+              });
             }
+          },
+          error:(err)=>{
+            console.log(err);
+            // delete error message 
+            this.toast.error("Failed to delete project");
           }
         })
        }
