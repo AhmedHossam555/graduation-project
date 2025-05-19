@@ -1,0 +1,12 @@
+:host ::ng-deep p-calendar  {
+   input{
+    border: 1px solid #F0F0F0 ;  
+    border-radius: 8px;
+    font-size: 14px;
+    @apply text-black-50;
+   }
+   
+   span:first-child {
+      width: 100%;
+    }
+}

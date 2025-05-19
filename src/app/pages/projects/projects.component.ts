@@ -44,7 +44,7 @@ export class ProjectsComponent {
        }
       
 
-       // onDelete Project 
+       // on Delete Project 
        onDeleteProject(event:any){
         const element =  document.getElementById("dropdownedit"+event) as HTMLElement;
         element.classList.toggle("hidden");

@@ -25,7 +25,8 @@ export class ProjectItemComponent {
 
   
   constructor(private _flowbiteService: FlowbiteService, private projectService:ProjectService){
-          }
+    
+  }
         
   ngOnInit(): void {
     this._flowbiteService.loadFlowbite((flowbite) => {
