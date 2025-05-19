@@ -43,6 +43,7 @@ export class ProjectsComponent {
           next: (res)=>{
             if(res.status == "success"){
               this.getAllProject();
+              
             }
           }
         })
