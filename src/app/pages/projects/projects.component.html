@@ -1,4 +1,4 @@
-
+<!-- skeleton loader -->
 @if(isLoading()){
 <!-- Skeleton Loader Container (Wrap multiple for a grid) -->
 
@@ -62,6 +62,7 @@
 }
 
 
+
 @if(!isLoading()){
 <main class="project bg-[#fefefe] dark:bg-black-100 py-6 px-6 min-h-screen dark:bg-black-200">
   <!-- create project and search -->
@@ -88,7 +89,7 @@
   <div class="project-table grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 w-full mt-6" style="perspective: 800px;">
     @for (project of projects(); track project.id) {
        <!-- project item component -->
-        <app-project-item [project]="project" (deleteProject)="onDeleteProject($event)"></app-project-item>
+        <app-project-item [project]="project" (deleteProject)="onDeleteProject($event)" ></app-project-item>
     }
   
   </div>
@@ -101,7 +102,7 @@
 
 
 <!-- Model toggle create project -->
-<app-project-modal ></app-project-modal>
+<app-project-modal (OnCreateProject)="OnCreateProject($event)" ></app-project-modal>
 
 
 

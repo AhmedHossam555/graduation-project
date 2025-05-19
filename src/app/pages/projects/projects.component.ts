@@ -18,7 +18,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 export class ProjectsComponent {
        projects = signal<Project[]>([]);
        isLoading = signal<boolean>(true);
-      constructor(private _flowbiteService: FlowbiteService, private projectService:ProjectService,private toast: HotToastService){
+      constructor(private _flowbiteService: FlowbiteService, private _projectService:ProjectService,private toast: HotToastService){
         }
       
         ngOnInit(): void {
@@ -30,11 +30,10 @@ export class ProjectsComponent {
       
       // get All project 
        getAllProject(){
-        this.projectService.getAllProject().subscribe({
+        this._projectService.getAllProject().subscribe({
           next:(res)=>{
             this.isLoading.set(false);
             this.projects.set(res.data.response.projects);
-            console.log(res.data.response.projects);
           },
           error:(err)=>{
             this.isLoading.set(false);
@@ -48,7 +47,7 @@ export class ProjectsComponent {
        onDeleteProject(event:any){
         const element =  document.getElementById("dropdownedit"+event) as HTMLElement;
         element.classList.toggle("hidden");
-        this.projectService.softDeleteProject(event).subscribe({
+        this._projectService.softDeleteProject(event).subscribe({
           next: (res)=>{
             if(res.status == "success"){
               this.getAllProject();
@@ -65,5 +64,24 @@ export class ProjectsComponent {
         })
        }
 
+      
+      // On Add Project connect api
+      OnCreateProject(event:Project){
+        this._projectService.createProject(event).subscribe({
+          next: (res)=>{
+            if(res.status == "success"){
+              this.getAllProject();
+              this.toast.success("Project added successfully",{
+                duration: 2000,
+              });
+            }
+          },
+          error:(err)=>{
+            console.log(err);
+            // delete error message 
+            this.toast.error("Failed to added project");
+          }
+        })
+      }
 
 }
