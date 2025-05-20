@@ -22,6 +22,9 @@ export class ProjectItemComponent {
   // input signal item for project
   project = input<Project>();
 
+  // output signal for edit project
+  editProject = output<Project>();
+
 
   
   constructor(private _flowbiteService: FlowbiteService, private projectService:ProjectService){
@@ -40,5 +43,12 @@ export class ProjectItemComponent {
 
   onDeleteProject(projectId?:number){
     this.deleteProject.emit(projectId);
+  }
+
+  // onEdit Project
+  onEditProject(project:any, id:string){
+    const element =  document.getElementById(id) as HTMLElement;
+    element.classList.toggle("hidden");
+    this.editProject.emit(project);
   }
 }

@@ -6,18 +6,23 @@ import { ProjectService } from '../../shared/services/project/project.service';
 import { Project } from '../../shared/interfaces/project';
 import { ProjectItemComponent } from "../../shared/components/ui/project-item/project-item.component";
 import { HotToastService } from '@ngneat/hot-toast';
+import { UpdateProjectModalComponent } from "../../shared/components/ui/update-project-modal/update-project-modal.component";
 
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [ProjectModalComponent,  ProjectItemComponent],
+  imports: [ProjectModalComponent, ProjectItemComponent, UpdateProjectModalComponent],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
 })
 export class ProjectsComponent {
        projects = signal<Project[]>([]);
        isLoading = signal<boolean>(true);
+
+       // update project modal value
+        projectValue = signal<any>({});
+
       constructor(private _flowbiteService: FlowbiteService, private _projectService:ProjectService,private toast: HotToastService){
         }
       
@@ -86,12 +91,10 @@ export class ProjectsComponent {
 
 
 
-        isloader:boolean = false;
+      // on Edit Project
+      onEditProject(event:Project){
+         this.projectValue.set(event);
+      }
 
-        ngAfterViewInit() { 
-          setTimeout(() => {
-            this.isloader = true;
-          }, 5000);
-        }
 
 }

@@ -93,7 +93,7 @@
   <div class="project-table grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 w-full mt-6" style="perspective: 800px;">
     @for (project of projects(); track project.id) {
        <!-- project item component -->
-        <app-project-item [project]="project" (deleteProject)="onDeleteProject($event)" ></app-project-item>
+        <app-project-item [project]="project" (deleteProject)="onDeleteProject($event)" (editProject)="onEditProject($event)" ></app-project-item>
     }
   
   </div>
@@ -108,5 +108,5 @@
 <!-- Model toggle create project -->
 <app-project-modal (OnCreateProject)="OnCreateProject($event)" ></app-project-modal>
 
-
+<app-update-project-modal [projectValue]="projectValue()" ></app-update-project-modal>
 
