@@ -7,6 +7,7 @@ import { Project } from '../../shared/interfaces/project';
 import { ProjectItemComponent } from "../../shared/components/ui/project-item/project-item.component";
 import { HotToastService } from '@ngneat/hot-toast';
 
+
 @Component({
   selector: 'app-projects',
   standalone: true,
@@ -82,5 +83,15 @@ export class ProjectsComponent {
           }
         })
       }
+
+
+
+        isloader:boolean = false;
+
+        ngAfterViewInit() { 
+          setTimeout(() => {
+            this.isloader = true;
+          }, 5000);
+        }
 
 }
