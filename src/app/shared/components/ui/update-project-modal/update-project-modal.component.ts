@@ -1,4 +1,4 @@
-import { Component, input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, input, OnChanges, output, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { Project } from '../../../interfaces/project';
@@ -11,6 +11,8 @@ import { Project } from '../../../interfaces/project';
   styleUrl: './update-project-modal.component.scss'
 })
 export class UpdateProjectModalComponent implements OnChanges {
+  // output signal for update project
+  updateValue = output<Project>();
   /// old project value
   // this is used to get the project value from the parent component
   projectValue = input<Project>();
@@ -67,5 +69,8 @@ updateProject() {
     end_date: this.formatDate(raw.end_date),
   };
   // send payload to API
+  this.updateValue.emit(payload);
+  // reset form
+  this.projectForm.reset();
 }
 }
