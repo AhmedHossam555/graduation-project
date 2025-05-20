@@ -108,5 +108,5 @@
 <!-- Model toggle create project -->
 <app-project-modal (OnCreateProject)="OnCreateProject($event)" ></app-project-modal>
 
-<app-update-project-modal [projectValue]="projectValue()" ></app-update-project-modal>
+<app-update-project-modal [projectValue]="projectValue()"  (updateValue)="onUpdateProject($event)"></app-update-project-modal>
 

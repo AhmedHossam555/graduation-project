@@ -26,6 +26,11 @@ export class ProjectService {
   softDeleteProject(id:number):Observable<any>{
     return this._httpClient.delete(`${environment.apiUrl}/project/soft/${id}`);
   }
+
+  // update project
+  updateProject(id:number, projectItem:Project):Observable<any>{
+    return this._httpClient.patch(`${environment.apiUrl}/project/${id}`,projectItem);
+  }
 }
 
 

@@ -96,5 +96,22 @@ export class ProjectsComponent {
          this.projectValue.set(event);
       }
 
-
+      // on Update Project
+      onUpdateProject(event:Project){
+        this._projectService.updateProject(this.projectValue().id, event).subscribe({
+          next: (res)=>{
+            if(res.status == "success"){
+              this.getAllProject();
+              this.toast.success("Project updated successfully",{
+                duration: 2000,
+              });
+            }
+          },
+          error:(err)=>{
+            console.log(err);
+            // update error message 
+            this.toast.error("Failed to update project");
+          }
+        })
+      }
 }

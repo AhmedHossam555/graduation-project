@@ -13,6 +13,7 @@ import { Project } from '../../../interfaces/project';
 export class UpdateProjectModalComponent implements OnChanges {
   // output signal for update project
   updateValue = output<Project>();
+
   /// old project value
   // this is used to get the project value from the parent component
   projectValue = input<Project>();
@@ -70,6 +71,7 @@ updateProject() {
   };
   // send payload to API
   this.updateValue.emit(payload);
+
   // reset form
   this.projectForm.reset();
 }
