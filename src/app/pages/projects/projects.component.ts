@@ -7,12 +7,15 @@ import { Project } from '../../shared/interfaces/project';
 import { ProjectItemComponent } from "../../shared/components/ui/project-item/project-item.component";
 import { HotToastService } from '@ngneat/hot-toast';
 import { UpdateProjectModalComponent } from "../../shared/components/ui/update-project-modal/update-project-modal.component";
+import { FilterProjectPipe } from '../../shared/pipes/filter-project/filter-project.pipe';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [ProjectModalComponent, ProjectItemComponent, UpdateProjectModalComponent],
+  imports: [ProjectModalComponent, ProjectItemComponent, UpdateProjectModalComponent,FilterProjectPipe,CommonModule,FormsModule],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.scss'
 })
@@ -22,6 +25,9 @@ export class ProjectsComponent {
 
        // update project modal value
         projectValue = signal<any>({});
+
+        // search project value
+        searchValue = signal<string>("");
 
       constructor(private _flowbiteService: FlowbiteService, private _projectService:ProjectService,private toast: HotToastService){
         }
@@ -114,4 +120,7 @@ export class ProjectsComponent {
           }
         })
       }
+      // onSearch(event:string){
+      //   this.searchValue.set('');
+      // }
 }

@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { FlowbiteService } from '../../../services/flowbite/flowbite.service';
 import { ProjectService } from '../../../services/project/project.service';
 import { initFlowbite } from 'flowbite';
-import { NgClass, NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-project-item',

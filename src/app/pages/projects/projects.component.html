@@ -84,14 +84,14 @@
       </button>
     </div>
     <div class="search-bar w-full sm:w-fit">
-      <input type="text"
+      <input type="text" [(ngModel)]="searchValue"
         class="w-full px-4 py-2.5 main-border rounded-lg text-sm placeholder:text-sm font-medium focus:border-blue-500 bg-white dark:bg-black-200 dark:text-gray-100 dark:placeholder-gray-400 dark:border-gray-800"
         placeholder="Search..." aria-label="Search" aria-describedby="search-addon" />
     </div>
   </div>
   <!-- projects items -->
   <div class="project-table grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-5 w-full mt-6" style="perspective: 800px;">
-    @for (project of projects(); track project.id) {
+    @for (project of projects() | filterProject:searchValue(); track project.id) {
        <!-- project item component -->
         <app-project-item [project]="project" (deleteProject)="onDeleteProject($event)" (editProject)="onEditProject($event)" ></app-project-item>
     }
