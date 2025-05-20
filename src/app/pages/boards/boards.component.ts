@@ -23,7 +23,10 @@ export class BoardsComponent {
         
           const loader =document.getElementById("loader-second") as HTMLElement;
           if(loader){
-            setTimeout(()=> loader.remove(), 1000);
+            setTimeout(()=>{
+                  loader.remove();
+                  document.body.classList.remove('h-screen','overflow-hidden');
+            } , 1000);
           }
       }
   }

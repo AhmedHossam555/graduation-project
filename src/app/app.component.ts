@@ -27,7 +27,10 @@ export class AppComponent {
     if(isPlatformBrowser(this._platForm)){
         const loader =document.getElementById("loader-first") as HTMLElement;
         if(loader){
-          setTimeout(()=> loader.remove(), 1000);
+            setTimeout(()=>{
+                  loader.remove();
+                  document.body.classList.remove('h-screen','overflow-hidden');
+            } , 1000);
         }
       
     }
