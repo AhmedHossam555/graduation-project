@@ -20,15 +20,15 @@ export class HeaderComponent {
     //   isPlatformBrowser(this._platForm) ? JSON.parse(window.localStorage.getItem('dark') || 'false') : ''
     // );
 
-    // constructor(private _flowbiteService: FlowbiteService, private _darkModeService: DarkModeService){
 
-      //  effect(()=>{
-      //   if(isPlatformBrowser(this._platForm)){
-      //        window.localStorage.setItem('dark',JSON.stringify(this.darkMode()));
-      //        document.querySelector('html')?.classList.toggle('dark')
+    // constructor(private _flowbiteService: FlowbiteService){
 
-      //   }
-      //  })
+    //    effect(()=>{
+    //     if(isPlatformBrowser(this._platForm)){
+    //          window.localStorage.setItem('dark',JSON.stringify(this.darkMode()));
+    //          document.querySelector('html')?.classList.toggle('dark')
+    //     }
+    //    })
     // }
     
       ngOnInit(): void {
@@ -36,9 +36,14 @@ export class HeaderComponent {
           initFlowbite();
         });
       }
+    
 
+      // toggle dark mode
+      // toggleDarkMode(): void {
+      //   this.darkMode.set(!this.darkMode());
+      // }
 
-      _platform = inject(PLATFORM_ID);
+    _platform = inject(PLATFORM_ID);
   darkMode = isPlatformBrowser(this._platform)
     ? JSON.parse(localStorage.getItem('dark') || 'false')
     : false;

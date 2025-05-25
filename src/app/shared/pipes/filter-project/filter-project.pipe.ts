@@ -16,5 +16,6 @@ export class FilterProjectPipe implements PipeTransform {
     })
     return value;
   }
+  
 
 }

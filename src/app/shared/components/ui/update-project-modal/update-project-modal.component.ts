@@ -13,7 +13,7 @@ import { Project } from '../../../interfaces/project';
 export class UpdateProjectModalComponent implements OnChanges {
   // output signal for update project
   updateValue = output<Project>();
-
+  
   /// old project value
   // this is used to get the project value from the parent component
   projectValue = input<Project>();
@@ -36,7 +36,8 @@ export class UpdateProjectModalComponent implements OnChanges {
       }
   }
 
-  // Helper to convert string to Date
+
+// Helper to convert string to Date
 toDate(dateStr: string | Date | null | undefined): Date | null {
   if (!dateStr) return null;
   if (dateStr instanceof Date) return dateStr;
@@ -62,6 +63,7 @@ private formatDate(date: Date | null): string | null {
   return `${mm}/${dd}/${yyyy}`;
 }
 
+// update project
 updateProject() {
   const raw:any = this.projectForm.value;
   const payload = {

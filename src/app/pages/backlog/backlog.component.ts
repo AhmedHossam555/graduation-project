@@ -77,6 +77,7 @@ export class BacklogComponent {
             event.currentIndex
           );
         }
+        
       }
       getConnectedDropListIds(currentSprintId: number): string[] {
         return ['backloglist', ...this.sprintDropIds.filter(id => id !== `sprint-${currentSprintId}`)];
