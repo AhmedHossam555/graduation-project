@@ -94,6 +94,8 @@
     @for (project of projects() | filterProject:searchValue(); track project.id) {
        <!-- project item component -->
         <app-project-item [project]="project" (deleteProject)="onDeleteProject($event)" (editProject)="onEditProject($event)" ></app-project-item>
+      
+
     }
   
   </div>
@@ -102,11 +104,22 @@
 
 
 
+  @for (project of projects() ; track project.id) {
+       <!-- project item component -->
+        <!-- <app-project-item [project]="project" (deleteProject)="onDeleteProject($event)" (editProject)="onEditProject($event)" ></app-project-item> -->
+          <app-update-project-modal
+          [projectValue]="project" 
+          [id]="'update-project-model' + project.id"
+          (updateValue)="onUpdateProject($event)">
+        </app-update-project-modal>
 
+    }
+
+
+<!-- <app-update-project-modal  [projectValue]="projectValue()"  (updateValue)="onUpdateProject($event)"></app-update-project-modal> -->
 
 
 <!-- Model toggle create project -->
 <app-project-modal (OnCreateProject)="OnCreateProject($event)" ></app-project-modal>
 
-<app-update-project-modal [projectValue]="projectValue()"  (updateValue)="onUpdateProject($event)"></app-update-project-modal>
 

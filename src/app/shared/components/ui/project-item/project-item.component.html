@@ -93,7 +93,10 @@
         (click)="onDeleteProject(project()?.id)">Delete</a>
     </li>
     <li>
-      <a (click)="onEditProject(project(),'dropdownedit'+ project()?.id)" data-modal-target="update-project-model" data-modal-toggle="update-project-model"   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
+      <a (click)="onEditProject(project(),'dropdownedit'+ project()?.id)" 
+         [attr.data-modal-target]="'update-project-model' + project()?.id"
+         [attr.data-modal-toggle]="'update-project-model' + project()?.id"
+         class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Edit</a>
     </li>
   </ul>
 </div>

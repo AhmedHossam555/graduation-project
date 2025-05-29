@@ -3,6 +3,6 @@ export interface Project {
   name: string;
   description?: string;
   end_date?: string;
-  id: number;
+  id?: number;
   start_date?: string;
 }

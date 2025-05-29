@@ -27,6 +27,8 @@ export class ProjectItemComponent {
 
 
   
+
+  
   constructor(private _flowbiteService: FlowbiteService, private projectService:ProjectService){
     
   }
@@ -47,6 +49,7 @@ export class ProjectItemComponent {
 
   // onEdit Project
   onEditProject(project:any, id:string){
+    console.log("onEditProject", project);
     const element =  document.getElementById(id) as HTMLElement;
     element.classList.toggle("hidden");
     this.editProject.emit(project);

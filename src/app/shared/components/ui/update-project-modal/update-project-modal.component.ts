@@ -1,4 +1,4 @@
-import { Component, input, OnChanges, output, SimpleChanges } from '@angular/core';
+import { Component, Input, input, output, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { Project } from '../../../interfaces/project';
@@ -10,13 +10,17 @@ import { Project } from '../../../interfaces/project';
   templateUrl: './update-project-modal.component.html',
   styleUrl: './update-project-modal.component.scss'
 })
-export class UpdateProjectModalComponent implements OnChanges {
+export class UpdateProjectModalComponent  {
   // output signal for update project
   updateValue = output<Project>();
-  
-  /// old project value
   // this is used to get the project value from the parent component
   projectValue = input<Project>();
+  // input  for project id
+  id = input<string>();
+
+  /// old project value
+
+
   // project form
   projectForm = new FormGroup({
     'name': new FormControl<string | null>(null, [Validators.required]),
@@ -25,7 +29,8 @@ export class UpdateProjectModalComponent implements OnChanges {
     'end_date': new FormControl<string | null | Date>(null, [Validators.required]),
   });
   
-  ngOnChanges(changes: SimpleChanges): void {
+
+    ngOnChanges(changes: SimpleChanges): void {
       if(this.projectValue()){
         this.projectForm.patchValue({
           name: this.projectValue()?.name,
@@ -35,6 +40,8 @@ export class UpdateProjectModalComponent implements OnChanges {
         });
       }
   }
+
+
 
 
 // Helper to convert string to Date
