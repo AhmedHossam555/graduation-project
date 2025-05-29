@@ -15,7 +15,7 @@ export class UpdateProjectModalComponent  {
   updateValue = output<Project>();
   // this is used to get the project value from the parent component
   projectValue = input<Project>();
-  // input  for project id
+  // input edit  for project id
   id = input<string>();
 
   /// old project value
@@ -28,6 +28,8 @@ export class UpdateProjectModalComponent  {
     'start_date': new FormControl<string | null | Date>(null, [Validators.required]),
     'end_date': new FormControl<string | null | Date>(null, [Validators.required]),
   });
+  
+
   
 
     ngOnChanges(changes: SimpleChanges): void {
