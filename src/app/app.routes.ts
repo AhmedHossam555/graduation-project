@@ -9,6 +9,7 @@ export const routes: Routes = [
     {path:'projects', loadComponent: () => import('./pages/projects/projects.component').then(m => m.ProjectsComponent)}, 
     {path:'teams', loadComponent: ()=> import('./pages/teams/teams.component').then(m => m.TeamsComponent)}
   ]},
+  {path:'overview', loadComponent: () => import('./pages/land/land/land.component').then(m => m.LandComponent)},
   {path:'projects/SCRUM/boards/:id',loadComponent:()=> import('./pages/boards/boards.component').then(m => m.BoardsComponent),children:[
     {path:'', redirectTo:'backlog', pathMatch:'full'},
     {path:'backlog', loadComponent: () => import('./pages/backlog/backlog.component').then(m => m.BacklogComponent)},
