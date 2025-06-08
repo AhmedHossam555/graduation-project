@@ -1,0 +1,8 @@
+button {
+  transition: all 0.8s ease-in-out;
+}
+
+button:hover {
+  background: linear-gradient(-172.852deg, #288FFF 0%, #456be8 100%) !important;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}

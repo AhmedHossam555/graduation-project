@@ -8,7 +8,13 @@
 .bg-default-100  {
  background-color: #f1f5f9;
 }
+.bg-linear {
+  background: linear-gradient(-6.37deg, #58A8FF 0%, #1A88FF 100%);
+}
 
+.bg-linear-2 {
+  background: linear-gradient(-172.852deg, #288FFF 0%, #EAEFFF 100%);
+}
 
 body {
   position: relative;
