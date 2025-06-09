@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, signal } from '@angular/core';
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-toggle-sidebar',
@@ -9,5 +9,18 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './toggle-sidebar.component.scss'
 })
 export class ToggleSidebarComponent {
+
+  isHome = signal(false);
+
+  constructor(private router:ActivatedRoute){
+    this.router.url.subscribe(url => {
+      if(url[0].path === 'home'){
+        this.isHome.set(true);
+      }else{
+        this.isHome.set(false); 
+      }
+    });
+  }
+
 
 }

@@ -16,7 +16,22 @@
   <!-- nav item  project  -->
   <nav class="sidebar-nav pt-5">
     <ul>
-      <li class="projects-item">
+      @if(isHome()){
+            <li class="projects-item">
+            <a class="flex items-center w-full px-3 py-2 text-sm font-medium text-three hover:bg-gray-100 dark:hover:bg-[#15191C]  dark:text-black-50 rounded gap-2"
+              routerLink="projects" routerLinkActive="active">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M9 15v8H1v-8zm14 0v8h-8v-8zM9 1v8H1V1zm14 0v8h-8V1z"/></svg>     
+              <span class="flex-1">Projects</span>
+            </a>
+          </li>
+          <li class="teams-item">
+            <a routerLink="teams" routerLinkActive="active" class="flex items-center w-full px-3 py-2 text-sm font-medium text-three hover:bg-gray-100 dark:hover:bg-[#15191C]  dark:text-black-50 rounded gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 16 16"><path fill="currentColor" d="M8 2.002a1.998 1.998 0 1 0 0 3.996a1.998 1.998 0 0 0 0-3.996M12.5 3a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3m-9 0a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3M5 7.993A1 1 0 0 1 6 7h4a1 1 0 0 1 1 1v3a3 3 0 0 1-.146.927A3.001 3.001 0 0 1 5 11zM4 8c0-.365.097-.706.268-1H2a1 1 0 0 0-1 1v2.5a2.5 2.5 0 0 0 3.436 2.319A4 4 0 0 1 4 10.999zm8 0v3c0 .655-.157 1.273-.436 1.819A2.5 2.5 0 0 0 15 10.5V8a1 1 0 0 0-1-1h-2.268c.17.294.268.635.268 1"/></svg>          
+              <span class="flex-1">Teams</span>
+            </a>
+          </li>
+      }@else {
+       <li class="projects-item">
         <a class="flex items-center w-full px-3 py-2 text-sm font-medium text-three  hover:bg-gray-100 rounded gap-2 " routerLink="summary" routerLinkActive="active" >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256"><path fill="currentColor" d="M100 116.43a8 8 0 0 0 4-6.93v-72A8 8 0 0 0 93.34 30a104.06 104.06 0 0 0-67.61 117a8 8 0 0 0 4.52 5.81a7.9 7.9 0 0 0 3.35.74a8 8 0 0 0 4-1.07ZM88 49.62v55.26l-47.88 27.63C40 131 40 129.48 40 128a88.12 88.12 0 0 1 48-78.38M232 128a104 104 0 0 1-193.68 52.7a8 8 0 0 1 2.87-11L120 123.83V32a8 8 0 0 1 8-8a104.05 104.05 0 0 1 89.74 51.48c.11.16.21.32.31.49s.2.37.29.55A103.34 103.34 0 0 1 232 128"/></svg>       
           <span class="flex-1">Summary</span>
@@ -46,6 +61,8 @@
           <span class="flex-1">Chat</span>
         </a>
       </li>
+      }
+    
     </ul>
   </nav>
 </aside>
