@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 
 
 export const routes: Routes = [
+  {path:'', redirectTo:'overview', pathMatch:'full'},
+  {path:'overview', loadComponent: () => import('./pages/land/land/land.component').then(m => m.LandComponent)},
   {path:'login',loadComponent: () => import('./core/pages/login/login.component').then(m => m.LoginComponent)},
   {path:'register',loadComponent: () => import('./core/pages/register/register.component').then(m => m.RegisterComponent)},
   {path:'home', loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),children:[
@@ -9,7 +11,6 @@ export const routes: Routes = [
     {path:'projects', loadComponent: () => import('./pages/projects/projects.component').then(m => m.ProjectsComponent)}, 
     {path:'teams', loadComponent: ()=> import('./pages/teams/teams.component').then(m => m.TeamsComponent)}
   ]},
-  {path:'overview', loadComponent: () => import('./pages/land/land/land.component').then(m => m.LandComponent)},
   {path:'projects/SCRUM/boards/:id',loadComponent:()=> import('./pages/boards/boards.component').then(m => m.BoardsComponent),children:[
     {path:'', redirectTo:'backlog', pathMatch:'full'},
     {path:'backlog', loadComponent: () => import('./pages/backlog/backlog.component').then(m => m.BacklogComponent)},
