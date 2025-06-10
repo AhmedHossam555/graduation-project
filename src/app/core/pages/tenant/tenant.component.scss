@@ -5,12 +5,19 @@
 .linear-bg-blue {
   background: linear-gradient(-6.37deg, #58A8FF 0%, #1A88FF 100%);
 }
-input {
+input,textarea {
   border: 1px solid #e2e8f0 !important;
 }
 input::placeholder {
   color: #475569;
   line-height: 12px;
+}
+textarea::placeholder {
+  color: #475569;
+  line-height: 12px;
+}
+textarea:focus {
+  border-color:#1A88FF;
 }
 input:focus {
   border-color:#1A88FF;

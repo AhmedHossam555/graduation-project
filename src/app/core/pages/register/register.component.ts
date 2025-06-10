@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { Signup } from '../../interfaces/signup';
+import { Router, RouterLink } from '@angular/router';
+import { DatatransferService } from '../../services/datatransfer/datatransfer.service';
+
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,15 @@ import { Signup } from '../../interfaces/signup';
 export class RegisterComponent {
   isVisibleConfirm: boolean = false;
   isVisiblePassword: boolean = false;
+
+  private _dataTransfer = inject(DatatransferService);
+
+  constructor(private router:Router){
+
+  }
+
+
+
   registerForm: FormGroup = new FormGroup<any>({
    "username": new FormControl(null,[Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
    "email": new FormControl(null,[Validators.required, Validators.email]),
@@ -31,10 +41,13 @@ export class RegisterComponent {
   recieveRegisterForm(value:string):any {
     return this.registerForm.get(value);
   }
+
+  // get Register on submit
   getRegister(){
-      console.log(this.registerForm.value);
+
     if(this.registerForm.valid){
-      console.log(this.registerForm.value);
+        this._dataTransfer.setData(this.registerForm.value);
+        this.router.navigate(['/tenant']);
     }else{
       this.registerForm.markAllAsTouched();
     }

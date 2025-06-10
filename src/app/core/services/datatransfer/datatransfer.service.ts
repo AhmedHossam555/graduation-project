@@ -5,5 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class DatatransferService {
 
-  constructor() { }
+  private data: any;
+
+  setData(value: any) {
+    // remove confirm_password
+    Reflect.deleteProperty(value,'confirm_password');
+  
+    this.data = value;
+  }
+
+  getData() {
+    return this.data;
+  }
 }
