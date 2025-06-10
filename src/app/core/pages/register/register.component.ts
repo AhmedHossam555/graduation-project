@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { Signup } from '../../interfaces/signup';
 
 @Component({
   selector: 'app-register',
@@ -12,11 +13,12 @@ import { RouterLink } from '@angular/router';
 export class RegisterComponent {
   isVisibleConfirm: boolean = false;
   isVisiblePassword: boolean = false;
-  registerForm: FormGroup = new FormGroup({
+  registerForm: FormGroup = new FormGroup<any>({
+   "username": new FormControl(null,[Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
    "email": new FormControl(null,[Validators.required, Validators.email]),
    "password": new FormControl(null,[Validators.required, Validators.pattern(/^[A-Z][a-z0-9]{3,10}$/)]),
-   "confirm_password": new FormControl(null,[Validators.required, Validators.pattern(/^[A-Z][a-z0-9]{3,10}$/)]), 
-   "organization_name": new FormControl(null,[Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+   "confirm_password": new FormControl(null,[Validators.required, Validators.pattern(/^[A-Z][a-z0-9]{3,10}$/)]),
+
   },this.PasswordMatchValidator);
 
   isVisibleOrNot(){
@@ -30,6 +32,7 @@ export class RegisterComponent {
     return this.registerForm.get(value);
   }
   getRegister(){
+      console.log(this.registerForm.value);
     if(this.registerForm.valid){
       console.log(this.registerForm.value);
     }else{

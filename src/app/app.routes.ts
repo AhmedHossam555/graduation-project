@@ -5,6 +5,7 @@ export const routes: Routes = [
   {path:'overview', loadComponent: () => import('./pages/land/land/land.component').then(m => m.LandComponent)},
   {path:'login',loadComponent: () => import('./core/pages/login/login.component').then(m => m.LoginComponent)},
   {path:'register',loadComponent: () => import('./core/pages/register/register.component').then(m => m.RegisterComponent)},
+  {path:'tenant', loadComponent: () => import('./core/pages/tenant/tenant.component').then(m => m.TenantComponent)},
   {path:'home', loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),children:[
     {path:'', redirectTo:'projects', pathMatch:'full'},
     {path:'projects', loadComponent: () => import('./pages/projects/projects.component').then(m => m.ProjectsComponent)}, 
