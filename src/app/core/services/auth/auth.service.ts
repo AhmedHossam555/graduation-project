@@ -42,4 +42,12 @@ export class AuthService {
       this.userData.next(userdata);
     }
   }
+
+  logout(){
+    // Clear user data and token from localStorage
+    this.userData.next(null);
+    
+    localStorage.removeItem('token');
+    
+  }
 }
