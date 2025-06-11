@@ -1,33 +1,67 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DatatransferService } from '../../services/datatransfer/datatransfer.service';
-import { Console } from 'console';
+
+import { AuthService } from '../../services/auth/auth.service';
+import { HotToastService } from '@ngneat/hot-toast';
+import { Router, RouterLink } from '@angular/router';
+import { error } from 'console';
 
 @Component({
   selector: 'app-tenant',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,RouterLink],
   templateUrl: './tenant.component.html',
   styleUrl: './tenant.component.scss'
 })
 export class TenantComponent {
+  private _dataTransfer = inject(DatatransferService);
+  private _authService = inject(AuthService);
+  private _hotToast = inject(HotToastService);  
+  private router = inject(Router);
 
-  constructor(private dataTransfer:DatatransferService){
-    console.log(this.dataTransfer.getData());
+  errorMessage = signal<string>("");
+
+
+  constructor(){
+    
   }
 
   tenantForm = new FormGroup({
     "tenant": new FormGroup({
      "name": new FormControl(null,[Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
      "description": new FormControl(null,[Validators.required, Validators.minLength(10), Validators.maxLength(100)]),
-     "role": new FormControl(null),
+     "logo": new FormControl(""),
    })
   })
 
   
   getTenantForm(){
-    // console.log(this.tenantForm.value);
-    let merge = Object.assign(this.dataTransfer.getData(), this.tenantForm.value);
-    console.log(merge);
+    if(this.tenantForm.valid){
+    let merge = Object.assign(this._dataTransfer.getData(), this.tenantForm.value);
+    console.log(merge)
+    this._authService.signup(merge).pipe(
+      this._hotToast.observe({
+        loading: 'Logging in',
+        success:' Congrats ! You are signup successfully',
+        error: (err)=>`There was an error: ${err.error.message}`
+      }
+    )).subscribe({
+      next:(res:any)=>{
+      if(res.status == 'success'){
+          this.router.navigate(['/login']);
+      }
+    },
+      error :(err)=>{
+        this.errorMessage.set(err.error.message);
+        this.router.navigate(['/register']);
+      }
+    })
+    
+    }
+  
+
   }
 }
+
+
