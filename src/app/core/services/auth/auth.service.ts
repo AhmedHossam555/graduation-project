@@ -5,6 +5,7 @@ import { environment } from '../../../shared/Enviroment/enviroment';
 import { BehaviorSubject } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
 import { isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,9 @@ export class AuthService {
 
   // Used to check if code is running in the browser (for SSR compatibility)
   private platform_id = inject(PLATFORM_ID);
+
+  // Router instance to navigate after logout
+  private router = inject(Router);
 
   constructor(private _http: HttpClient) { 
     // On service creation, if in browser, load user data from localStorage
@@ -36,7 +40,7 @@ export class AuthService {
 
   // Load user data from token in localStorage and update userData observable
   saveUserData() {
-    const token = JSON.stringify(localStorage.getItem('token'));
+    const token = localStorage.getItem('token');
     if (token) {
       const userdata = jwtDecode(token);
       this.userData.next(userdata);
@@ -46,8 +50,11 @@ export class AuthService {
   logout(){
     // Clear user data and token from localStorage
     this.userData.next(null);
-    
+
+
     localStorage.removeItem('token');
     
+    // Navigate to login page
+    this.router.navigate(['/login']);
   }
 }

@@ -14,7 +14,6 @@ export class HeaderComponent {
   private auth = inject(AuthService);
   ngOnInit() {
     this.auth.userData.subscribe((res)=>{
-      console.log(res);
       if(res){
         this.isLogin.set(true);
       }else{
@@ -24,6 +23,6 @@ export class HeaderComponent {
   }
 
   logout(){
-    
+    this.auth.logout();
   }
 }
