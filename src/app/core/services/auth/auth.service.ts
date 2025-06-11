@@ -11,30 +11,34 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class AuthService {
 
-  userData: BehaviorSubject <any> = new BehaviorSubject<any>(null); 
+  // Holds the current user data as an observable
+  userData: BehaviorSubject<any> = new BehaviorSubject<any>(null); 
+
+  // Used to check if code is running in the browser (for SSR compatibility)
   private platform_id = inject(PLATFORM_ID);
 
-  constructor(private _http:HttpClient) { 
-    if(isPlatformBrowser(this.platform_id)){{
-         this.saveUserData();
+  constructor(private _http: HttpClient) { 
+    // On service creation, if in browser, load user data from localStorage
+    if (isPlatformBrowser(this.platform_id)) {
+      this.saveUserData();
     }
   }
-}
 
-  signup(value:Signup){
-    return this._http.post(`${environment.apiUrl}/auth/sign-up`,value);
-  }
-  signIn(value:Signup){
-    return this._http.post(`${environment.apiUrl}/auth/sign-in`,value);
+  // Register a new user
+  signup(value: Signup) {
+    return this._http.post(`${environment.apiUrl}/auth/sign-up`, value);
   }
 
-  saveUserData(){
+  // Sign in an existing user
+  signIn(value: Signup) {
+    return this._http.post(`${environment.apiUrl}/auth/sign-in`, value);
+  }
+
+  // Load user data from token in localStorage and update userData observable
+  saveUserData() {
     const token = JSON.stringify(localStorage.getItem('token'));
-
-    if(token){
+    if (token) {
       const userdata = jwtDecode(token);
-
-      console.log(userdata);
       this.userData.next(userdata);
     }
   }
